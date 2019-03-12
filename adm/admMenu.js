@@ -238,7 +238,7 @@ var LeftBar = function() {
 		},
 		{
 			"parentMenuId":"ADM-06",
-			"pageUri":null,
+			"pageUri":"/templates/adm/user/userMgt_cn.html",
 			"menuId":"ADM-06-01",
 			"menuDepthNo":2,
 			"menuName":"用户信息管理",
