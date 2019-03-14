@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME LAYOUT STYLES -->
+
+    <link href="/assets/global/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" type="text/css" />
+    <title>持仓信息</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <style>
+        .page-header {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            width: 100%;
+            margin: 0;
+            border: 0;
+            padding: 0;
+            height: 51px;
+            background-image: none;
+        }
+    </style>
+</head>
+
+<!-- END HEAD -->
+
+<body class="page-container-bg-solid">
+    <div class="page-wrapper">
+        <div class="page-wrapper-row">
+            <div class="page-wrapper-top">
+                <!--menu上面LOGO与使用者信息 start-->
+                <div class="page-header">
+                    <!--menu上面LOGO与使用者信息 end-->
+                    <!--menu构成(黑色条) start-->
+                    <div class="page-header-menu">
+                        <div class="container">
+                            <div class="hor-menu  ">
+                                <ul class="nav navbar-nav">
+                                    <li class="menu-dropdown classic-menu-dropdown ">
+                                        <a href="/templates/biz/main_cn.html"> 交易 <span class="arrow"></span></a>
+                                    </li>
+                                    <li class="menu-dropdown mega-menu-dropdown active">
+                                        <a href="/templates/biz/myPosition_cn.html"> 持仓信息 <span class="arrow"></span></a>
+                                    </li>
+                                    <li class="menu-dropdown mega-menu-dropdown ">
+                                        <a href="/templates/biz/myAsset_cn.html"> 我的资产 <span class="arrow "></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="hor-menu pull-right">
+                                <ul class="nav navbar-nav pull-right">
+                                    <li class="dropdown dropdown-user">
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                            <i class="icon-user"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-default">
+                                            <li>
+                                                <a href="page_user_profile_1.html">
+                                                    <i class="icon-user"></i> Basic Info </a>
+                                            </li>
+                                            <li>
+                                                <a href="app_calendar.html">
+                                                    <i class="fa fa-bank"></i> Bank Info </a>
+                                            </li>
+                                            <li>
+                                                <a href="app_inbox.html">
+                                                    <i class="fa fa-info-circle"></i> Login Info
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="app_todo.html">
+                                                    <i class="fa fa-vimeo"></i> VIP Info
+                                                    <span class="badge badge-danger"> 1 </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="app_todo.html">
+                                                    <i class="fa fa-birthday-cake"></i>Event Info
+                                                    <span class="badge badge-danger"> 3 </span>
+                                                </a>
+                                            </li>
+                                            <li class="divider"> </li>
+                                            <li>
+                                                <a href="page_user_login_1.html">
+                                                    <i class="icon-key"></i>Log Out </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown dropdown-user">
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                            <i class="icon-settings"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-default">
+                                            <li>
+                                                <a href="page_user_profile_1.html">
+                                                    <i class="fa fa-dollar"></i> Trade Setting </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!-- END USER LOGIN DROPDOWN -->
+                                </ul>
+
+                            </div>
+                            <!-- END MEGA MENU -->
+                        </div>
+                    </div>
+                    <!--menu构成(黑色条) end-->
+                </div>
+            </div>
+
+        </div>
+        <div class="page-wrapper-row full-height">
+            <div class="page-wrapper-middle">
+                <!-- BEGIN CONTAINER -->
+                <div class="page-container">
+                    <!-- BEGIN CONTENT -->
+                    <div class="page-content-wrapper">
+                        <!-- BEGIN CONTENT BODY -->
+                        <!-- BEGIN PAGE CONTENT BODY -->
+                        <div class="page-content">
+                            <div class="container">
+                                <!-- BEGIN PAGE CONTENT INNER -->
+                                <div class="page-content-inner">
+                                    <div class="mt-content-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="portlet light portlet-fit bordered">
+                                                    <div class="portlet-title">
+                                                        <form action="#" class="form-horizontal" id="form_sample_1" novalidate="novalidate">
+                                                            <div class="form-body">
+                                                                <div class="form-group form-md-line-input " style="margin-bottom:0px">
+                                                                    <label class="col-md-1 control-label" for="form_control_1">
+                                                                                <span class="required" aria-required="true"></span>포지션 손익
+                                                                            </label>
+                                                                    <div class="col-md-1">
+                                                                        <input type="text" class="form-control" placeholder="" name="name">
+                                                                        <div class="form-control-focus"></div>
+                                                                    </div>
+                                                                    <label class="col-md-1 control-label" for="form_control_1">
+                                                                                <span class="required" aria-required="true"></span>금일 손익
+                                                                            </label>
+                                                                    <div class="col-md-1">
+                                                                        <input type="text" class="form-control" placeholder="" name="name">
+                                                                        <div class="form-control-focus"></div>
+                                                                    </div>
+                                                                    <label class="col-md-1 control-label" for="form_control_1">
+                                                                                <span class="required" aria-required="true"></span>출금 가능 금액
+                                                                            </label>
+                                                                    <div class="col-md-1">
+                                                                        <input type="text" class="form-control" placeholder="" name="name">
+                                                                        <div class="form-control-focus"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="portlet-body">
+                                                        <div class="profile">
+                                                            <div class="tabbable-line tabbable-full-width">
+                                                                <ul class="nav nav-tabs">
+                                                                    <li class="active">
+                                                                        <a href="#tab_1_1" data-toggle="tab"> 미체결 </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab_1_2" data-toggle="tab"> 체결 </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab_1_3" data-toggle="tab"> 포지션 </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab_1_4" data-toggle="tab"> 스탑 </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#tab_1_5" data-toggle="tab"> 일별손익 </a>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane active" id="tab_1_1">
+                                                                        <table id="table_1_1" class=""></table>
+                                                                        <div class="clearfix"></div>
+                                                                    </div>
+                                                                    <div class="tab-pane active" id="tab_1_2">
+                                                                        <table id="table_1_2" class=""></table>
+                                                                    </div>
+                                                                    <div class="tab-pane active" id="tab_1_3">
+                                                                        <table id="table_1_3" class=""></table>
+                                                                    </div>
+                                                                    <div class="tab-pane active" id="tab_1_4">
+                                                                        <table id="table_1_4" class=""></table>
+                                                                    </div>
+                                                                    <div class="tab-pane active" id="tab_1_5">
+                                                                        <table id="table_1_5" class=""></table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END PAGE CONTENT INNER -->
+                        </div>
+                    </div>
+                    <!-- END PAGE CONTENT BODY -->
+                    <!-- END CONTENT BODY -->
+                </div>
+                <!-- END CONTENT -->
+            </div>
+            <!-- END CONTAINER -->
+        </div>
+    </div>
+    <div class="page-wrapper-row">
+        <div class="page-wrapper-bottom">
+            <!-- BEGIN FOOTER -->
+            <!-- BEGIN PRE-FOOTER -->
+            <div class="page-prefooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+                            <h2>About</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam dolore.</p>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs12 footer-block">
+                            <h2>Subscribe Email</h2>
+                            <div class="subscribe-form">
+                                <form action="javascript:;">
+                                    <div class="input-group">
+                                        <input type="text" placeholder="mail@email.com" class="form-control"> <span class="input-group-btn">
+													<button class="btn" type="submit">Submit</button>
+												</span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+                            <h2>Follow Us On</h2>
+                            <ul class="social-icons">
+                                <li>
+                                    <a href="javascript:;" data-original-title="rss" class="rss"></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-original-title="facebook" class="facebook"></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-original-title="twitter" class="twitter"></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-original-title="googleplus" class="googleplus"></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-original-title="linkedin" class="linkedin"></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-original-title="youtube" class="youtube"></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" data-original-title="vimeo" class="vimeo"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+                            <h2>Contacts</h2>
+                            <address class="margin-bottom-40">
+										Phone: 000-0000-0000 <br> Email: <a
+											href="mailto:126@126.com">126@126.com</a>
+									</address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PRE-FOOTER -->
+            <!-- BEGIN INNER FOOTER -->
+            <div class="page-footer">
+                <div class="container">
+                    <!-- 2016 &copy; Metronic Theme By <a target="_blank"
+								href="http://keenthemes.com">Keenthemes</a> &nbsp;|&nbsp; <a
+								href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes"
+								title="Purchase Metronic just for 27$ and get lifetime updates for free"
+								target="_blank">Purchase Metronic!</a> -->
+                </div>
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <!-- END INNER FOOTER -->
+            <!-- END FOOTER -->
+        </div>
+    </div>
+    </div>
+
+
+</body>
+<script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+<script src="/assets/global/scripts/app.js" type="text/javascript"></script>
+
+<script src="/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+<script src="/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+<script src="/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+<script src="/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/bootstrap-table/bootstrap-table.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+    $(function() {
+
+
+    });
+</script>
+
+</html>
