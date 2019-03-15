@@ -220,10 +220,6 @@ var Main = function() {
                 title : '종목명',
                 align : "center"
             }, {
-				field : 'OpenCloseType',
-				title : 'Position상태 구분',
-                align : "center"
-            }, {
 				field : 'PlaceType',
 				title : '거래자금유형',
                 align : "center"
