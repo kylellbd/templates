@@ -15,21 +15,27 @@
     <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" /> -->
     <link href="/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" /> -->
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
     <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
     <!-- END THEME GLOBAL STYLES -->
+    <link href="/assets/global/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+
     <!-- BEGIN THEME LAYOUT STYLES -->
     <link href="/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
 
-    <link href="/assets/global/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" type="text/css" />
+
+
     <title>持仓信息</title>
     <link rel="shortcut icon" href="favicon.ico" />
     <style>
@@ -58,6 +64,13 @@
                     <!--menu构成(黑色条) start-->
                     <div class="page-header-menu">
                         <div class="container">
+                            <div class="hor-menu  ">
+                                <table>
+                                    <tr>
+                                        <td width="300px">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </div>
                             <div class="hor-menu  ">
                                 <ul class="nav navbar-nav">
                                     <li class="menu-dropdown classic-menu-dropdown ">
@@ -178,7 +191,7 @@
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    
+
                                                     <div class="portlet-body">
                                                         <div class="profile">
                                                             <div class="tabbable-line tabbable-full-width">
@@ -201,31 +214,56 @@
                                                                 </ul>
                                                                 <div class="tab-content">
                                                                     <div class="tab-pane active" id="tab_1_1">
-                                                                            
+
                                                                         <table id="table_1_1" class=""></table>
                                                                         <div class="clearfix">
                                                                             <br>
-                                                                                <div  style="float: right;">
-                                                                                    <button type="button" class="btn red btn-outline sbold uppercase" >선택취소</button>
-                                                                                </div>
+                                                                            <div style="float: right;">
+                                                                                <button type="button" class="btn red btn-outline sbold uppercase">선택취소</button>
+                                                                            </div>
                                                                         </div>
-                                                                        
+
                                                                     </div>
                                                                     <div class="tab-pane " id="tab_1_2">
                                                                         <table id="table_1_2" class=""></table>
                                                                     </div>
                                                                     <div class="tab-pane " id="tab_1_3">
+                                                                        포지션 테이블 노랜색 제외 스탑 설정 버튼(이미 세팅하면 버튼 명을 재세팅으로 변경) 팝업으로 보여줌. 퍼센티지 하고 가격으로 세팅
                                                                         <table id="table_1_3" class=""></table>
-                                                                        포지션 테이블 노랜색 제외
-                                                                        스탑 설정 버튼(이미 세팅하면 버튼 명을 재세팅으로 변경)
-                                                                        팝업으로 보여줌.
-                                                                        퍼센티지 하고 가격으로 세팅
+
                                                                     </div>
                                                                     <div class="tab-pane" id="tab_1_4">
                                                                         <table id="table_1_4" class=""></table>
                                                                         스탑 내용 조회
                                                                     </div>
                                                                     <div class="tab-pane " id="tab_1_5">
+                                                                        <div class="portlet-title" style="background-color: #E9EDEF">
+                                                                            <form action="#" class="form-horizontal" id="form_sample_1" novalidate="novalidate">
+                                                                                <div class="form-body">
+
+                                                                                    <div class="form-group form-md-line-input " style="margin-bottom:0px">
+                                                                                        <label class="col-md-1 control-label" for="form_control_1">
+                                                                                                    <span class="required" aria-required="true"></span>조회일자
+                                                                                                </label>
+                                                                                        <div class="col-md-2 input-icon right">
+                                                                                            <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy/mm/dd">
+                                                                                                <input type="text" class="form-control" name="from">
+                                                                                                <span class="input-group-addon"> ~ </span>
+                                                                                                <input type="text" class="form-control" name="to">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-1  hei">
+                                                                                            <div style="float: right;">
+                                                                                                <button type="button" class="btn red btn-outline sbold uppercase ProfitSearch">조회</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </form>
+                                                                            <div>&nbsp;</div>
+                                                                        </div>
+                                                                        <div>&nbsp;</div>
                                                                         <table id="table_1_5" class=""></table>
                                                                     </div>
                                                                 </div>
@@ -340,11 +378,17 @@
 <script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
 <script src="/assets/global/scripts/app.js" type="text/javascript"></script>
 
+
+<script src="/assets/global/plugins/bootstrap-table/bootstrap-table.js" type="text/javascript"></script>
+<!-- <script src="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script> -->
+<script src="/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<!-- <script src="/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script> -->
+<!-- <script src="/assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script> -->
+<script src="/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+
 <script src="/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
 <script src="/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
-<script src="/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <script src="/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-<script src="/assets/global/plugins/bootstrap-table/bootstrap-table.js" type="text/javascript"></script>
 
 <script src="myPosition.js" type="text/javascript"></script>
 
@@ -355,5 +399,11 @@
 
     });
 </script>
+<style>
+    .th-inner {
+        color: white;
+        background-color: #525e64;
+    }
+</style>
 
 </html>
