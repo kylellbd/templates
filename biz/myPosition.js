@@ -1,4 +1,4 @@
-var Main = function() {
+var MyPosition = function() {
     var makeTable_1_1 = function() {
         var table_1 = $("#myPositionPT").find('#table_1_1').bootstrapTable({
             striped: true, // 是否显示行间隔色
@@ -481,7 +481,7 @@ var Main = function() {
                     } else {
                         btnNm = "재세팅";
                     }
-                    return '<button type="button" class="btn green-haze btn-outline sbold uppercase">' + btnNm + '</button>';
+                    return '<a class="btn green-haze btn-outline sbold uppercase dark" data-target="#static" data-toggle="modal">' + btnNm + '</a>';
                 }
             }, {
                 field: 'MarketId',
@@ -696,6 +696,94 @@ var Main = function() {
         "MgmtLock": "N"
     }];
 
+    var makeTable_1_4 = function() {
+        var table_4 = $("#myPositionPT").find('#table_1_4').bootstrapTable("destroy").bootstrapTable({
+            striped: true, // 是否显示行间隔色
+            cache: false, // 是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+            pagination: false, // 是否显示分页（*）
+            sortable: false, // 是否启用排序
+            sortOrder: "asc", // 排序方式
+            search: false, // 是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            contentType: "application/json",
+            strictSearch: false,
+            showColumns: false, // 是否显示所有的列
+            showRefresh: false, // 是否显示刷新按钮
+            minimumCountColumns: 2, // 最少允许的列数
+            clickToSelect: false, // 是否启用点击选中行
+            uniqueId: "no", // 每一行的唯一标识，一般为主键列
+            showToggle: false, // 是否显示详细视图和列表视图的切换按钮
+            cardView: false, // 是否显示详细视图
+            detailView: false, // 是否显示父子表
+            columns: [{
+                field: 'MarketId',
+                title: 'Market',
+                align: "center"
+            }, {
+                field: 'ItemId',
+                title: '종목명',
+                align: "center"
+            }, {
+                field: 'price1',
+                title: '이익스탑가격',
+                align: "center"
+            }, {
+                field: 'percent1',
+                title: '이익스탑퍼센티지',
+                align: "center"
+            }, {
+                field: 'price2',
+                title: '손일스탑가격',
+                align: "center"
+            }, {
+                field: 'percent2',
+                title: '손실스탑퍼센티지',
+                align: "center"
+            }],
+            data: table_1_4_Sample,
+            onLoadSuccess: function() { // 加载成功时执行
+                console.log("加载成功");
+            },
+            onLoadError: function() { // 加载失败时执行
+                console.log("加载数据失败");
+            }
+        });
+        return table_4;
+    };
+
+    var table_1_4_Sample = [{
+            "MarketId": "코스피",
+            "ItemId": "삼성전자",
+            "price1": "",
+            "percent1": "",
+            "price2": "",
+            "percent2": ""
+        },
+        {
+            "MarketId": "코스피",
+            "ItemId": "LG",
+            "price1": "",
+            "percent1": "",
+            "price2": "",
+            "percent2": ""
+        },
+        {
+            "MarketId": "코스피",
+            "ItemId": "SK",
+            "price1": "",
+            "percent1": "",
+            "price2": "",
+            "percent2": ""
+        },
+        {
+            "MarketId": "코스피",
+            "ItemId": "HYUNDAI",
+            "price1": "",
+            "percent1": "",
+            "price2": "",
+            "percent2": ""
+        }
+    ];
+
 
     var makeTable_1_5 = function() {
         var table_5 = $("#myPositionPT").find('#table_1_5').bootstrapTable("destroy").bootstrapTable({
@@ -862,6 +950,7 @@ var Main = function() {
             makeTable_1_1();
             makeTable_1_2();
             makeTable_1_3();
+            makeTable_1_4();
             makeTable_1_5();
         },
         searchProfitByDate: function() {
@@ -872,11 +961,11 @@ var Main = function() {
 }();
 
 jQuery(document).ready(function() {
-    Main.init();
+    MyPosition.init();
 
     $(".ProfitSearch").on("click", function() {
 
-        Main.searchProfitByDate();
+        MyPosition.searchProfitByDate();
 
     });
 });

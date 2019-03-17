@@ -22,11 +22,9 @@
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
     <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
-
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <link href="/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
@@ -192,7 +190,7 @@
                                                 </div>
                                                 <!-- END PORTLET1-1-->
                                                 <!-- BEGIN PORTLET2-1-->
-                                                <div class="portlet light " style="height: 393px; padding: 5px 5px 5px;">
+                                                <div class="portlet light " style="height: 470px; padding: 5px 5px 5px;">
                                                     <div class="portlet-title tabbable-line">
                                                         <div class="caption">
                                                             <span class="caption-subject font-dark bold uppercase">공지사항</span>
@@ -200,7 +198,7 @@
                                                     </div>
                                                     <div class="portlet-body">
                                                         <div class="table-scrollable">
-                                                            <table class="table table-hover table-scrollable">
+                                                            <table class="table table-hover">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>일자</th>
@@ -251,7 +249,18 @@
                                                                         <td><span class="label label-sm label-danger">
                                                                                     Open </span></td>
                                                                     </tr>
-
+                                                                    <tr>
+                                                                        <td>2018.1.12</td>
+                                                                        <td>오버나잇 유의사항</td>
+                                                                        <td><span class="label label-sm label-danger">
+                                                                                    Open </span></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2018.1.12</td>
+                                                                        <td>오버나잇 안내</td>
+                                                                        <td><span class="label label-sm label-danger">
+                                                                                    Open </span></td>
+                                                                    </tr>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -293,290 +302,261 @@
                                                 </div>
                                                 <div>
                                                     <!-- BEGIN PORTLET2-2-->
-                                                    <div class="row">
-                                                        <div class="col-md-1" style="padding-left: 5px; padding-right: 0px">
-                                                            <ul class="nav nav-tabs tabs-left">
-                                                                <li class="active">
-                                                                    <a data-toggle="tab" href="#tab_normal">
-                                                                        <b>일반<br>거래</b></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a data-toggle="tab" href="#tab_empty">
-                                                                        <b>공매매</b> </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-md-11">
-                                                            <div class="tab-content">
-                                                                <div class="tab-pane active" id="tab_normal">
-                                                                    <div class="portlet light">
-                                                                        <div class="portlet-body">
-                                                                            <div class="row">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="form-group form-md-radios col-md-11">
-                                                                                    <div class="md-radio-inline">
-                                                                                        <div class="md-radio">
-                                                                                            <input type="radio" id="radio1_1" name="radio1" class="md-radiobtn" checked="checked">
-                                                                                            <label for="radio1_1"> <span class="inc"></span> 
-                                                                                                <span  class="check"></span> 
-                                                                                                <span class="box"></span>대출
-                                                                                            </label>
-                                                                                        </div>
-                                                                                        <div class="md-radio">
-                                                                                            <input type="radio" id="radio1_2" name="radio1" class="md-radiobtn">
-                                                                                            <label for="radio1_2"> 
-                                                                                                <span class="inc"></span> 
-                                                                                                <span class="check"></span> 
-                                                                                                <span  class="box"></span>마진
-                                                                                            </label>
-                                                                                        </div>
-                                                                                    </div>
+                                                    <div class="portlet light bordered" style="height: 480px; padding: 1px 5px 5px;">
+                                                        <div class="portlet-body">
+                                                            <div class="tabbable tabbable-tabdrop">
+                                                                <ul class="nav nav-tabs">
+                                                                    <li class="active"><a href="#tab1" data-toggle="tab" aria-expanded="true"><span
+                                                                                class="caption-subject font-dark bold uppercase">일반거래</span></a></li>
+                                                                    <li class=""><a href="#tab2" data-toggle="tab" aria-expanded="false"><span
+                                                                                class="caption-subject font-dark bold uppercase">공매매</span></a></li>
+                                                                </ul>
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane active" id="tab1">
+                                                                        <div class="form-group form-md-radios">
+                                                                            <div class="md-radio-inline">
+                                                                                <div class="md-radio">
+                                                                                    <input type="radio" id="radio1" name="radio1" class="md-radiobtn" checked="checked"> <label for="radio1"> <span class="inc"></span> <span
+                                                                                            class="check"></span> <span class="box"></span>대출
+                                                                                        </label>
+                                                                                </div>
+                                                                                <div class="md-radio">
+                                                                                    <input type="radio" id="radio2" name="radio1" class="md-radiobtn"> <label for="radio2"> <span
+                                                                                            class="inc"></span> <span class="check"></span> <span
+                                                                                            class="box"></span>마진
+                                                                                        </label>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class='row col-md-12' style="margin-bottom: 5px">
+                                                                        </div>
+                                                                        <div class='col-md-12'>
+                                                                            <div class="portlet box">
                                                                                 <div class="btn-group" data-toggle="buttons">
-                                                                                    <label class="btn btn-default"> 
-                                                                                                <input type="radio" class="toggle" /> 1X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10,000,000
-                                                                                            </label>
-                                                                                    <label class="btn btn-default"> 
-                                                                                                <input type="radio" class="toggle" /> 5X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50,000,000
-                                                                                            </label>
-                                                                                    <label class="btn btn-default"> 
-                                                                                                <input type="radio" class="toggle" /> 10X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100,000,000
-                                                                                            </label>
-                                                                                    <label class="btn btn-default"> 
-                                                                                                <input type="radio" class="toggle" /> 15X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;150,000,000
-                                                                                            </label>
-                                                                                    <label class="btn btn-default"> 
-                                                                                                <input type="radio" class="toggle" /> 20X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;200,000,000
-                                                                                            </label>
+                                                                                    <label class="btn btn-default"> <input type="radio"
+                                                                                            class="toggle" /> 1X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10,000,000
+                                                                                        </label><label class="btn btn-default"> <input type="radio"
+                                                                                            class="toggle" /> 5X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50,000,000
+                                                                                        </label> <label class="btn btn-default"> <input type="radio"
+                                                                                            class="toggle" /> 10X
+                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100,000,000
+                                                                                        </label> <label class="btn btn-default"> <input type="radio"
+                                                                                            class="toggle" /> 15X
+                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;150,000,000
+                                                                                        </label> <label class="btn btn-default"> <input type="radio"
+                                                                                            class="toggle" /> 20X
+                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;200,000,000
+                                                                                        </label>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="portlet light bordered">
-                                                                                        <div class="caption font-green">
-                                                                                            <span class="caption-subject bold uppercase">지정가(일반거래)</span>
-                                                                                        </div>
-                                                                                        <div class="portlet-body form">
-                                                                                            <!-- BEGIN FORM-->
-                                                                                            <form action="#">
-                                                                                                <div class="form-body">
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">가격</label>
-                                                                                                        </div>
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">수량</label>
-                                                                                                        </div>
-
-                                                                                                    </div>
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">가격</label>
-                                                                                                        </div>
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">수량</label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="form-actions noborder">
-                                                                                                    <div class="col-md-6">
-                                                                                                        <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매수</button>
-                                                                                                    </div>
-                                                                                                    <div class="col-md-6">
-                                                                                                        <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매도</button>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </form>
-                                                                                            <!-- END FORM-->
-                                                                                        </div>
-                                                                                    </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="portlet light bordered">
+                                                                                <div class="caption font-green">
+                                                                                    <i class="icon-pin font-green"></i> <span class="caption-subject bold uppercase">지정가(일반거래)</span>
                                                                                 </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="portlet light bordered">
-                                                                                        <div class="caption font-green">
-                                                                                            <span class="caption-subject bold uppercase">시장가(일반거래)</span>
-                                                                                        </div>
-                                                                                        <div class="portlet-body form">
-                                                                                            <!-- BEGIN FORM-->
-                                                                                            <form action="#">
-                                                                                                <div class="form-body">
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1" readonly value="12,000">
-                                                                                                            <label for="form_control_1">가격</label>
-                                                                                                        </div>
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">수량</label>
-                                                                                                        </div>
+                                                                                <div class="portlet-body form">
+                                                                                    <!-- BEGIN FORM-->
+                                                                                    <form action="#">
+                                                                                        <div class="form-body">
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">가격</label> <span class="help-block">Some help goes here...</span>
+                                                                                                </div>
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">수량</label> <span class="help-block">Some help goes here...</span>
+                                                                                                </div>
 
-                                                                                                    </div>
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1" readonly value="12,000">
-                                                                                                            <label for="form_control_1">가격</label>
-                                                                                                        </div>
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">수량</label>
-                                                                                                        </div>
-                                                                                                    </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">가격</label> <span class="help-block">Some help goes here...</span>
                                                                                                 </div>
-                                                                                                <div class="form-actions noborder">
-                                                                                                    <div class="col-md-6">
-                                                                                                        <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매수</button>
-                                                                                                    </div>
-                                                                                                    <div class="col-md-6">
-                                                                                                        <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매도</button>
-                                                                                                    </div>
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">수량</label> <span class="help-block">Some help goes here...</span>
                                                                                                 </div>
-                                                                                            </form>
-                                                                                            <!-- END FORM-->
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </div>
+                                                                                        <div class="form-actions noborder">
+                                                                                            <div class="col-md-6">
+                                                                                                <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매수</button>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매도</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                    <!-- END FORM-->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="portlet light bordered">
+                                                                                <div class="caption font-green">
+                                                                                    <i class="icon-pin font-green"></i> <span class="caption-subject bold uppercase">시장가(일반거래)</span>
+                                                                                </div>
+                                                                                <div class="portlet-body form">
+                                                                                    <!-- BEGIN FORM-->
+                                                                                    <form action="#">
+                                                                                        <div class="form-body">
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1" value="1200.0" readonly> <label for="form_control_1">가격</label> <span class="help-block">Some
+                                                                                                            help goes here...</span>
+                                                                                                </div>
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">수량</label> <span class="help-block">Some help goes here...</span>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1" value="1200.0" readonly> <label for="form_control_1">가격</label> <span class="help-block">Some
+                                                                                                            help goes here...</span>
+                                                                                                </div>
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">수량</label> <span class="help-block">Some help goes here...</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-actions noborder">
+                                                                                            <div class="col-md-6">
+                                                                                                <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매수</button>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매도</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                    <!-- END FORM-->
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="tab-pane" id="tab_empty">
-                                                                    <div class="portlet light">
-                                                                        <div class="portlet-body">
-                                                                            <div class="row">
-                                                                                <div class="col-md-1"></div>
-                                                                                <div class="form-group form-md-radios col-md-11">
-                                                                                    <div class="md-radio-inline">
-                                                                                        <div class="md-radio">
-                                                                                            <input type="radio" id="radio2_1" name="radio2" class="md-radiobtn" checked="checked">
-                                                                                            <label for="radio2_1"> <span class="inc"></span> 
-                                                                                                        <span  class="check"></span> 
-                                                                                                        <span class="box"></span>대출
-                                                                                                    </label>
-                                                                                        </div>
-                                                                                        <div class="md-radio">
-                                                                                            <input type="radio" id="radio2_2" name="radio2" class="md-radiobtn">
-                                                                                            <label for="radio2_2"> 
-                                                                                                        <span class="inc"></span> 
-                                                                                                        <span class="check"></span> 
-                                                                                                        <span  class="box"></span>마진
-                                                                                                    </label>
-                                                                                        </div>
-                                                                                    </div>
+                                                                    <div class="tab-pane" id="tab2">
+                                                                        <div class="form-group form-md-radios">
+                                                                            <div class="md-radio-inline">
+                                                                                <div class="md-radio">
+                                                                                    <input type="radio" id="radio3" name="radio2" class="md-radiobtn" checked="checked"> <label for="radio3"> <span class="inc"></span> <span
+                                                                                            class="check"></span> <span class="box"></span>대출
+                                                                                        </label>
+                                                                                </div>
+                                                                                <div class="md-radio">
+                                                                                    <input type="radio" id="radio4" name="radio2" class="md-radiobtn"> <label for="radio4"> <span
+                                                                                            class="inc"></span> <span class="check"></span> <span
+                                                                                            class="box"></span>마진
+                                                                                        </label>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class='row col-md-12' style="margin-bottom: 5px">
+                                                                        </div>
+                                                                        <div class='col-md-12'>
+                                                                            <div class="portlet box">
                                                                                 <div class="btn-group" data-toggle="buttons">
-                                                                                    <label class="btn btn-default"> 
-                                                                                                        <input type="radio" class="toggle" /> 1X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10,000,000
-                                                                                                    </label>
-                                                                                    <label class="btn btn-default"> 
-                                                                                                        <input type="radio" class="toggle" /> 5X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50,000,000
-                                                                                                    </label>
-                                                                                    <label class="btn btn-default"> 
-                                                                                                        <input type="radio" class="toggle" /> 10X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100,000,000
-                                                                                                    </label>
-                                                                                    <label class="btn btn-default"> 
-                                                                                                        <input type="radio" class="toggle" /> 15X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;150,000,000
-                                                                                                    </label>
-                                                                                    <label class="btn btn-default"> 
-                                                                                                        <input type="radio" class="toggle" /> 20X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;200,000,000
-                                                                                                    </label>
+                                                                                    <label class="btn btn-default"> <input type="radio"
+                                                                                            class="toggle" /> 1X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10,000,000
+                                                                                        </label> <label class="btn btn-default"> <input type="radio"
+                                                                                            class="toggle" /> 5X &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50,000,000
+                                                                                        </label> <label class="btn btn-default"> <input type="radio"
+                                                                                            class="toggle" /> 10X
+                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100,000,000
+                                                                                        </label> <label class="btn btn-default"> <input type="radio"
+                                                                                            class="toggle" /> 15X
+                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;150,000,000
+                                                                                        </label> <label class="btn btn-default"> <input type="radio"
+                                                                                            class="toggle" /> 20X
+                                                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;200,000,000
+                                                                                        </label>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="portlet light bordered">
-                                                                                        <div class="caption font-green">
-                                                                                            <span class="caption-subject bold uppercase">지정가(공매매)</span>
-                                                                                        </div>
-                                                                                        <div class="portlet-body form">
-                                                                                            <!-- BEGIN FORM-->
-                                                                                            <form action="#">
-                                                                                                <div class="form-body">
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">가격</label>
-                                                                                                        </div>
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">수량</label>
-                                                                                                        </div>
-
-                                                                                                    </div>
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">가격</label>
-                                                                                                        </div>
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">수량</label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="form-actions noborder">
-                                                                                                    <div class="col-md-6">
-                                                                                                        <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매수</button>
-                                                                                                    </div>
-                                                                                                    <div class="col-md-6">
-                                                                                                        <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매도</button>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </form>
-                                                                                            <!-- END FORM-->
-                                                                                        </div>
-                                                                                    </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="portlet light bordered">
+                                                                                <div class="caption font-green">
+                                                                                    <i class="icon-pin font-green"></i> <span class="caption-subject bold uppercase">지정가(공매매)</span>
                                                                                 </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="portlet light bordered">
-                                                                                        <div class="caption font-green">
-                                                                                            <span class="caption-subject bold uppercase">시장가(공매매)</span>
+                                                                                <div class="portlet-body form">
+                                                                                    <!-- BEGIN FORM-->
+                                                                                    <form action="#">
+                                                                                        <div class="form-body">
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">가격</label> <span class="help-block">Some help goes here...</span>
+                                                                                                </div>
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">수량</label> <span class="help-block">Some help goes here...</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">가격</label> <span class="help-block">Some help goes here...</span>
+                                                                                                </div>
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">수량</label> <span class="help-block">Some help goes here...</span>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
-                                                                                        <div class="portlet-body form">
-                                                                                            <!-- BEGIN FORM-->
-                                                                                            <form action="#">
-                                                                                                <div class="form-body">
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1" readonly value="12,000">
-                                                                                                            <label for="form_control_1">가격</label>
-                                                                                                        </div>
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">수량</label>
-                                                                                                        </div>
+                                                                                        <div class="form-actions noborder">
+                                                                                            <div class="col-md-6">
+                                                                                                <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매수</button>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매도</button>
+                                                                                            </div>
 
-                                                                                                    </div>
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1" readonly value="12,000">
-                                                                                                            <label for="form_control_1">가격</label>
-                                                                                                        </div>
-                                                                                                        <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
-                                                                                                            <input type="text" class="form-control" id="form_control_1">
-                                                                                                            <label for="form_control_1">수량</label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="form-actions noborder">
-                                                                                                    <div class="col-md-6">
-                                                                                                        <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매수</button>
-                                                                                                    </div>
-                                                                                                    <div class="col-md-6">
-                                                                                                        <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매도</button>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </form>
-                                                                                            <!-- END FORM-->
                                                                                         </div>
-                                                                                    </div>
+                                                                                    </form>
+                                                                                    <!-- END FORM-->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="portlet light bordered">
+                                                                                <div class="caption font-green">
+                                                                                    <i class="icon-pin font-green"></i> <span class="caption-subject bold uppercase">시장가(공매매)</span>
+                                                                                </div>
+                                                                                <div class="portlet-body form">
+                                                                                    <!-- BEGIN FORM-->
+                                                                                    <form action="#">
+                                                                                        <div class="form-body">
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1" value="1200.0" readonly> <label for="form_control_1">가격</label> <span class="help-block">Some
+                                                                                                            help goes here...</span>
+                                                                                                </div>
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">수량</label> <span class="help-block">Some help goes here...</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1" value="1200.0" readonly> <label for="form_control_1">가격</label> <span class="help-block">Some
+                                                                                                            help goes here...</span>
+                                                                                                </div>
+                                                                                                <div class="form-group form-md-line-input form-md-floating-label">
+                                                                                                    <input type="text" class="form-control" id="form_control_1">
+                                                                                                    <label for="form_control_1">수량</label> <span class="help-block">Some help goes here...</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-actions noborder">
+                                                                                            <div class="col-md-6">
+                                                                                                <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매수</button>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매도</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                    <!-- END FORM-->
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -585,8 +565,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <!-- END PORTLET2-2-->
                                                 </div>
-                                                <!-- END PORTLET2-2-->
                                             </div>
                                             <div class="col-md-4 col-sm-4">
                                                 <!-- BEGIN PORTLET1-3-->
@@ -628,7 +608,7 @@
                                                 <!-- END PORTLET1-3-->
                                                 <!-- BEGIN PORTLET2-3-->
                                                 <div>
-                                                    <div class="portlet light bordered" style="height: 393px; padding: 1px 5px 5px;">
+                                                    <div class="portlet light bordered" style="height: 480px; padding: 1px 5px 5px;">
                                                         <div class="portlet-body">
                                                             <div class="tabbable tabbable-tabdrop">
                                                                 <ul class="nav nav-tabs">
