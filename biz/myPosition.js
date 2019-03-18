@@ -490,7 +490,7 @@ var MyPosition = function() {
             }, {
                 field: 'ItemId',
                 title: '종목명',
-                align: "center"
+                align: "center",
             }, {
                 field: 'PlaceType',
                 title: '거래자금유형',

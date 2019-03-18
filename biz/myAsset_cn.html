@@ -169,12 +169,12 @@
                                                     </li>
                                                     <li>
                                                         <a data-toggle="tab" href="#tab_recharge">
-                                                            <i class="fa fa-group"></i> 입급 </a>
+                                                            <i class="fa fa-group"></i> 입/출급 </a>
                                                     </li>
-                                                    <li>
+                                                    <!-- <li>
                                                         <a data-toggle="tab" href="#tab_encashment">
                                                             <i class="fa fa-leaf"></i> 출금 </a>
-                                                    </li>
+                                                    </li> -->
                                                     <li>
                                                         <a data-toggle="tab" href="#tab_loan">
                                                             <i class="fa fa-info-circle"></i> 대출 </a>
@@ -301,8 +301,10 @@
                                                                             </div>
                                                                             <div class="col-md-9  hei">
                                                                                 <div style="float: right;margin-right: 10px;">
-                                                                                    <button type="button" class="btn red btn-outline sbold uppercase RechargeSearch">조회</button>
+                                                                                    <button type="button" class="btn green-haze btn-outline sbold uppercase dark RechargeSearch">조회</button>
                                                                                     <a class="btn green-haze btn-outline sbold uppercase dark" data-target="#modal_recharge" data-toggle="modal">입금신청</a>
+                                                                                    <a class="btn green-haze btn-outline sbold uppercase dark" data-target="#modal_encashment" data-toggle="modal">원금출금신청</a>
+                                                                                    <a class="btn green-haze btn-outline sbold uppercase dark" data-target="#modal_encashment2" data-toggle="modal">담보금출금신청</a>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -355,7 +357,7 @@
                                                                                         <div class="form-group">
                                                                                             <label class="col-md-3 control-label">입급자명</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" class="form-control" value="">
+                                                                                                <input type="text" class="form-control" value="원빈" readonly>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
@@ -383,10 +385,156 @@
                                                                         <button type="button" data-dismiss="modal" class="btn green">입금신청</button>
                                                                     </div>
                                                                 </div>
+                                                                <div id="modal_encashment" class="modal fade" tabindex="-1" data-width="700" data-backdrop="static" data-keyboard="false">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                                        <h3 class="modal-title">원금출금신청</h3>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="portlet box ">
+                                                                            <div class="portlet-body form">
+                                                                                <form action="#" class="form-horizontal form-bordered form-row-stripped">
+                                                                                    <div class="form-body">
+                                                                                        <div class="form-group col-md-12" style="background-color: #e5e8ed">
+                                                                                            <label class="control-label col-md-12" style="text-align: center; padding-bottom: 20px;">
+                                                                                                        <b>원금</b></label>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3">원금</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text" placeholder="small" class="form-control" value="200,001,000" readonly/>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3">대기출금액</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text" placeholder="medium" class="form-control" value="0" readonly/>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group col-md-12" style="background-color: #e5e8ed">
+                                                                                            <label class="control-label col-md-12" style="text-align: center; padding-bottom: 20px;">
+                                                                                                            <b>출금신청</b>(츨금신청처리 시간은 최장 10분 정도 지연될수 있습니다.)</label>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 control-label">은행명</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text" class="form-control" value="산업은행" readonly>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 control-label">계좌번호</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text" class="form-control" value="123-123345-12312" readonly>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 control-label">예금주명</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text" class="form-control" value="홍길동" readonly>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 control-label">출금신청액</label>
+                                                                                            <div class="col-md-7">
+                                                                                                <input type="text" class="form-control" value="">
+                                                                                            </div>
+                                                                                            <div class="col-md-2">
+                                                                                                <button type="button" class="btn red btn-outline sbold uppercase RechargeSearch">전액출금</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 control-label">전달사항</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <textarea class="form-control" rows="3"></textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" data-dismiss="modal" class="btn btn-outline dark">취소</button>
+                                                                        <button type="button" data-dismiss="modal" class="btn green">출금신청</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="modal_encashment2" class="modal fade" tabindex="-1" data-width="700" data-backdrop="static" data-keyboard="false">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                                        <h3 class="modal-title">담보금출금신청</h3>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="portlet box ">
+                                                                            <div class="portlet-body form">
+                                                                                <form action="#" class="form-horizontal form-bordered form-row-stripped">
+                                                                                    <div class="form-body">
+                                                                                        <div class="form-group col-md-12" style="background-color: #e5e8ed">
+                                                                                            <label class="control-label col-md-12" style="text-align: center; padding-bottom: 20px;">
+                                                                                                        <b>담보금</b></label>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3">담보금</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text" placeholder="small" class="form-control" value="200,001,000" readonly/>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3">대기출금액</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text" placeholder="medium" class="form-control" value="0" readonly/>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group col-md-12" style="background-color: #e5e8ed">
+                                                                                            <label class="control-label col-md-12" style="text-align: center; padding-bottom: 20px;">
+                                                                                                            <b>출금신청</b>(츨금신청처리 시간은 최장 10분 정도 지연될수 있습니다.)</label>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 control-label">은행명</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text" class="form-control" value="산업은행" readonly>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 control-label">계좌번호</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text" class="form-control" value="123-123345-12312" readonly>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 control-label">예금주명</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text" class="form-control" value="홍길동" readonly>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 control-label">출금신청액</label>
+                                                                                            <div class="col-md-7">
+                                                                                                <input type="text" class="form-control" value="">
+                                                                                            </div>
+                                                                                            <div class="col-md-2">
+                                                                                                <button type="button" class="btn red btn-outline sbold uppercase RechargeSearch">전액출금</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-md-3 control-label">전달사항</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <textarea class="form-control" rows="3"></textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" data-dismiss="modal" class="btn btn-outline dark">취소</button>
+                                                                        <button type="button" data-dismiss="modal" class="btn green">출금신청</button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div id="tab_encashment" class="tab-pane">
+                                                    <!--<div id="tab_encashment" class="tab-pane">
                                                         <div class="portlet light portlet-fit bordered">
 
                                                             <div class="portlet-title" style="background-color: #E9EDEF">
@@ -427,8 +575,7 @@
                                                                         <div class="portlet box ">
 
                                                                             <div class="portlet-body form">
-                                                                                <!-- BEGIN FORM-->
-                                                                                <form action="#" class="form-horizontal form-bordered form-row-stripped">
+=                                                                                <form action="#" class="form-horizontal form-bordered form-row-stripped">
                                                                                     <div class="form-body">
                                                                                         <div class="form-group col-md-12" style="background-color: #e5e8ed">
                                                                                             <label class="control-label col-md-12" style="text-align: center; padding-bottom: 20px;">
@@ -495,7 +642,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div>-->
 
                                                     <div id="tab_loan" class="tab-pane">
                                                         <div class="portlet light portlet-fit bordered">
@@ -550,7 +697,35 @@
                                                                         대출신청
                                                                     </div>
                                                                     <div class="portlet-body">
-                                                                        <table id="table_loan_1" class=""></table>
+                                                                        <form action="#" class="form-horizontal" id="form_sample_1" novalidate="novalidate">
+                                                                            <div class="form-body">
+                                                                                <div class="form-group" style="margin-bottom:5px">
+                                                                                    <label class="col-md-1 control-label" for="form_control_1">
+                                                                                                                신청금액
+                                                                                                            </label>
+                                                                                    <div class="col-md-2">
+                                                                                        <input type="text" class="form-control" placeholder="" name="name">
+                                                                                    </div>
+                                                                                    <label class="col-md-1 control-label" for="form_control_1">
+                                                                                                                대출뱃수
+                                                                                                            </label>
+                                                                                    <div class="col-md-2">
+                                                                                        <input type="text" class="form-control" placeholder="" name="name">
+                                                                                        <div class="form-control-focus"></div>
+                                                                                    </div>
+                                                                                    <label class="col-md-1 control-label" for="form_control_1">
+                                                                                                                해당담보금
+                                                                                                            </label>
+                                                                                    <div class="col-md-2">
+                                                                                        <input type="text" class="form-control" placeholder="" name="name">
+                                                                                        <div class="form-control-focus"></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-2">
+                                                                                        <button type="button" class="btn green-haze btn-outline sbold uppercase dark">대출신청</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                                 <div class="portlet light">

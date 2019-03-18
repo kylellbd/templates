@@ -370,6 +370,10 @@ var Assets = function() {
                 title: '승인일시',
                 align: "center"
             }, {
+                field: 'BalanceType',
+                title: '입금/출금구분',
+                align: "center"
+            }, {
                 field: 'RequestMoney',
                 title: '신청금액',
                 align: "center"
@@ -411,6 +415,7 @@ var Assets = function() {
     var table_recharge_Sample = [{
         "RequestTime": "2019.03.15 18:02",
         "ExecuteTime": "2019.03.15 18:08",
+        "BalanceType": "입금",
         "RequestMoney": "1207,230",
         "ExecuteMoney": "1207,230",
         "MgmtUserId": "어드민",
@@ -421,6 +426,7 @@ var Assets = function() {
     }, {
         "RequestTime": "2019.03.15 18:02",
         "ExecuteTime": "2019.03.15 18:08",
+        "BalanceType": "출금",
         "RequestMoney": "1207,230",
         "ExecuteMoney": "1207,230",
         "MgmtUserId": "어드민",
@@ -431,6 +437,7 @@ var Assets = function() {
     }, {
         "RequestTime": "2019.03.15 18:02",
         "ExecuteTime": "2019.03.15 18:08",
+        "BalanceType": "입금",
         "RequestMoney": "1207,230",
         "ExecuteMoney": "1207,230",
         "MgmtUserId": "어드민",
@@ -441,6 +448,7 @@ var Assets = function() {
     }, {
         "RequestTime": "2019.03.15 18:02",
         "ExecuteTime": "2019.03.15 18:08",
+        "BalanceType": "입금",
         "RequestMoney": "1207,230",
         "ExecuteMoney": "1207,230",
         "MgmtUserId": "어드민",
@@ -451,6 +459,7 @@ var Assets = function() {
     }, {
         "RequestTime": "2019.03.15 18:02",
         "ExecuteTime": "2019.03.15 18:08",
+        "BalanceType": "출금",
         "RequestMoney": "1207,230",
         "ExecuteMoney": "1207,230",
         "MgmtUserId": "어드민",
@@ -461,6 +470,7 @@ var Assets = function() {
     }, {
         "RequestTime": "2019.03.15 18:02",
         "ExecuteTime": "2019.03.15 18:08",
+        "BalanceType": "입금",
         "RequestMoney": "1207,230",
         "ExecuteMoney": "1207,230",
         "MgmtUserId": "어드민",
@@ -469,7 +479,7 @@ var Assets = function() {
         "AccountName": "장동건",
         "CustMemo": ""
     }];
-
+    /*
     var make_table_encashment = function() {
         var table_encashment = $("#tab_encashment").find('#table_encashment').bootstrapTable("destroy").bootstrapTable({
             striped: true, // 是否显示行间隔色
@@ -597,70 +607,70 @@ var Assets = function() {
         "CustMemo": ""
     }];
 
+    */
 
-    var make_table_loan_1 = function() {
-        var table_load_1 = $("#tab_loan").find('#table_loan_1').bootstrapTable("destroy").bootstrapTable({
-            striped: true, // 是否显示行间隔色
-            cache: false, // 是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-            pagination: false, // 是否显示分页（*）
-            sortable: false, // 是否启用排序
-            sortOrder: "asc", // 排序方式
-            search: false, // 是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            contentType: "application/json",
-            strictSearch: false,
-            showColumns: false, // 是否显示所有的列
-            showRefresh: false, // 是否显示刷新按钮
-            minimumCountColumns: 2, // 最少允许的列数
-            clickToSelect: false, // 是否启用点击选中行
-            uniqueId: "no", // 每一行的唯一标识，一般为主键列
-            showToggle: false, // 是否显示详细视图和列表视图的切换按钮
-            cardView: false, // 是否显示详细视图
-            detailView: false, // 是否显示父子表
-            columns: [{
-                field: 'AddupBrrwMoney',
-                title: '신청금액',
-                align: "center"
-            }, {
-                field: 'BrrwRate',
-                title: '대출뱃수',
-                align: "center"
-            }, {
-                field: 'UsingGuarantee',
-                title: '해당담보금',
-                align: "center"
-            }],
-            data: table_loan_1_Sample,
-            onLoadSuccess: function() { // 加载成功时执行
-                console.log("加载成功");
-            },
-            onLoadError: function() { // 加载失败时执行
-                console.log("加载数据失败");
-            }
-        });
-        return table_encashment;
-    };
+    // var make_table_loan_1 = function() {
+    //     var table_load_1 = $("#tab_loan").find('#table_loan_1').bootstrapTable("destroy").bootstrapTable({
+    //         striped: true, // 是否显示行间隔色
+    //         cache: false, // 是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+    //         pagination: false, // 是否显示分页（*）
+    //         sortable: false, // 是否启用排序
+    //         sortOrder: "asc", // 排序方式
+    //         search: false, // 是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+    //         contentType: "application/json",
+    //         strictSearch: false,
+    //         showColumns: false, // 是否显示所有的列
+    //         showRefresh: false, // 是否显示刷新按钮
+    //         minimumCountColumns: 2, // 最少允许的列数
+    //         clickToSelect: false, // 是否启用点击选中行
+    //         uniqueId: "no", // 每一行的唯一标识，一般为主键列
+    //         showToggle: false, // 是否显示详细视图和列表视图的切换按钮
+    //         cardView: false, // 是否显示详细视图
+    //         detailView: false, // 是否显示父子表
+    //         columns: [{
+    //             field: 'AddupBrrwMoney',
+    //             title: '신청금액',
+    //             align: "center"
+    //         }, {
+    //             field: 'BrrwRate',
+    //             title: '대출뱃수',
+    //             align: "center"
+    //         }, {
+    //             field: 'UsingGuarantee',
+    //             title: '해당담보금',
+    //             align: "center"
+    //         }],
+    //         data: table_loan_1_Sample,
+    //         onLoadSuccess: function() { // 加载成功时执行
+    //             console.log("加载成功");
+    //         },
+    //         onLoadError: function() { // 加载失败时执行
+    //             console.log("加载数据失败");
+    //         }
+    //     });
+    // };
 
-    var table_loan_1_Sample = [{
-        "AddupBrrwMoney": "2,000,000",
-        "BrrwRate": "10",
-        "UsingGuarantee": "200,000"
-    }, {
-        "AddupBrrwMoney": "3,000,000",
-        "BrrwRate": "10",
-        "UsingGuarantee": "300,000"
-    }, {
-        "AddupBrrwMoney": "1,000,000",
-        "BrrwRate": "10",
-        "UsingGuarantee": "100,000"
-    }, {
-        "AddupBrrwMoney": "20,000,000",
-        "BrrwRate": "10",
-        "UsingGuarantee": "2,000,000"
-    }, {
-        "AddupBrrwMoney": "8,000,000",
-        "BrrwRate": "10",
-        "UsingGuarantee": "800,000"
-    }, ];
+    // var table_loan_1_Sample = [{
+    //     "AddupBrrwMoney": "2,000,000",
+    //     "BrrwRate": "10",
+    //     "UsingGuarantee": "200,000"
+    // }, {
+    //     "AddupBrrwMoney": "3,000,000",
+    //     "BrrwRate": "10",
+    //     "UsingGuarantee": "300,000"
+    // }, {
+    //     "AddupBrrwMoney": "1,000,000",
+    //     "BrrwRate": "10",
+    //     "UsingGuarantee": "100,000"
+    // }, {
+    //     "AddupBrrwMoney": "20,000,000",
+    //     "BrrwRate": "10",
+    //     "UsingGuarantee": "2,000,000"
+    // }, {
+    //     "AddupBrrwMoney": "8,000,000",
+    //     "BrrwRate": "10",
+    //     "UsingGuarantee": "800,000"
+    // }, ];
 
 
     var make_table_loan_2 = function() {
@@ -721,7 +731,6 @@ var Assets = function() {
                 console.log("加载数据失败");
             }
         });
-        return table_encashment;
     };
 
     var table_loan_2_Sample = [{
@@ -733,7 +742,7 @@ var Assets = function() {
         "BrrwCount": "2",
         "BrrwId": "123123"
     }, {
-        "BrrwRate": "10",
+        "BrrwRate": "7",
         "AddupPrincipalGuarantee": "801,239,110",
         "LossCutMoney": "200,000",
         "allProfitRate": "+12.2%",
@@ -741,7 +750,7 @@ var Assets = function() {
         "BrrwCount": "2",
         "BrrwId": "123123"
     }, {
-        "BrrwRate": "10",
+        "BrrwRate": "5",
         "AddupPrincipalGuarantee": "801,239,110",
         "LossCutMoney": "200,000",
         "allProfitRate": "+12.2%",
@@ -749,12 +758,12 @@ var Assets = function() {
         "BrrwCount": "2",
         "BrrwId": "123123"
     }, {
-        "BrrwRate": "10",
+        "BrrwRate": "15",
         "AddupPrincipalGuarantee": "801,239,110",
         "LossCutMoney": "200,000",
-        "allProfitRate": "+12.2%",
-        "LossCutRate": "5%",
-        "BrrwCount": "2",
+        "allProfitRate": "",
+        "LossCutRate": "",
+        "BrrwCount": "",
         "BrrwId": "123123"
     }, ];
 
@@ -763,8 +772,8 @@ var Assets = function() {
             make_table_assets_1();
             make_table_assets_2();
             make_table_recharge();
-            make_table_encashment();
-            make_table_loan_1();
+            // make_table_encashment();
+            // make_table_loan_1();
             make_table_loan_2();
         },
         searchRechargeByDate: function() {
