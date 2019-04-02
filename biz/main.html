@@ -166,9 +166,10 @@
                                                             </div>
                                                  -->
                                                         <ul class="nav nav-tabs pull-left">
-                                                            <li class="active"><a href="#portlet_tab1" data-toggle="tab">KOSPI </a></li>
-                                                            <li><a href="#portlet_tab1" data-toggle="tab">KOSDAQ </a></li>
-                                                            <li><a href="#portlet_tab2" data-toggle="tab">关注</a></li>
+                                                            <li class="active"><a href="#portlet_tab1" data-toggle="tab">한국주식 </a></li>
+                                                            <li><a href="#portlet_tab1" data-toggle="tab">선물 </a></li>
+                                                            <li><a href="#portlet_tab2" data-toggle="tab">가상화폐 </a></li>
+                                                            <li><a href="#portlet_tab2" data-toggle="tab">관심</a></li>
                                                         </ul>
                                                     </div>
                                                     <div class="portlet-body">
@@ -194,7 +195,7 @@
                                                 <div class="portlet light " style="height: 393px; padding: 5px 5px 5px;">
                                                     <div class="portlet-title tabbable-line">
                                                         <div class="caption">
-                                                            <span class="caption-subject font-dark bold uppercase">公告</span>
+                                                            <span class="caption-subject font-dark bold uppercase">공지사항</span>
                                                         </div>
                                                     </div>
                                                     <div class="portlet-body">
@@ -202,8 +203,8 @@
                                                             <table class="table table-hover table-scrollable">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>日期</th>
-                                                                        <th>题目</th>
+                                                                        <th>일자</th>
+                                                                        <th>제목</th>
                                                                         <th>Action</th>
                                                                     </tr>
                                                                 </thead>
@@ -298,9 +299,9 @@
                                                             <div class="portlet-body">
                                                                 <div class="row">
                                                                     <div class="col-md-1">
-                                                                        <P><button type="button" class="btn green btn-outline active" id="trade_type_1" name="trade_type_1">一般<br>交易</button>
+                                                                        <P><button type="button" class="btn green btn-outline active" id="trade_type_1" name="trade_type_1">일반<br>거래</button>
                                                                             <br>
-                                                                            <button type="button" class="btn green btn-outline" id="trade_type_2" name="trade_type_2">空<br>买卖</button></P>
+                                                                            <button type="button" class="btn green btn-outline" id="trade_type_2" name="trade_type_2">공<br>매매</button></P>
                                                                     </div>
                                                                     <div class="col-md-11">
                                                                         <div class="form-group form-md-radios">
@@ -309,7 +310,7 @@
                                                                                     <input type="radio" id="radio1_1" name="radio1" class="md-radiobtn" checked="checked">
                                                                                     <label for="radio1_1"> <span class="inc"></span> 
                                                                                                                 <span  class="check"></span> 
-                                                                                                                <span class="box"></span>贷款
+                                                                                                                <span class="box"></span>대출
                                                                                                             </label>
                                                                                 </div>
                                                                                 <div class="md-radio">
@@ -317,7 +318,7 @@
                                                                                     <label for="radio1_2"> 
                                                                                                                 <span class="inc"></span> 
                                                                                                                 <span class="check"></span> 
-                                                                                                                <span  class="box"></span>利润
+                                                                                                                <span  class="box"></span>마진
                                                                                                             </label>
                                                                                 </div>
                                                                             </div>
@@ -348,7 +349,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="portlet light bordered " style="padding-bottom: 0px;">
                                                                             <div class="caption font-green">
-                                                                                <span id="trade_title_1" class="caption-subject bold uppercase">指定价(一般交易)</span>
+                                                                                <span id="trade_title_1" class="caption-subject bold uppercase">지정가(일반거래)</span>
                                                                             </div>
                                                                             <div class="portlet-body form">
                                                                                 <!-- BEGIN FORM-->
@@ -357,31 +358,31 @@
                                                                                         <div class="col-md-6">
                                                                                             <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
                                                                                                 <input type="text" class="form-control" id="form_control_1">
-                                                                                                <label for="form_control_1">价格</label>
+                                                                                                <label for="form_control_1">가격</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
                                                                                                 <input type="text" class="form-control" id="form_control_1">
-                                                                                                <label for="form_control_1">数量</label>
+                                                                                                <label for="form_control_1">수량</label>
                                                                                             </div>
 
                                                                                         </div>
                                                                                         <div class="col-md-6">
                                                                                             <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
                                                                                                 <input type="text" class="form-control" id="form_control_1">
-                                                                                                <label for="form_control_1">价格</label>
+                                                                                                <label for="form_control_1">가격</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
                                                                                                 <input type="text" class="form-control" id="form_control_1">
-                                                                                                <label for="form_control_1">数量</label>
+                                                                                                <label for="form_control_1">수량</label>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-actions noborder">
                                                                                         <div class="col-md-6">
-                                                                                            <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">买入</button>
+                                                                                            <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매수</button>
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">卖出</button>
+                                                                                            <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매도</button>
                                                                                         </div>
                                                                                     </div>
                                                                                 </form>
@@ -392,7 +393,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="portlet light bordered" style="padding-bottom: 0px;">
                                                                             <div class="caption font-green">
-                                                                                <span id="trade_title_2" class="caption-subject bold uppercase">市场价(一般交易)</span>
+                                                                                <span id="trade_title_2" class="caption-subject bold uppercase">시장가(일반거래)</span>
                                                                             </div>
                                                                             <div class="portlet-body form">
                                                                                 <!-- BEGIN FORM-->
@@ -401,31 +402,31 @@
                                                                                         <div class="col-md-6">
                                                                                             <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
                                                                                                 <input type="text" class="form-control" id="form_control_1" readonly value="12,000">
-                                                                                                <label for="form_control_1">价格</label>
+                                                                                                <label for="form_control_1">가격</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
                                                                                                 <input type="text" class="form-control" id="form_control_1">
-                                                                                                <label for="form_control_1">数量</label>
+                                                                                                <label for="form_control_1">수량</label>
                                                                                             </div>
 
                                                                                         </div>
                                                                                         <div class="col-md-6">
                                                                                             <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 5px">
                                                                                                 <input type="text" class="form-control" id="form_control_1" readonly value="12,000">
-                                                                                                <label for="form_control_1">价格</label>
+                                                                                                <label for="form_control_1">가격</label>
                                                                                             </div>
                                                                                             <div class="form-group form-md-line-input form-md-floating-label" style="margin-bottom: 15px">
                                                                                                 <input type="text" class="form-control" id="form_control_1">
-                                                                                                <label for="form_control_1">数量</label>
+                                                                                                <label for="form_control_1">수량</label>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-actions noborder">
                                                                                         <div class="col-md-6">
-                                                                                            <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">买入</button>
+                                                                                            <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매수</button>
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">卖出</button>
+                                                                                            <button type="button" class="btn green-sharp btn-outline  btn-block sbold uppercase">매도</button>
                                                                                         </div>
                                                                                     </div>
                                                                                 </form>
@@ -447,7 +448,7 @@
                                                     <div id="main_list_2" class="portlet light " style="height:470px;padding:5px 5px 5px;">
                                                         <div class="portlet-title tabbable-line">
                                                             <div class="caption">
-                                                                <span class="caption-subject font-dark bold uppercase">市价</span>
+                                                                <span class="caption-subject font-dark bold uppercase">호가</span>
                                                             </div>
                                                         </div>
                                                         <div class="portlet-body">
@@ -487,17 +488,17 @@
                                                                 <ul class="nav nav-tabs">
                                                                     <li class="active">
                                                                         <a href="#tab5" data-toggle="tab" aria-expanded="true">
-                                                                            <span class="caption-subject font-dark bold uppercase">未交易</span>
+                                                                            <span class="caption-subject font-dark bold uppercase">미체결</span>
                                                                         </a>
                                                                     </li>
                                                                     <li class="">
                                                                         <a href="#tab6" data-toggle="tab" aria-expanded="false">
-                                                                            <span class="caption-subject font-dark bold uppercase">已交易</span>
+                                                                            <span class="caption-subject font-dark bold uppercase">체결</span>
                                                                         </a>
                                                                     </li>
                                                                     <li class="">
                                                                         <a href="#tab7" data-toggle="tab" aria-expanded="false">
-                                                                            <span class="caption-subject font-dark bold uppercase">持仓信息</span>
+                                                                            <span class="caption-subject font-dark bold uppercase">잔고</span>
                                                                         </a>
                                                                     </li>
                                                                 </ul>
@@ -509,14 +510,14 @@
                                                                                     <table class="table table-hover">
                                                                                         <thead>
                                                                                             <tr>
-                                                                                                <th>取消</th>
-                                                                                                <th>订单编号</th>
-                                                                                                <th>股票名</th>
-                                                                                                <th>分类</th>
-                                                                                                <th>订单类型</th>
-                                                                                                <th>数量</th>
-                                                                                                <th>价格</th>
-                                                                                                <th>订单时间</th>
+                                                                                                <th>취소</th>
+                                                                                                <th>주문번호</th>
+                                                                                                <th>종목명</th>
+                                                                                                <th>구분</th>
+                                                                                                <th>주문유형</th>
+                                                                                                <th>수량</th>
+                                                                                                <th>가격</th>
+                                                                                                <th>주문시간</th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
@@ -553,14 +554,14 @@
                                                                                     <table class="table table-hover">
                                                                                         <thead>
                                                                                             <tr>
-                                                                                                <th>取消</th>
-                                                                                                <th>订单编号</th>
-                                                                                                <th>股票名</th>
-                                                                                                <th>分类</th>
-                                                                                                <th>订单类型</th>
-                                                                                                <th>数量</th>
-                                                                                                <th>价格</th>
-                                                                                                <th>订单时间</th>
+                                                                                                <th>취소</th>
+                                                                                                <th>주문번호</th>
+                                                                                                <th>종목명</th>
+                                                                                                <th>구분</th>
+                                                                                                <th>주문유형</th>
+                                                                                                <th>수량</th>
+                                                                                                <th>가격</th>
+                                                                                                <th>주문시간</th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
