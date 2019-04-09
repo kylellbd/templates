@@ -1,18 +1,20 @@
+/**
+ * by shiPengYi施彭译  qq:1441499497  微信wechat:ShiPengYi123
+ * **/
+
 var formValidations = function() {
 		var validation = new Object();
 		
-		validation.formValidation1 = function($form,options,$error,$success){
+		validation.formValidation1 = function($form,options,$error){
 			var invalidHandler = null;
 			var submitHandler = null;
 			
-			if($error!=undefined && $success!=undefined){
+			if($error!=undefined){
 				invalidHandler = function(event, validator) { //display error alert on form submit              
-					$success.hide();
 					$error.show();
-					App.scrollTo($error, 0);
+					/*App.scrollTo($error, -1000);*/
 				};
 				submitHandler = function(form) {
-					$success.show();
 					$error.hide();
 				};
 			};
@@ -24,32 +26,69 @@ var formValidations = function() {
 				ignore: "",//忽略哪个field
 				messages : {
 					name : {
-						required : "required.",
-						minlength : "at least{0}"
+						required : "required",
+						minlength : jQuery.validator.format("min length{0}")
 					},
 					email : {
-						email : "Please enter a valid email address."
+						required : "required",
+						email : "invalid"
+					},
+					email2 : {
+						email : "invalid"
+					},
+					url : {
+						required : "required",
+						url : "invalid"
+					},
+					url2 : {
+						url : "invalid"
+					},
+					number : {
+						required : "required",
+						number : "invalid"
+					},
+					number2:{
+						number : "invalid"
+					},
+					digits : {
+						required : "required",
+						digits : "invalid"
+					},
+					creditcard : {
+						required : "required",
+						creditcard : "invalid"
 					},
 					select: {
-						required: "required. at least 2"
+						required : "required"
 					},
 					selectMultiple : {
-						required: "This field is required.",
-						maxlength : jQuery.validator.format("at least {0}"),
+						required: "required",
+						minlength : jQuery.validator.format("min length {0}")
+					},
+					textarea : {
+						required : "required",
+						minlength : jQuery.validator.format("min length {0}"),
+						maxlength : jQuery.validator.format("max length {0}")
+					},
+					textarea2: {
+						minlength : jQuery.validator.format("min length {0}"),
+						maxlength : jQuery.validator.format("max length {0}")
+					},
+					checkboxes : {
+						required : 'required.',
 						minlength : jQuery.validator.format("at least {0}")
 					},
-					'checkboxes1' : {
-						required : 'Please check some options',
-						minlength : jQuery.validator.format("at least {0}"),
+					checkboxes2 : {
+						required : 'required.',
+						minlength : jQuery.validator.format("at least {0}")
 					},
-					'checkboxes2' : {
-						required : 'Please check some options',
-						minlength : jQuery.validator.format("at least {0}"),
+					radio : {
+						required : 'required.'
 					}
 				},
 				rules : {
 					name : {
-						minlength : 2,
+						minlength : 1,
 						required : true
 					},
 					email : {
@@ -57,7 +96,7 @@ var formValidations = function() {
 						email : true
 					},
 					email2 : {
-						required : true,
+						required : false,
 						email : true
 					},
 					url : {
@@ -65,7 +104,6 @@ var formValidations = function() {
 						url : true
 					},
 					url2 : {
-						required : true,
 						url : true
 					},
 					number : {
@@ -73,7 +111,6 @@ var formValidations = function() {
 						number : true
 					},
 					number2 : {
-						required : true,
 						number : true
 					},
 					digits : {
@@ -89,26 +126,25 @@ var formValidations = function() {
 					},
 					selectMultiple : {
 						required : true,
-						minlength : 2,
-						maxlength : 8
+						minlength : 2
 					},
 					textarea : {
 						required : true,
 						minlength : 1,
 						maxlength : 200
 					},
-					'checkboxes1' : {
+					textarea2 : {
+						minlength : 1,
+						maxlength : 200
+					},
+					checkboxes : {
 						required : true,
 						minlength : 2,
 					},
-					'checkboxes2' : {
-						required : true,
+					checkboxes2 : {
 						minlength : 2,
 					},
-					'radio1' : {
-						required : true
-					},
-					'radio2' : {
+					radio : {
 						required : true
 					}
 				},
@@ -125,8 +161,7 @@ var formValidations = function() {
 					$(element).closest('.form-group').addClass('has-error'); // set error class to the control group
 				},
 				unhighlight : function(element) { // revert the change done by hightlight
-					$(element).closest('.form-group').removeClass(
-							'has-error'); // set error class to the control group
+					$(element).closest('.form-group').removeClass('has-error'); // set error class to the control group
 				},
 				success : function(label) {
 					label.closest('.form-group').removeClass('has-error'); // set success class to the control group
@@ -137,7 +172,7 @@ var formValidations = function() {
 						this.element( element );
 
 					// or option elements, check parent select in that case
-					} else if ( element.parentNode.name in this.submitted ) {		
+					} else if ( element.parentNode.name in this.submitted ) {
 						this.element( element.parentNode );
 					}
 				},

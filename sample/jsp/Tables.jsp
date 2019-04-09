@@ -3,12 +3,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@include file="/WEB-INF/jsp/common/NewCSS&Meta.html"%>
+<%@include file="/WEB-INF/jsp/lai/common/NewCSS&Meta.html"%>
 <style type="text/css">
 /* *{border:1px solid #000;} */
 td {
 	vertical-align: middle !important;
 }
+
+.floatRight{
+	float:right;
+}
+
+.floatLeft{
+	float:left;
+}
+
 .clearFloat {
 	content: '';
 	display: block;
@@ -19,9 +28,30 @@ td {
 	border: 1px solid #000;
 }
 
+.relative1{
+	position: relative;
+}
+
+.absolute1{
+	position: absolute;
+}
+
+.height50{
+	height:50px !important;
+}
+
 .pagination {
 	position: relative;
 }
+
+/*sweetAlert class begin*/
+.silver-dark{
+	background-color: #B0B0B0;
+}
+.silver-dark>h2{
+	color: #fff !important;
+}
+/*sweetAlert class end*/
 
 th,td{
 	/* background-color: #E1E5EC !important;
@@ -37,6 +67,10 @@ th,td{
 	font-weight: bolder;
 }
 
+.sweet-alert{
+	z-index: 10051 !important;
+}
+
 /* .mt-checkbox>span{
 	margin-left:0px !important;
 	background-color: #fff !important;
@@ -47,28 +81,46 @@ th,td{
 }
 
 /* 调整分页CSS */
-.page-number a{
+.page-list,.page-size,.caret{/* 左侧note */
+	font-size:small;
+}
+.page-size{
+	text-decoration: underline;
+}
+.page-list>.dropup>button{
+	margin-top:-2.8px;
+	padding-left:3px;
+	border:0px;
+}
+.pagination>li>a{
+	border-left:0px;
+	border-right:0px;
+	border-top:0px;
+	background-color:#fff;
+	font-size:small;
 	color: #5E738B !important;
 }
-.page-number.active a{
-	border-color: #578EBE !important;
-	background-color: #578EBE !important;
+.pagination>li>a:hover{
+	border-bottom:1px solid #578EBE;
 }
 .page-number.active a{
+	/* border-color: #578EBE !important; */
+	background-color: #578EBE;
 	color: #E9EDEF !important;
 }
+
 </style>
 </head>
 <body
 	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 	<div class="page-wrapper">
 		<!-- BEGIN HEADER -->
-		<%@include file="/WEB-INF/jsp/common/NewHeader.jsp"%>
+		<%@include file="/WEB-INF/jsp/lai/common/NewHeader.jsp"%>
 		<!-- END HEADER -->
 		<div class="clearfix"></div>
 		<div class="page-container">
 			<!-- BEGIN SIDEBAR -->
-			<%@include file="/WEB-INF/jsp/common/NewLeftBar.jsp"%>
+			<%@include file="/WEB-INF/jsp/lai/common/NewLeftBar.jsp"%>
 			<!-- END SIDEBAR -->
 			<div class="page-content-wrapper">
 				<div class="page-content">
@@ -139,6 +191,40 @@ th,td{
 									</div>
 									<div class="portlet-body">
 										<div id="table-toolbar" class="table-toolbar ">
+											<div class="row">
+												<div class="portlet light bordered grey-steel">
+													<div class="caption">
+														<h4>多行插入</h4>
+													</div>
+													<form id="form-multi-insert" class="form-horizontal">
+														<div class="form-body">
+															<div id="multi-insert-input-parent" class="form-group form-md-line-input">
+																<div class="col-md-4 height50">
+																	<input 
+																	id="inp-id-m" data-key="id-m" type="text" class="form-control" placeholder="输入ID">
+																</div>
+																<div class="col-md-4 height50">
+																	<input 
+																	id="inp-empNo-m" data-key="empNo-m" type="text" class="form-control" placeholder="输入empNo">
+																</div>
+																<div class="col-md-4 height50">
+																	<input 
+																	id="inp-empNm-m" data-key="empNm-m" type="text" class="form-control" placeholder="输入empNm">
+																</div>
+																<div class="col-md-4 height50">
+																	<input 
+																	id="inp-stat-m" data-key="stat-m" type="text" class="form-control" placeholder="输入stat">
+																</div>															
+															</div>
+															<div class="form-actions floatRight relative1" style="bottom: 30px;">
+																<button id="btn-continue-insert-m" type="button" class="btn blue">&nbsp;继续&nbsp;</button>
+																<button id="btn-submit-insert-m" type="button" class="btn green-jungle">&nbsp;提交&nbsp;</button>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										<br/>
 										<button id="btn-send-param" type="button" class="btn blue-madison btn-outline">
 											<i class="fa fa-plus"></i>&nbsp;发送参数
 										</button>
@@ -229,6 +315,7 @@ th,td{
 													</div>
 													<div class="modal-footer">
 														<p id="insert-tr-modal-success"></p>
+														<button id="insert-tr-modal-alert-test">alert测试</button>
 														<button id="close-btn" type="button" data-dismiss="modal" class="btn dark btn-outline">Close</button>
 														<button id="save-btn" type="button" class="btn green">Save changes</button>
 													</div>
@@ -261,7 +348,7 @@ th,td{
 														</div>
 													</div>
 													<div class="modal-footer">
-														<p id="update-tr-modal-success"></p>
+														<p id="update-tr-modal-success" class="mt-sweetalert" tabindex="1"></p>
 														<button id="update-tr-modal-close-btn" type="button" data-dismiss="modal" class="btn dark btn-outline">Close</button>
 														<button id="update-tr-modal-save-btn" type="button" class="btn green">Save changes</button>
 													</div>
@@ -281,23 +368,16 @@ th,td{
 				</div>
 			</div>
 			<!-- BEGIN FOOTER -->
-			<%@include file="/WEB-INF/jsp/common/NewFooter.jsp"%>
+			<%@include file="/WEB-INF/jsp/lai/common/NewFooter.jsp"%>
 			<!-- END FOOTER -->
 		</div>
 	</div>
 	<input id="textHelper" type="hidden">
 </body>
-<%@include file="/WEB-INF/jsp/common/NewJS.html"%>
+<%@include file="/WEB-INF/jsp/lai/common/NewJS.html"%>
 
-<!-- <script src="/assets/pages/scripts/table-datatables-scroller.min.js" type="text/javascript"></script>
-<script src="/assets/pages/scripts/table-bootstrap.min.js" type="text/javascript"></script> -->
-<script src="/assets/global/scripts/datatable.js" type="text/javascript"></script>
-<script src="/assets/pages/scripts/table-bootstrap.js"
-	type="text/javascript"></script>
-<script src="/resources/js/app/biz/bootstrapTableClientPaging&ServerPaging.js"></script>
-<!-- <script src="/resources/js/app/biz/sweetAlert.js"></script> -->
-<!-- <script src="/assets/pages/scripts/ui-sweetalert.js" type="text/javascript"></script> -->
-<script src="/resources/js/app/biz/Dom2Json&Json2Dom.js" type="text/javascript"></script>
+<script src="/assets/lai_js/bootstrapTableClientPaging&ServerPaging.js"></script>
+<script src="/assets/lai_js/Dom2Json&Json2Dom.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function() {
 	funfun();
@@ -314,12 +394,13 @@ $(function() {
 	var doD_J = new dom2Json_Json2Dom();
 	
 	var makeTable = new bootstrapTableCus();
- 	
+	
 	var $clientTable = $("#clientTable");//table便签对象
 	var clientUrl = '/lais/lais/selectTableC.json';//请求路径
 	var clientOptions = {//重写bootstrapTableClientPaging&ServerPaging.js里我写的参数，可以直接在那里改，也可以自己写bootstrapTable
 		pageSize: 4,//每页显示几行，默认10
 		pageList: [1, 3, 5],//可选每页显示几行，默认[1, 10, 50]
+		//showToggle: true,
 		columns: [{//table列，title随便，Field里是返回的key
 			title: "",
 			field: "state",
@@ -327,7 +408,6 @@ $(function() {
 		},{
 			title: "applyId",
 			field: "APPLY_ID",
-			sortOrder: "asc",
 			formatter: function(value, row, index){
 				return '<a href="#" class="btn green btn-xs disabled"><i class="fa fa-lock"></i>  '+value+' </a>';
 			}
@@ -367,7 +447,7 @@ $(function() {
 			title: "操作",
 			formatter: function(value, row, index){
 				return '<a href=\"javascript:go()\" class="btn btn-circle btn-sm dark btn-outline mt-sweetalert btn-sweetAlert-example">'
-               + '<i class="fa fa-edit"></i> sweetAlert </a>';
+               + '<i class="fa fa-edit"></i> sweetAlert </a>';//  通过\"javascript:go()\"找到 function go(){}
 			}
 		},{
 			align: "center",
@@ -391,6 +471,7 @@ $(function() {
         			closeOnCancel: false,
         			confirmButtonText: "删除(假的)",
         			cancelButtonText: "不(假的)",
+        			containerClass: ""
         		},
         		function(isConfirm){
         			if (isConfirm){
@@ -422,7 +503,7 @@ $(function() {
 			
 		}
 	};
-	makeTable.makeClientPagingTable($clientTable,clientUrl,clientOptions);
+	makeTable.makeBootstrapTable($clientTable,'client',clientUrl,clientOptions);
 	
 	//selectTable开始
 	var $serverTable = $("#serverTable");
@@ -476,18 +557,19 @@ $(function() {
 				var pageParam = {};
 				var dataSet = {};
 				var fields = {};
+				
 				fields = {
 						rowPerPage: params.limit,
 						pageNo: (params.offset/params.limit)+1,
 						firstRowIndex: params.offset+1,
-						lastRowIndex: (params.offset/params.limit+1)*params.limit,
+						lastRowIndex: (params.offset/params.limit+1)*params.limit
 				};
 				dataSet["fields"] = fields;
 				pageParam["dataSet"] = dataSet;
 				return pageParam;
 			}
 		};
-	makeTable.makeServerPagingTable($serverTable,serverUrl,serverOptions);
+	makeTable.makeBootstrapTable($serverTable,'server',serverUrl,serverOptions);
 	//selectTable结束
 	
 	
@@ -499,7 +581,7 @@ $(function() {
 		var param = {};
 		var dataSet = {};
 		var recordSets = {};
-		recordSets[tableId] = {
+		recordSets[serviceId] = {
 				list: $("#"+tableId).bootstrapTable("getSelections"), function(row){
 					return row;
 				}//获取选中checkbox的那行数据
@@ -508,7 +590,7 @@ $(function() {
 		param["dataSet"] = dataSet;
 		param["serviceId"] = serviceId;
 		stringifiedParam = JSON.stringify(param);//这么套是为了让DataStructure接收
-		console.log(stringifiedParam);
+		
 		$.ajax({
 			url: "/lais/lais/getParam.json",
 			data: stringifiedParam,
@@ -524,15 +606,15 @@ $(function() {
 	});
 	//getParam结束
 	
-	//selectTable开始
+	//selectTable-search开始
 	$("#btn-search").click(function(){
 		var searchCol = $("#select-search").val();
 		var searchData = {
 				id : "",
 				empNo : "",
 				empNm : ""
-		};
-		var searchInpVal = $("#inp-search").val();
+		};//搜索项
+		var searchInpVal = $("#inp-search").val();//搜索啥
 		
 		if(searchCol == "id"){
 			searchData.id = searchInpVal;
@@ -542,7 +624,7 @@ $(function() {
 			searchData.empNm = searchInpVal;
 		}
 		
-		serverOptions.queryParams = function(params){
+		serverOptions.queryParams = function(params){//传参
 			var rowPerPage;
 			var pageNo;
 			var firstRowIndex;
@@ -563,31 +645,29 @@ $(function() {
 			pageParam["dataSet"] = dataSet;
 			return pageParam;
 		}
-		makeTable.makeServerPagingTable($serverTable,serverUrl,serverOptions);
+		makeTable.makeBootstrapTable($serverTable,'server',serverUrl,serverOptions);//重新加载bootstrapTable
 	});
-	//selectTable结束
+	//selectTable-search结束
 	
 //insertTable开始
 	$("#btn-insert").on('click',function(){
-		$("#insert-tr-modal-success").html("&nbsp;");
+		$("#insert-tr-modal-success").html("&nbsp;");//往标签里插个空格，好留个提示的地方
 	});
 
 	$("#save-btn").on('click',function(){
 		var pageParam = {};
 		var dataSet = {};
 		var fields = {};
-		fields = doD_J.getVal(true, $("#form-insert"));
+		fields = doD_J.getVal(true, $("#form-insert"));//从指定标签的  带有data-key属性的子标签里获取value值，以{data-key的值: 标签的value值}的形式生成json数据
 		dataSet["fields"] = fields;
 		pageParam["dataSet"] = dataSet;
 		
-		console.log(pageParam);
 		$.ajax({
 			url: "/lais/lais/insertTable.json",
 			data: JSON.stringify(pageParam),
 			type: "POST",
 			contentType: "application/json",
 			success: function(res){
-				console.log(res);
 				var rowCount = res.rowCount;
 				if(res.flag){
 					$("#insert-tr-modal-success").empty();
@@ -607,7 +687,7 @@ $(function() {
 	
 	$("#close-btn").on('click',function(){
 		$("#insert-tr-modal-success").empty();
-		makeTable.makeServerPagingTable($serverTable,serverUrl,serverOptions);
+		makeTable.makeBootstrapTable($serverTable,'server',serverUrl,serverOptions);
 	});
 	//insertTable结束
 	
@@ -622,7 +702,7 @@ $(function() {
 			delete list[i]["ROWNUMBER"];
 			delete list[i]["state"];
 			delete list[i]["TOTALCNT"];
-			delete list[i]["0"];
+			delete list[i]["0"];//把不当修改的从数组里删了
 			
 			for(var k in list[i]){
 				html += '<div class="form-group form-md-line-input">'
@@ -646,7 +726,7 @@ $(function() {
 		var param = {};
 		var dataSet = {};
 		var fields = {};
-		fields = doD_J.getVal(false, $(".inp-update"));
+		fields = doD_J.getVal(false, $(".inp-update"));//从指定class的标签里获取value值，以{data-key的值: 标签的value值}的形式生成json数据
 		dataSet["fields"] = fields;
 		param["dataSet"] = dataSet;
 		
@@ -656,7 +736,6 @@ $(function() {
 			type: "POST",
 			contentType: "application/json",
 			success: function(res){
-				console.log(res);
 				var rowCount = res.rowCount;
 				if(res.flag){
 					$("#update-tr-modal-success").empty();
@@ -676,7 +755,7 @@ $(function() {
 	
 	$("#update-tr-modal-close-btn").on("click",function(){
 		$("#update-tr-modal-success").empty();
-		makeTable.makeServerPagingTable($serverTable,serverUrl,serverOptions);
+		makeTable.makeBootstrapTable($serverTable,'server',serverUrl,serverOptions);
 	});
 //updateTable结束
 	
@@ -725,8 +804,9 @@ $(function() {
 			  closeOnCancel: false,
 			  confirmButtonText: "删除",
 			  cancelButtonText: "不",
+			  containerClass: undefined
 			},
-			function(isConfirm){
+			function(isConfirm){//isConfirm返回点的是确认还是取消(true,false)
 		        if (isConfirm){
 		        	var param = {};
 		    		var dataSet = {};
@@ -742,7 +822,6 @@ $(function() {
 		    			type: "POST",
 		    			contentType: "application/json",
 		    			success: function(res){
-		    				console.log(res);
 		    				var rowCount = res.rowCount;
 		    				
 		    				if(res.flag){
@@ -755,7 +834,7 @@ $(function() {
 		        	        		closeOnConfirm: true,
 		        	        		confirmButtonText: "知道了"
 		        	        	});
-		    					makeTable.makeServerPagingTable($serverTable,serverUrl,serverOptions);
+		    					makeTable.makeBootstrapTable($serverTable,'server',serverUrl,serverOptions);
 		    				}else{
 		    					swal({
 		        					title: "删除失败了",
@@ -796,13 +875,18 @@ $(function() {
 	});
 	//deleteTable结束
 	
-	
+	//multiInsertTable开始
+	/* $("#btn-continue-insert-m").on("click",function(){
+		
+	}); */
+	//multiInsertTable结束
 	
 });
 
 
 //让table里显示有后台数据的下拉框
 function funfun(value, row, index){
+	
 	var html = "";
 	$.ajax({
 		url: "/lais/lais/selectTableC.json",
@@ -848,10 +932,27 @@ function go(){
 		closeOnCancel: true,
 		confirmButtonText: "删除(假的)",
 		cancelButtonText: "不(假的)",
+		containerClass: ""
 	});
 	
 }
 //sweetAlert in bootstrapTable结束
 
+//alert in surface开始
+$("#insert-tr-modal-alert-test").click(function(){
+	swal({
+		title: "see",
+		text: "seesee" ,
+		type: "warning",
+		showConfirmButton: true,
+		showCancelButton: false,
+		confirmButtonClass: "btn-default",
+		allowEscapeKey: false,
+		closeOnConfirm: true,
+		confirmButtonText: "close",
+		containerClass: "silver-dark"
+	});
+});
+//alert in surface结束
 </script>
 </html>

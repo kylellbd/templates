@@ -3,18 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file="/WEB-INF/jsp/common/NewCSS&Meta.html"%>
+<%@include file="/WEB-INF/jsp/lai/common/NewCSS&Meta.html"%>
 </head>
 <body
 	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 	<div class="page-wrapper">
 		<!-- BEGIN HEADER -->
-		<%@include file="/WEB-INF/jsp/common/NewHeader.jsp"%>
+		<%@include file="/WEB-INF/jsp/lai/common/NewHeader.jsp"%>
 		<!-- END HEADER -->
 		
 		<div class="page-container">
 			<!-- BEGIN SIDEBAR -->
-			<%@include file="/WEB-INF/jsp/common/NewLeftBar.jsp"%>
+			<%@include file="/WEB-INF/jsp/lai/common/NewLeftBar.jsp"%>
 			<!-- END SIDEBAR -->
 			<div class="page-content-wrapper">
 
@@ -230,8 +230,8 @@
 																for="form_control_1"> Name<span class="required">*</span>
 															</label>
 															<div class="col-md-9">
-																<input id="testInp" type="text" class="form-control json1" placeholder=""
-																	name="name" data-key="name">
+																<input id="testInp" type="text" class="form-control J2D-example-inputTextarea" placeholder=""
+																	name="name" data-key="PARENT_MENU_ID">
 																<div class="form-control-focus"></div>
 																<span class="help-block">enter your full name</span>
 															</div>
@@ -243,8 +243,8 @@
 																class="required">*</span>
 															</label>
 															<div class="col-md-9">
-																<input type="text" class="form-control json1" placeholder=""
-																	name="email" data-key="email">
+																<input type="text" class="form-control J2D-example-inputTextarea" placeholder=""
+																	name="email" data-key="MENU_ID">
 																<div class="form-control-focus"></div>
 																<span class="help-block">输入邮箱</span>
 															</div>
@@ -256,8 +256,8 @@
 																class="required">*</span>
 															</label>
 															<div class="col-md-9">
-																<input type="text" class="form-control json1" placeholder=""
-																	name="number" data-key="number">
+																<input type="text" class="form-control J2D-example-inputTextarea" placeholder=""
+																	name="number" data-key="MENU_NAME">
 																<div class="form-control-focus"></div>
 																<span class="help-block"></span>
 															</div>
@@ -282,10 +282,8 @@
 															<label class="col-md-3 control-label"
 																for="form_control_1">Delivery</label>
 															<div class="col-md-9">
-																<select id="select2" data-key="select2" class="form-control json1" name="select">
-																	<option></option>
-																	<option></option>
-																	<option></option>
+																<select id="select2" class="form-control J2D-example-select1" name="select" 
+																data-key="option-value:MENU_NAME_EN,option-text:MENU_NAME_ZH">
 																</select>
 																<div class="form-control-focus"></div>
 															</div>
@@ -295,12 +293,8 @@
 															<label class="col-md-3 control-label"
 																for="form_control_1">Payment</label>
 															<div class="col-md-9">
-																<select class="form-control json1" data-key="selectMultiple" name="selectMultiple" multiple>
-																	<option></option>
-																	<option></option>
-																	<option></option>
-																	<option></option>
-																	<option></option>
+																<select class="form-control J2D-example-select1" name="selectMultiple" 
+																data-key="option-value:MENU_NAME_ZH,option-text:MENU_NAME_EN" multiple>
 																</select>
 																<div class="form-control-focus"></div>
 															</div>
@@ -310,7 +304,7 @@
 															<label class="col-md-3 control-label"
 																for="form_control_1">Memo</label>
 															<div class="col-md-9">
-																<textarea class="form-control json1" data-key="textarea2" name="textarea" rows="5"></textarea>
+																<textarea class="form-control J2D-example-inputTextarea" data-key="UPDATE_DATE" name="textarea" rows="5"></textarea>
 																<div class="form-control-focus"></div>
 															</div>
 														</div>
@@ -321,20 +315,20 @@
 															<div class="col-md-9">
 																<div class="md-checkbox-inline">
 																	<div class="md-checkbox">
-																		<input id="c1" type="checkbox" name="checkboxes1" value=""
-																		id="checkbox1_1" class="md-check json1" data-key="checkbox1_1"> 
+																		<input type="checkbox" name="checkboxes1" 
+																		id="checkbox1_1" class="md-check J2D-example-inputTextarea" data-key="MENU_ID"> 
 																		<label for="checkbox1_1">
 																		</label>
 																	</div>
 																	<div class="md-checkbox">
-																		<input type="checkbox" name="checkboxes1" value=""
-																			id="checkbox1_2" class="md-check json1" data-key="checkbox1_2">
+																		<input type="checkbox" name="checkboxes1" 
+																			id="checkbox1_2" class="md-check J2D-example-inputTextarea" data-key="USE_FLAG">
 																		<label for="checkbox1_2">
 																		</label>
 																	</div>
 																	<div class="md-checkbox">
-																		<input type="checkbox" name="checkboxes1" value=""
-																			id="checkbox1_3" class="md-check json1" data-key="checkbox1_3">
+																		<input type="checkbox" name="checkboxes1" 
+																			id="checkbox1_3" class="md-check J2D-example-inputTextarea" data-key="PARENT_MENU_ID" checked>
 																		<label for="checkbox1_3">
 																		</label>
 																	</div>
@@ -349,19 +343,19 @@
 																<div class="md-radio-inline">
 																	<div class="md-radio">
 																		<input type="radio" id="radio1_1" name="radio1"
-																			value="" class="md-radiobtn json1" data-key="radio1_1"> 
+																			 class="md-radiobtn J2D-example-select1" data-key="MENU_NAME"> 
 																		<label for="radio1_1">
 																		</label>
 																	</div>
 																	<div class="md-radio">
 																		<input type="radio" id="radio1_2" name="radio1"
-																			value="" class="md-radiobtn json1" data-key="radio1_2">
+																			 class="md-radiobtn J2D-example-select1" data-key="MENU_NAME">
 																		<label for="radio1_2">
 																		</label>
 																	</div>
 																	<div class="md-radio">
 																		<input type="radio" id="radio1_3" name="radio1"
-																			value="" class="md-radiobtn json1" data-key="radio1_3">
+																			 class="md-radiobtn J2D-example-select1" data-key="MENU_NAME" checked>
 																		<label for="radio1_3">
 																		</label>
 																	</div>
@@ -375,7 +369,9 @@
 																	<button type="submit" class="btn green">Validate,type="submit"</button>
 																	<!-- 原先有  type="submit"-->
 																	<button type="reset" class="btn default">Reset</button>
-																	<button id="tu" type="button" class="btn default">see</button>
+																	<button id="get-data" type="button" class="btn default">get data</button>
+																	<button id="show-select" type="button" class="btn default">show select</button>
+																	<button id="show-inpTextarea" type="button" class="btn default">show inp&textarea</button>
 																</div>
 															</div>
 														</div>
@@ -387,26 +383,22 @@
 									</div>
 								</div>
 							</div>
-
-
-
 						</div>
-
 					</div>
 				</div>
 
 			</div>
 			<!-- BEGIN FOOTER -->
-			<%@include file="/WEB-INF/jsp/common/NewFooter.jsp"%>
+			<%@include file="/WEB-INF/jsp/lai/common/NewFooter.jsp"%>
 			<!-- END FOOTER -->
 		</div>
 	</div>
 	<div class="quick-nav-overlay"></div>
 </body>
-<%@include file="/WEB-INF/jsp/common/NewJS.html"%>
-<script src="/resources/js/app/biz/common-lais-util.js"></script>
-<script src="/resources/js/app/biz/form-util.js"></script>
-<script src="/resources/js/app/biz/Dom2Json&Json2Dom.js"></script>
+<%@include file="/WEB-INF/jsp/lai/common/NewJS.html"%>
+<script src="/assets/lai_js/common-lais-util.js"></script>
+<script src="/assets/lai_js/form-util.js"></script>
+<script src="/assets/lai_js/Dom2Json&Json2Dom.js"></script>
 <script type="text/javascript">
 	$(function() {
 		
@@ -423,82 +415,45 @@
 		var $form1 = $('#form_sample');
 		var $error1 = $('.alert-danger', $form1);
 		var $success1 = $('.alert-success', $form1);
+		
 		doFormValidations.formValidation1($form1,null,$error1,$success1);
 		
 		var doD_J = new dom2Json_Json2Dom();
 		
-		
-		$("#tu").click(function(){
-			console.time("Time：");
-			var jArray = {
-					email: "email112",
-					name: "name123",
-					number: "number134",
-					select2: [{
-						val: "",
-						text: "default",
-					},{
-						val: "v1",
-						text: "t1"
-					},{
-						val: "v2",
-						text: "t2"
-					}],
-					selectMultiple: [{
-						val: "v1M",
-						text: "t1M"
-					},{
-						val: "v2M",
-						text: "t2M"
-					},{
-						val: "v3M",
-						text: "t3M"
-					},{
-						val: "v4M",
-						text: "t4M"
-					},{
-						val: "v5M",
-						text: "t5M"
-					}],
-					textarea2: "testarea2testarea2testarea2",
-					checkbox1_1: {
-						val: "checkboxV1",
-						text: "checkboxT1",
-						checked: false
-					},
-					checkbox1_2: {
-						val: "checkboxV2",
-						text: "checkboxT2",
-						checked: true
-					},
-					checkbox1_3: {
-						val: "checkboxV3",
-						text: "checkboxT3",
-						checked: true
-					},
-					radio1_1: {
-						val: "radioV1",
-						text: "radioT1",
-						checked: true
-					},
-					radio1_2: {
-						val: "radioV2",
-						text: "radioT2",
-						checked: false
-					},
-					radio1_3: {
-						val: "radioV3",
-						text: "radioT3",
-						checked: false
-					}
-					
-			};
-			
-			doD_J.setVal(false, $(".json1"), jArray);
-			var getVal = doD_J.getVal(false, $(".json1"));
+		$("#get-data").click(function(){
+			var getVal = doD_J.getVal(true, $("form"));
 			console.log(getVal);
-			console.timeEnd("Time：");
 		});
+		
+		$("#show-select").click(function(){	
+			$.ajax({
+				url: "/lais/lais/json2DomSelectExample.json",
+				data: {},
+				type: "GET",
+				contentType: "application/json",
+				success: function(res){
+					doD_J.setVal(false, $(".J2D-example-select1"), res);
+				},
+				error: function(e){
+					alert('error at Forms.jsp');
+				}
+			});
+		});
+		
+		$("#show-inpTextarea").click(function(){
+			$.ajax({
+				url: "/lais/lais/json2DomInpExample.json",
+				data: {},
+				type: "GET",
+				contentType: "application/json",
+				success: function(res){
+					doD_J.setVal(false, $(".J2D-example-inputTextarea"), res);
+				},
+				error: function(e){
+					alert('error at Forms.jsp');
+				}
+			});
+		})
 		
 	});
 	

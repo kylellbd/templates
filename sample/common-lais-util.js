@@ -6,9 +6,7 @@ var loginMainList = function(){
 		   
 		   $COM_UTIL = {
 				   KEY_GET_LOGIN_MENU_LIST : "getloginmenulist",
-				   KET_GET_LOGIN_MENU_LIST_CN : "getloginmenulistCN",
 				   KEY_GET_LOGIN_MENU_ADMIN_LIST : "getLoginMenuAdminList",
-				   KET_GET_LOGIN_MENU_ADMIN_LIST_CN : "getLoginMenuAdminListCN",
 		    	   KEY_MENU_ID : "menuId",
 		    	   KEY_PARENT_MENU_ID : "parentMenuId",
 		    	   KEY_MENU_DEPTH_NO : "menuDepthNo",
@@ -23,11 +21,12 @@ var loginMainList = function(){
 				   KEY_GET_LOGIN_LABEL : "getloginlabel",
 				   KET_GET_LOGIN_LABEL_CN : "getloginlabelCN",
 				   KEY_UPLOAD_LEFT_LIST : "uploadLeftList",
-				   KEY_UPLOAD_TOP_LIST : "uploadTopList",	
+				   KEY_UPLOAD_TOP_LIST : "uploadTopList",
 				   KEY_UPLOAD_CENTER_LIST : "uploadCenterList",
 		    	   LANGUAGE_GROUP : {
-		    		   "zh_CN" : "中文",
-		    		   "ko_KR" : "한국어"
+		    		   "zh_CN": "中文",
+		    		   "ko_KR": "한국어",
+		    		   "en_US": "English" 
 		    	   },
 		    	   setUserLanguage: function(lang){
 		    		   localStorage.setItem($COM_UTIL.KEY_USER_LANGUAGE, lang);
@@ -58,24 +57,22 @@ var loginMainList = function(){
 		    	   
 		    	   getMenuList: function(){
 		    		   var menuList = [];
-		    		   if(sessionStorage.getItem($COM_UTIL.KEY_GET_LOGIN_MENU_LIST)==null || sessionStorage.getItem($COM_UTIL.KET_GET_LOGIN_MENU_LIST_CN)==null || sessionStorage.getItem($COM_UTIL.KEY_GET_LOGIN_MENU_ADMIN_LIST)==null || sessionStorage.getItem($COM_UTIL.KEY_GET_LOGIN_MENU_ADMIN_LIST_CN)==null){
+		    		   if(sessionStorage.getItem($COM_UTIL.KEY_GET_LOGIN_MENU_LIST)==null || sessionStorage.getItem($COM_UTIL.KEY_GET_LOGIN_MENU_ADMIN_LIST)==null ){
 	    				   $.ajax({
 	    					   type: "POST",
 	    					   async: false,
 	    					   //data: languageTitle,
 	    					   dataType: 'JSON',
 	    					   url: "/biz/ojt/selectMenu.json",
-	    					   success: function(res){ 
+	    					   success: function(res){
 	    						   sessionStorage.setItem($COM_UTIL.KEY_GET_LOGIN_MENU_LIST, JSON.stringify(res[0]));
-	    						   sessionStorage.setItem($COM_UTIL.KET_GET_LOGIN_MENU_LIST_CN, JSON.stringify(res[1]));
-	    						   sessionStorage.setItem($COM_UTIL.KEY_GET_LOGIN_MENU_ADMIN_LIST, JSON.stringify(res[2]));
-	    						   sessionStorage.setItem($COM_UTIL.KEY_GET_LOGIN_MENU_ADMIN_LIST_CN, JSON.stringify(res[3]));
+	    						   sessionStorage.setItem($COM_UTIL.KEY_GET_LOGIN_MENU_ADMIN_LIST, JSON.stringify(res[1]));
 	    					   },
 	    					   error: function(e){
 	    						   console.log(e);
 	    					   }
 	    				   });
-	    			   }
+	    		   }
 		    		      
 		    		   var url = document.location.toString();	
 		    		   if(url.indexOf("/")!=-1){
@@ -85,23 +82,11 @@ var loginMainList = function(){
 							url = url.substring(0,3);
 						}
 						if(url=="adm"){
-							if($COM_UTIL.getUserLanguage() == $COM_UTIL.LANGUAGE_GROUP["ko_KR"]){
 				    			   menuList = JSON.parse(sessionStorage.getItem($COM_UTIL.KEY_GET_LOGIN_MENU_ADMIN_LIST));
-				    			   return menuList;
-				    		   }
-				    		   if($COM_UTIL.getUserLanguage() == $COM_UTIL.LANGUAGE_GROUP["zh_CN"]){
-				    			   menuList = JSON.parse(sessionStorage.getItem($COM_UTIL.KEY_GET_LOGIN_MENU_ADMIN_LIST_CN));
-				    			   return menuList;
-				    		   }
+				    			   return menuList;    		  
 						}else{ 
-				    		   if($COM_UTIL.getUserLanguage() == $COM_UTIL.LANGUAGE_GROUP["ko_KR"]){
 				    			   menuList = JSON.parse(sessionStorage.getItem($COM_UTIL.KEY_GET_LOGIN_MENU_LIST));
 				    			   return menuList;
-				    		   }
-				    		   if($COM_UTIL.getUserLanguage() == $COM_UTIL.LANGUAGE_GROUP["zh_CN"]){
-				    			   menuList = JSON.parse(sessionStorage.getItem($COM_UTIL.KET_GET_LOGIN_MENU_LIST_CN));
-				    			   return menuList;
-				    		   }
 						}
 		    		  return menuList;
 		    	   }   
