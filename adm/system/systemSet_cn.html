@@ -1,376 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!--<![endif]-->
-    <!-- BEGIN HEAD -->
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
 
-    <head>
-    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    	<meta http-equiv="Pragma" content="no-cache">
-    	<meta http-equiv="Cache-Control" content="no-cache">
-    	<link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
-		<!-- END GLOBAL MANDATORY STYLES -->
-		<!-- BEGIN PAGE LEVEL PLUGINS -->
-		<link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
-		<!-- END PAGE LEVEL PLUGINS -->
-		<!-- BEGIN THEME GLOBAL STYLES -->
-		<link href="/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
-		<link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
-		<!-- END THEME GLOBAL STYLES -->
-		<!-- BEGIN THEME LAYOUT STYLES -->
-		<link href="/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
-		<link href="/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />	
-		<!-- END THEME LAYOUT STYLES -->
-		
-		<link href="/assets/global/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" type="text/css" />
-	    <title>系统运营配置</title>
-		<link rel="shortcut icon" href="favicon.ico" />
-    </head>
-    <!-- END HEAD -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME LAYOUT STYLES -->
 
-    <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
-        <div class="page-wrapper">
-            <!-- BEGIN HEADER -->
-            <div class="page-header navbar navbar-fixed-top">
-                <!-- BEGIN HEADER INNER -->
-                <div class="page-header-inner ">
-                    <!-- BEGIN LOGO -->
-                    <div class="page-logo">
-                        <a href="/templates/adm/index.html">
-                            <img src="" alt="logo" class="logo-default" /> </a>
-                        <div class="menu-toggler sidebar-toggler">
-                            <span></span>
-                        </div>
-                    </div>
-                    <!-- END LOGO -->
-                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+    <link href="/assets/global/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" type="text/css" />
+    <title>系统运营配置</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<!-- END HEAD -->
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+    <div class="page-wrapper">
+        <!-- BEGIN HEADER -->
+        <div class="page-header navbar navbar-fixed-top">
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner ">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="/templates/adm/index.html">
+                        <img src="" alt="logo" class="logo-default" /> </a>
+                    <div class="menu-toggler sidebar-toggler">
                         <span></span>
-                    </a>
-                    <!-- END RESPONSIVE MENU TOGGLER -->
-                    <!-- BEGIN TOP NAVIGATION MENU -->
-                    <div class="top-menu">
-                        <ul class="nav navbar-nav pull-right">
-                            <!-- END USER LOGIN DROPDOWN -->
-                            <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                             <li>
-                                <p style="color: white" >Welcome Loginer</p>
-                            </li>
-                            <li class="dropdown dropdown-quick-sidebar-toggler">
-                                <a href="javascript:;" class="dropdown-toggle">
-                                    <i class="icon-logout"></i>
-                                </a>
-                            </li>
-                            <!-- END QUICK SIDEBAR TOGGLER -->
-                        </ul>
                     </div>
-                    <!-- END TOP NAVIGATION MENU -->
                 </div>
-                <!-- END HEADER INNER -->
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                        <!-- END USER LOGIN DROPDOWN -->
+                        <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                        <li>
+                            <p style="color: white">Welcome Loginer</p>
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <i class="icon-logout"></i>
+                            </a>
+                        </li>
+                        <!-- END QUICK SIDEBAR TOGGLER -->
+                    </ul>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
             </div>
-            <!-- END HEADER -->
-            <!-- BEGIN HEADER & CONTENT DIVIDER -->
-            <div class="clearfix"> </div>
-            <!-- END HEADER & CONTENT DIVIDER -->
-            <!-- BEGIN CONTAINER -->
-            <div class="page-container">
-                <!-- BEGIN SIDEBAR -->
-                <div class="page-sidebar-wrapper">
-                    <div class="page-sidebar navbar-collapse collapse">
-                        <ul id="ul_menu" class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" 
-                        	data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-                            
-                            
-                        </ul>
-                    </div>
+            <!-- END HEADER INNER -->
+        </div>
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <div class="page-sidebar navbar-collapse collapse">
+                    <ul id="ul_menu" class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+
+
+                    </ul>
                 </div>
-                <!-- END SIDEBAR -->
-                
-                <!-- BEGIN CONTENT -->
-                <div class="page-content-wrapper">
-                    <!-- BEGIN CONTENT BODY -->
-                    <div class="page-content">
-                        <!-- BEGIN PAGE HEADER-->
-                        <!-- BEGIN PAGE TITLE-->
-                        <h1 class="page-title"> 基本运营配置
-                            <small>设置系统运营基础配置数据</small>
-                        </h1>
-                        <!-- END PAGE TITLE-->
-                        <!-- END PAGE HEADER-->
-                        <!-- BEGIN DASHBOARD STATS 1-->
-                        <div class="clearfix"></div>
-                        <!-- END DASHBOARD STATS 1-->
-                        <div class="row">
-							<div class="col-md-9">
-		                        <div class="portlet light">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-shopping-cart"></i>系统配置信息</div>
-                                            <div align="right">
-                                            	<button id="button" class="btn btn-default">insertRow</button>
-        										<button id="getTableData" class="btn btn-default">getTableData</button>
+            </div>
+            <!-- END SIDEBAR -->
+
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <!-- BEGIN PAGE HEADER-->
+                    <!-- BEGIN PAGE TITLE-->
+                    <h1 class="page-title"> 基本运营配置
+                        <small>设置系统运营基础配置数据</small>
+                    </h1>
+                    <!-- END PAGE TITLE-->
+                    <!-- END PAGE HEADER-->
+                    <!-- BEGIN DASHBOARD STATS 1-->
+                    <div class="clearfix"></div>
+                    <!-- END DASHBOARD STATS 1-->
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="portlet light form-fit  center">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-social-dribbble"></i>
+                                        <span class="caption-subject bold uppercase">基本运营配置</span>
+                                    </div>
+                                    <div align="right">
+                                        <input type="checkbox" class="make-switch" name="SystemSetFormEdit" id="SystemSetFormEdit" data-on-color="success" data-off-color="danger" data-on-text="Edit" data-off-text="ReadOnly">
+                                        <button type="button" class="btn blue">Save</button>
+                                    </div>
+                                </div>
+                                <div class="portlet-body form">
+                                    <!-- BEGIN FORM-->
+                                    <form action="#" class="form-horizontal form-bordered" id="SystemSetForm">
+                                        <div class="form-body">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">TradeFeeMode</label>
+                                                <div class="col-md-2">
+                                                    <select class="form-control" name="TradeFeeMode">
+																<option value="0001">Open</option>
+																<option value="0002">Close</option>
+																<option value="0003">Both</option>
+															</select>
+                                                </div>
+                                                <label class="control-label col-md-2">TradeTaxMode</label>
+                                                <div class="col-md-2">
+                                                    <select class="form-control" name="TradeTaxMode">
+															<option value="0001">Open</option>
+															<option value="0002">Close</option>
+															<option value="0003">Both</option>
+														</select>
+                                                </div>
+                                                <label class="control-label col-md-2">MgmtFeeMode</label>
+                                                <div class="col-md-2">
+                                                    <select class="form-control" name="MgmtFeeMode">
+															<option value="0001">Open</option>
+															<option value="0002">Close</option>
+															<option value="0003">Both</option>
+														</select>
+                                                </div>
                                             </div>
-                                        <!-- <div class="tools">
-                                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
-                                            <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
-                                            <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
-                                        </div> -->
-                                    </div>
-                                    <div class="portlet-body">
-                                        <div class="table-scrollable  form-group form-md-line-input">
-                                        	<form name="systemForm">
-                                        		<table class="table table-hover table-light" id="systemSetTable"></table>
-                                            </form>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">BonusModeActive</label>
+                                                <div class="col-md-2">
+                                                    <input type="checkbox" class="make-switch" checked name="BonusModeActive" data-on-color="success" data-off-color="danger">
+                                                </div>
+                                                <label class="control-label col-md-2">VipModeActive</label>
+                                                <div class="col-md-2">
+                                                    <input type="checkbox" class="make-switch" checked name="VipModeActive" data-on-color="success" data-off-color="danger">
+                                                </div>
+                                                <label class="control-label col-md-2">VipUpdatePeriod</label>
+                                                <div class="col-md-2">
+                                                    <select class="form-control" name="VipUpdatePeriod">
+															<option value="0001">Day</option>
+															<option value="0002">Week</option>
+															<option value="0003">Month</option>
+														</select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">BankProcessTime</label>
+                                                <div class="col-md-2" style="display: inline-flex;">
+                                                    <input class="form-control" style="width: 45%;" id="BankProcessTimeS" type="text" maxlength='5' size="10" />~
+                                                    <input class="form-control" style="width: 45%;" id="BankProcessTimeE" type="text" maxlength='5' size="10" />
+                                                </div>
+                                                <label class="control-label col-md-2">RejectOrNoTAtNoBankTime</label>
+                                                <div class="col-md-2">
+                                                    <input type="checkbox" class="make-switch" checked name="RejectOrNoTAtNoBankTime" data-on-color="success" data-off-color="danger">
+                                                </div>
+                                                <label class="control-label col-md-2">DepositMinMoney</label>
+                                                <div class="col-md-2">
+                                                    <input class="form-control" id="DepositMinMoney" type="text" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">DepositMaxMoney</label>
+                                                <div class="col-md-2">
+                                                    <input class="form-control" id="DepositMaxMoney" type="text" />
+                                                </div>
+                                                <label class="control-label col-md-2">LossCutPcnt(%)</label>
+                                                <div class="col-md-2">
+                                                    <input class="form-control" id="LossCutPcnt" type="text" maxlength='5' />
+                                                </div>
+                                                <label class="control-label col-md-2">LossCutCustoms</label>
+                                                <div class="col-md-2">
+                                                    <input type="checkbox" class="make-switch" checked name="LossCutCustoms" data-on-color="success" data-off-color="danger">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">MaxBrrwCnt</label>
+                                                <div class="col-md-2">
+                                                    <input class="form-control" id="MaxBrrwCnt" type="text" />
+                                                </div>
+                                                <label class="control-label col-md-2">MaxBrrwMoney</label>
+                                                <div class="col-md-2">
+                                                    <input class="form-control" id="MaxBrrwMoney" type="text" maxlength='5' />
+                                                </div>
+                                                <label class="control-label col-md-2">OneTimeMinPrincipal</label>
+                                                <div class="col-md-2">
+                                                    <input class="form-control" id="OneTimeMinPrincipal" type="text" maxlength='5' />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">ShortSellAllow</label>
+                                                <div class="col-md-2">
+                                                    <input type="checkbox" class="make-switch" checked name="ShortSellAllow" data-on-color="success" data-off-color="danger">
+                                                </div>
+                                                <label class="control-label col-md-2">ProfitInvestActive</label>
+                                                <div class="col-md-2">
+                                                    <input type="checkbox" class="make-switch" checked name="ProfitInvestActive" data-on-color="success" data-off-color="danger">
+                                                </div>
+                                                <label class="control-label col-md-2">OverNightDefault														</label>
+                                                <div class="col-md-2">
+                                                    <input type="checkbox" class="make-switch" checked name="OverNightDefault" data-on-color="success" data-off-color="danger">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">ReturnTypeOfShortOrder</label>
+                                                <div class="col-md-2">
+                                                    <select class="form-control" name="ReturnTypeOfShortOrder">
+                                                                            <!-- <option value="">--선택--</option> -->
+                                                                            <option value="0001">선입선출 방식</option>
+                                                                            <option value="0002">후입선출 방식</option>
+                                                                            <option value="0003">마진우선 방식</option>
+                                                                            <option value="0004">평균가 반환</option>
+                                                                            <option value="0005">Close Order가</option>
+                                                                        </select>
+                                                </div>
+                                                <label class="control-label col-md-2">ReturnTypeOfShortOrderCustoms</label>
+                                                <div class="col-md-2">
+                                                    <input type="checkbox" class="make-switch" checked name="ReturnTypeOfShortOrderCustoms" data-on-color="success" data-off-color="danger">
+                                                </div>
+                                                <label class="control-label col-md-2">CloseTypeOfOverNightBeyond</label>
+                                                <div class="col-md-2">
+                                                    <select class="form-control" name="CloseTypeOfOverNightBeyond">
+                                                                            <!-- <option value="">--선택--</option> -->
+                                                                            <option value="0001">선입선출 방식</option>
+                                                                            <option value="0002">후입선출 방식</option>
+                                                                            <option value="0003">마진우선</option>
+                                                                            <option value="0004">손실우선</option>
+                                                                        </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">CloseTypeOfOverNightCustoms</label>
+                                                <div class="col-md-2">
+                                                    <input type="checkbox" class="make-switch" checked name="CloseTypeOfOverNightCustoms" data-on-color="success" data-off-color="danger">
+                                                </div>
+                                                <label class="control-label col-md-2">RealTimeDelay</label>
+                                                <div class="col-md-2">
+                                                    <input type="checkbox" class="make-switch" checked name="RealTimeDelay" data-on-color="success" data-off-color="danger">
+                                                </div>
+                                            </div>
+
                                         </div>
-                                    </div>
+                                    </form>
+                                    <!-- END FORM-->
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- END CONTENT BODY -->
                 </div>
-                <!-- END CONTENT -->
+                <!-- END CONTENT BODY -->
             </div>
-            <!-- END CONTAINER -->
-            <!-- BEGIN FOOTER -->
-            <div class="page-footer">
-                <div class="page-footer-inner"> 2019 &copy;  By Kyle.Moon
-                </div>
-                <div class="scroll-to-top">
-                    <i class="icon-arrow-up"></i>
-                </div>
-            </div>
-            <!-- END FOOTER -->
+            <!-- END CONTENT -->
         </div>
-        
-<!--[if lt IE 9]>
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        <div class="page-footer">
+            <div class="page-footer-inner"> 2019 &copy; By Kyle.Moon
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+    </div>
+
+    <!--[if lt IE 9]>
 <script src="../assets/global/plugins/respond.min.js"></script>
 <script src="../assets/global/plugins/excanvas.min.js"></script> 
 <script src="../assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
-        <!-- BEGIN CORE PLUGINS -->
-        <script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-        <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
-        <!-- BEGIN THEME GLOBAL SCRIPTS -->
-        <script src="/assets/global/scripts/app.js" type="text/javascript"></script>
-        <script src="/templates/adm/admMenu.js" type="text/javascript"></script>
-		<script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
-		<script type="text/javascript">
-		
-		
-		$(document).ready(function() {
-			
-			
-			let $table = $('#systemSetTable');
-		    let $button = $('#button');
-		    let $getTableData = $('#getTableData');
-		    
-		    $button.click(function() {
-		        $table.bootstrapTable('insertRow', {
-		            index: 0,
-		            row: {
-		                id: '',
-		                name: '',
-		                price: ''
-		            }
-		        });
-		    });
-			
-		    $getTableData.click(function() {
-		        alert(JSON.stringify($table.bootstrapTable('getData')));
-		    });
-		    
-			function initTable(){
-				$('#systemSetTable').bootstrapTable('destroy').bootstrapTable({
-			        //url: 'data/' + 'adm-user' + '.json',
-			        //method: 'POST',
-			        uniqueId: 'id',                        // 绑定ID，不显示
-			        striped: false,                         //是否显示行间隔色
-			        cache: false,                          //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-			        sortable: true,                        //是否启用排序
-			        sortOrder: "asc",                      //排序方式
-			        //sidePagination: "client",              //分页方式：client客户端分页，server服务端分页（*）
-			        undefinedText: '--',
-			        //singleSelect: true,                  // 单选checkbox，默认为复选
-			        showRefresh   : false,                  // 显示刷新按钮
-			        showColumns   : false,                  // 选择显示的列
-			        search: false,                          // 搜索开启,
-			        strictSearch: false,
-			        clickToSelect: true,                   // 点击选中行
-			        pagination: false,                      //是否显示分页
-			        //pageNumber:1,                          //初始化加载第一页，默认第一页,并记录
-			        //pageSize:5,//每页显示的数量
-			        //pageList: [5, 10, 20, 50, 100],//设置每页显示的数量
-			        //paginationPreText:"上一页",
-			        //paginationNextText:"下一页",
-			        //paginationLoop:false,
-			        //showToggle: true,                   //是否显示详细视图和列表视图的切换按钮
-			        //cardView: false,                    //是否显示详细视图
-			        //detailView: false,                  //是否显示父子表
-			        //showPaginationSwitch: true,
-			        //得到查询的参数
-			        /* queryParams : function (params) {
-			            //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-			            var temp = {
-			                rows: params.limit,                         //页面大小
-			                page: (params.offset / params.limit) + 1,   //页码
-			                sort: params.sort,      //排序列名
-			                sortOrder: params.order //排位命令（desc，asc）
-			            };
-			            return temp;
-			        }, */
-			        columns: [
-			            {
-				            field: 'OptKey',
-				            title:'OptKey',
-				            valign: 'middle',
-				            width: '10%',
-				            sortable: true
-			            },
-			            {
-				            field: 'OptMainValue',
-				            title:'OptMainValue',
-				            width: '10%'
-			            },
-			            {
-				            field: 'OptSubValue1',
-				            title:'OptSubValue1',
-				            width: '10%'
-			            }
-			            ,{
-				            field: 'OptSubValue2',
-				            title:'OptSubValue2',
-				            valign: 'middle',
-				            width: '10%'
-			            },
-			            {
-				            field: 'OptSubValue3',
-				            title:'OptSubValue3',
-				            width: '10%'
-			            },
-			            {
-				            field: 'Active',
-				            title:'Active',
-				            width: '10%'
-			            },
-			            {
-				            field: 'Memo',
-				            title:'Memo',
-			            }
-			            /* ,{
-			            field: 'storageServer',
-			            title:'私密空间配额',
-			            formatter: operateFormatter
-			            } */
-			        ],
-			        data: [
-			        	{                
-			        		OptKey:"TradeFeeMode",
-			        		OptMainValue:"0003",
-			        		OptSubValue1:"",
-			        		OptSubValue2:"",
-			        		OptSubValue3:"",
-			        		Active:"Y",
-			        		Memo:"(0014)거래수수료 발생 시기. Open/Close/Both"
-			        	},
-			        	{                
-			        		OptKey:"TradeTaxMode",
-			        		OptMainValue:"0002",
-			        		OptSubValue1:"",
-			        		OptSubValue2:"",
-			        		OptSubValue3:"",
-			        		Active:"Y",
-			        		Memo:"(0014)거래세 발생 시기. Open/Close/Both"
-			        	},
-			        	{                
-			        		OptKey:"MgmtFeeMode",
-			        		OptMainValue:"0001",
-			        		OptSubValue1:"",
-			        		OptSubValue2:"",
-			        		OptSubValue3:"",
-			        		Active:"Y",
-			        		Memo:"(0014)취급수수료 방생시기. Open/Close/Both"
-			        	},
-			        	{                
-			        		OptKey:"BonusModeActive",
-			        		OptMainValue:"Y",
-			        		OptSubValue1:"",
-			        		OptSubValue2:"",
-			        		OptSubValue3:"",
-			        		Active:"Y",
-			        		Memo:"Bonus 적용 여부. 미 적용시 기본VIP0으로 시스템운영"
-			        	},
-			        	{                
-			        		OptKey:"VipModeActive",
-			        		OptMainValue:"Y",
-			        		OptSubValue1:"",
-			        		OptSubValue2:"",
-			        		OptSubValue3:"",
-			        		Active:"Y",
-			        		Memo:"Vip Mode 적용 여부. 미 적용시 기본VIP0으로 시스템운영"
-			        	}
-			        ],
-			        onLoadSuccess: function () {
-			            alert('表格加载成功！');
-			        },
-			        onLoadError: function () {
-			            showTips("数据加载失败！");
-			        },
-			        onDblClickRow: function (row, $element) {
-			            var id = row.ID;
-			            //EditViewById(id, 'view');
-			        },
-			        /* rowStyle: function (row, index) { //设置行的特殊样式
-			            //这里有5个取值颜色['active', 'success', 'info', 'warning', 'danger'];
-			            var strclass = "";
-			            if (index %2 == 1) {
-			                strclass = "warning";
-			            }
-			            return { classes: strclass }
-			        } */
-			        onClickCell: function(field, value, row, $element) {
-			            $element.attr('contenteditable', true);
-			            $element.blur(function() {
-			                let index = $element.parent().data('index');
-			                let tdValue = $element.html();
-	
-			                saveData(index, field, tdValue);
-			            })
-			        }
-				});
-			}
-			
-			function saveData(index, field, value) {
-		        $table.bootstrapTable('updateCell', {
-		            index: index,       //行索引
-		            field: field,       //列名
-		            value: value        //cell值
-		        })
-		    }
-			
-			initTable();
-	});
-		
-		
-		</script>
-    </body>
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script src="/assets/global/scripts/app.js" type="text/javascript"></script>
+    <script src="/templates/adm/admMenu.js" type="text/javascript"></script>
+    <script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $(".make-switch").each(function() {
+                $(this).bootstrapSwitch();
+            });
+
+            $("#SystemSetFormEdit").on('switchChange.bootstrapSwitch', function(event, state) {
+                //这个state就是选择的状态
+                if (state) {
+                    editable();
+                } else {
+                    readonly();
+                }
+            });
+
+
+            readonly();
+
+        });
+
+        function editable() {
+            $("input[type='text']").each(function(i, ipt) {
+                $(ipt).attr("readonly", false);
+            });
+            $("select").each(function(i, ipt) {
+                $(ipt).attr("disabled", false);
+            });
+            $(".make-switch").each(function() {
+                if (this.id != "SystemSetFormEdit") {
+                    $(this).bootstrapSwitch("readonly", false);
+                }
+            });
+        }
+
+        function readonly() {
+            $("#SystemSetForm").find("input").attr("readonly", true);
+
+            $("select").each(function(i, ipt) {
+                $(ipt).attr("disabled", true);
+            });
+
+            $("input[type='text']").each(function(i, ipt) {
+                $(ipt).attr("readonly", true);
+            });
+
+            $(".make-switch").each(function() {
+                if (this.id != "SystemSetFormEdit") {
+                    $(this).bootstrapSwitch("readonly", true);
+                }
+            });
+        }
+    </script>
+</body>
 
 </html>
