@@ -73,11 +73,11 @@ var Login = function() {
 
                 $.ajax(settings).done(function(response) {
                     console.log(response);
-                    if (response.result == 0) {
-                        Comm.setHeader(response.data.userId, response.data.token);
-                        window.location.href = "/templates/adm/index_cn.html"
+                    if (response.Result == 0) {
+                        Comm.setHeader(response.Data.UserId, response.Data.Token);
+                        Comm.alert('login success', 'success', '/templates/adm/index_cn.html');
                     } else {
-                        alert(response.errorMsg);
+                        Comm.alert(response.errorMsg, 'error');
                     }
 
                 });

@@ -395,20 +395,29 @@
 
             $("#systemSetSave").on('click', function(event, state) {
                 var datas = Comm.getFormData($("#systemNormalForm"));
-                alert(JSON.stringify(datas));
+                console.log(JSON.stringify(datas));
             });
 
             $("#setData").on('click', function(event, state) {
-                var $these;
-                var $DOM = $("#systemNormalForm");
-                $these = $DOM.find("[data-key]");
-                for (var i = 0, L = $these.length; i < L; i++) {
-                    var $this = $these.eq(i);
-                    var k = $this.attr("data-key");
-                    // var value = $this.val();
-                    $this.val("0002");
-                    // alert(value);
-                }
+
+                var testData = {
+                    "TradeFeeMode": "0002",
+                    "TradeTaxMode": "0001",
+                    "MgmtFeeMode": "0003",
+                    "BonusModeActive": "N",
+                    "VipModeActive": "Y",
+                    "VipUpdatePeriod": "0002",
+                    "BankProcessTimeS": "123",
+                    "BankProcessTimeE": "123",
+                    "RejectOrNoTAtNoBankTime": "N",
+                    "DepositMinMoney": "10000.00",
+                    "DepositMaxMoney": "999999.00",
+                    "MaxBrrwCnt": 0,
+                    "MaxBrrwMoney": 0,
+                    "OneTimeMinPrincipal": 0,
+                    "RealTimeDelay": "Y"
+                };
+                Comm.setDomData($("#systemNormalForm"), testData);
 
             });
 

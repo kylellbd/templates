@@ -27,6 +27,27 @@ var Comm = function() {
         }
     }
 
+    var innerAlert = function(v_text, v_type, url) {
+        swal({
+                title: "Alert",
+                text: v_text,
+                type: v_type,
+                showConfirmButton: "btn-success",
+                allowOutsideClick: true,
+                showCancelButton: false,
+                confirmButtonText: "确认",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            },
+            function(isConfirm) {
+                swal.close();
+                if (url != null && url != "") {
+                    window.location.href = url;
+                }
+            }
+        );
+    }
+
     var extendInputmask = function() {
         /*
             type:
@@ -61,10 +82,10 @@ var Comm = function() {
         });
     }
 
-    var getFormData = function($FORM) {
+    var getDomData = function($DOM) {
         var params = {};
-        var formItems = $FORM.find("[data-key]");
-        formItems.each(function(index, item) {
+        var domItems = $DOM.find("[data-key]");
+        domItems.each(function(index, item) {
             item = $(item);
             var itemNm = item.attr("data-key");
             var itemType = item.attr("data-type");
@@ -108,8 +129,46 @@ var Comm = function() {
 
     }
 
-    var setFormData = function($FORM, params) {
+    var setDomData = function($DOM, params) {
+        var domItems = $DOM.find("[data-key]");
+        domItems.each(function(index, item) {
+            item = $(item);
+            var itemNm = item.attr("data-key");
 
+            if (!params.hasOwnProperty(itemNm)) {
+                return;
+            }
+
+            var itemValue = params[itemNm];
+            var itemType = item.attr("data-type");
+            switch (itemType) {
+                case "SWITCH":
+                    console.log("switch: " + itemNm + "=" + itemValue);
+                    if (itemValue == "Y") {
+                        item.bootstrapSwitch("state", true);
+                    }
+
+                    if (itemValue == "N") {
+                        item.bootstrapSwitch("state", false);
+                    }
+                    break;
+                case "TEXT":
+                    item.val(itemValue);
+                    break;
+                case "MONEY":
+                    itemValue = Inputmask.format(itemValue, { alias: "currency_normal" });
+                    item.val(itemValue);
+                    break;
+                case "SELECT":
+                    // console.log('setdata_select_value=' + itemValue);
+                    item.val(itemValue);
+                    // console.log('setdata_select_value after=' + item.val());
+                    break;
+                case "INTEGER":
+                    item.val(itemValue);
+                    break;
+            }
+        });
     }
 
     return {
@@ -119,11 +178,16 @@ var Comm = function() {
         getHeader: function() {
             return getHeader();
         },
-        getFormData: function($FORM) {
-            return getFormData($FORM);
+        getPostHeader: function() {
+            var header = getHeader();
+            header['Content-Type'] = 'application/json';
+            return header;
         },
-        setFormData: function($FORM, params) {
-            setFormData($FORM, params);
+        getDomData: function($DOM) {
+            return getDomData($DOM);
+        },
+        setDomData: function($DOM, params) {
+            setDomData($DOM, params);
         },
         init: function() {
             checkUserSession();
@@ -136,6 +200,12 @@ var Comm = function() {
 
             //init inputmask
             initInpumask();
-        }
+        },
+        alert: function(v_text, v_type, url) {
+            /*
+            v_type : success, error, warning, info
+            */
+            innerAlert(v_text, v_type, url);
+        },
     }
 }();
