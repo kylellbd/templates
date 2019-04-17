@@ -117,6 +117,8 @@
                                     <div align="right">
                                         <input type="checkbox" class="make-switch" name="SystemSetFormEdit" id="SystemSetFormEdit" data-on-color="success" data-off-color="danger" data-on-text="Edit" data-off-text="ReadOnly">
                                         <button type="button" class="btn blue" id="systemSetSave">Save</button>
+
+                                        <button type="button" class="btn blue" id="setData">TEMPSETDATA</button>
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
@@ -137,17 +139,17 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">TradeFeeMode</label>
                                                             <div class="col-md-3">
-                                                                <select class="form-control" name="TradeFeeMode">
-                                                                                        <option value="0001">Open</option>
-                                                                                        <option value="0002">Close</option>
-                                                                                        <option value="0003">Both</option>
-                                                                                    </select>
+                                                                <select class="form-control" name="TradeFeeMode" data-key="TradeFeeMode" data-type="SELECT">
+                                                                    <option value="0001">Open</option>
+                                                                    <option value="0002">Close</option>
+                                                                    <option value="0003">Both</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">TradeTaxMode</label>
                                                             <div class="col-md-3">
-                                                                <select class="form-control" name="TradeTaxMode">
+                                                                <select class="form-control" name="TradeTaxMode" data-key="TradeTaxMode" data-type="SELECT">
                                                                             <option value="0001">Open</option>
                                                                             <option value="0002">Close</option>
                                                                             <option value="0003">Both</option>
@@ -157,7 +159,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">MgmtFeeMode</label>
                                                             <div class="col-md-3">
-                                                                <select class="form-control" name="MgmtFeeMode">
+                                                                <select class="form-control" name="MgmtFeeMode" data-key="MgmtFeeMode" data-type="SELECT">
                                                                             <option value="0001">Open</option>
                                                                             <option value="0002">Close</option>
                                                                             <option value="0003">Both</option>
@@ -167,19 +169,19 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">BonusModeActive</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="BonusModeActive" data-on-color="success" data-off-color="danger">
+                                                                <input type="checkbox" class="make-switch" checked name="BonusModeActive" data-on-color="success" data-off-color="danger" data-key="BonusModeActive" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">VipModeActive</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="VipModeActive" data-on-color="success" data-off-color="danger">
+                                                                <input type="checkbox" class="make-switch" checked name="VipModeActive" data-on-color="success" data-off-color="danger" data-key="VipModeActive" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">VipUpdatePeriod</label>
                                                             <div class="col-md-3">
-                                                                <select class="form-control" name="VipUpdatePeriod">
+                                                                <select class="form-control" name="VipUpdatePeriod" data-key="VipUpdatePeriod" data-type="SELECT">
                                                                             <option value="0001">Day</option>
                                                                             <option value="0002">Week</option>
                                                                             <option value="0003">Month</option>
@@ -189,14 +191,14 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">BankProcessTime</label>
                                                             <div class="col-md-3" style="display: inline-flex;">
-                                                                <input class="form-control" style="width: 45%;" id="BankProcessTimeS" type="text" maxlength='5' size="10" />~
-                                                                <input class="form-control" style="width: 45%;" id="BankProcessTimeE" type="text" maxlength='5' size="10" />
+                                                                <input class="form-control" style="width: 45%;" id="BankProcessTimeS" type="text" maxlength='5' size="10" data-key="BankProcessTimeS" data-type="TEXT" />~
+                                                                <input class="form-control" style="width: 45%;" id="BankProcessTimeE" type="text" maxlength='5' size="10" data-key="BankProcessTimeE" data-type="TEXT" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">RejectOrNoTAtNoBankTime</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="RejectOrNoTAtNoBankTime" data-on-color="success" data-off-color="danger">
+                                                                <input type="checkbox" class="make-switch" checked name="RejectOrNoTAtNoBankTime" data-on-color="success" data-off-color="danger" data-key="RejectOrNoTAtNoBankTime" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -208,44 +210,44 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">DepositMinMoney</label>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" id="DepositMinMoney" type="text" />
+                                                                <input class="form-control" id="DepositMinMoney" type="text" data-key="DepositMinMoney" data-type="MONEY" data-inputmask="'alias':'currency_normal'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">DepositMaxMoney</label>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" id="DepositMaxMoney" type="text" />
+                                                                <input class="form-control" id="DepositMaxMoney" type="text" data-key="DepositMaxMoney" data-type="MONEY" data-inputmask="'alias':'currency_normal'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">MaxBrrwCnt</label>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" id="MaxBrrwCnt" type="text" />
+                                                                <input class="form-control" id="MaxBrrwCnt" type="text" data-key="MaxBrrwCnt" data-type="INTEGER" data-inputmask="'alias':'leftInteger'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">MaxBrrwMoney</label>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" id="MaxBrrwMoney" type="text" maxlength='5' />
+                                                                <input class="form-control" id="MaxBrrwMoney" type="text" data-key="MaxBrrwMoney" data-type="MONEY" data-inputmask="'alias':'currency_normal'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">OneTimeMinPrincipal</label>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" id="OneTimeMinPrincipal" type="text" maxlength='5' />
+                                                                <input class="form-control" id="OneTimeMinPrincipal" type="text" data-key="OneTimeMinPrincipal" data-type="MONEY" data-inputmask="'alias':'currency_normal'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">RealTimeDelay</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="RealTimeDelay" data-on-color="success" data-off-color="danger">
+                                                                <input type="checkbox" class="make-switch" checked name="RealTimeDelay" data-on-color="success" data-off-color="danger" data-key="RealTimeDelay" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="tab-pane" id="tab_special">
-                                                <form action="#" class="form-horizontal form-bordered" id="systemNormalForm">
+                                                <form action="#" class="form-horizontal form-bordered" id="systemSpecialForm">
                                                     <div class="form-body">
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">LossCutPcnt(%)</label>
@@ -369,30 +371,14 @@
     <script src="/assets/global/scripts/app.js" type="text/javascript"></script>
     <script src="/templates/adm/admMenu.js" type="text/javascript"></script>
     <script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="/templates/adm/adminComm.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function() {
 
-            $(".make-switch").each(function() {
-                $(this).bootstrapSwitch();
-            });
+            Comm.init();
 
 
-            Inputmask.extendAliases({
-                "currency_normal": {
-                    prefix: "",
-                    groupSeparator: ",",
-                    alias: "numeric",
-                    placeholder: "0",
-                    autoGroup: true,
-                    digits: 2,
-                    digitsOptional: false,
-                    clearMaskOnLostFocus: false,
-                    rightAlign: false
-                }
-            });
-
-
-            $("#DepositMinMoney").inputmask("currency_normal");
+            // $("#DepositMinMoney").inputmask("currency_normal");
 
 
             $("#SystemSetFormEdit").on('switchChange.bootstrapSwitch', function(event, state) {
@@ -408,12 +394,31 @@
             readonly();
 
             $("#systemSetSave").on('click', function(event, state) {
-                alert($("#DepositMinMoney").val());
+                var datas = Comm.getFormData($("#systemNormalForm"));
+                alert(JSON.stringify(datas));
+            });
+
+            $("#setData").on('click', function(event, state) {
+                var $these;
+                var $DOM = $("#systemNormalForm");
+                $these = $DOM.find("[data-key]");
+                for (var i = 0, L = $these.length; i < L; i++) {
+                    var $this = $these.eq(i);
+                    var k = $this.attr("data-key");
+                    // var value = $this.val();
+                    $this.val("0002");
+                    // alert(value);
+                }
+
             });
 
 
 
         });
+
+        function getData($FORM) {
+
+        }
 
         function editable() {
             $("input[type='text']").each(function(i, ipt) {
