@@ -69,6 +69,12 @@ var Comm = function() {
                 alias: "integer",
                 rightAlign: false
             },
+            "leftPercent": {
+                alias: "percentage",
+                placeholder: "",
+                digits: 2,
+                rightAlign: false
+            },
         });
     }
 
@@ -116,8 +122,14 @@ var Comm = function() {
                     break;
                 case "INTEGER":
                     itemValue = item.val();
-                    console.log(itemValue);
                     if (itemValue == null || itemValue == "") {
+                        itemValue = 0;
+                    }
+                    break;
+                case "PERCENT":
+                    itemValue = Inputmask.unmask(item.val(), { alias: "leftPercent" });
+                    console.log("percent=" + itemValue);
+                    if (itemValue == null) {
                         itemValue = 0;
                     }
                     break;
@@ -167,6 +179,110 @@ var Comm = function() {
                 case "INTEGER":
                     item.val(itemValue);
                     break;
+                case "PERCENT":
+                    itemValue = Inputmask.format(itemValue, { alias: "leftPercent" });
+                    item.val(itemValue);
+                    break;
+            }
+        });
+    }
+
+    var getItemsData = function($ITEMS) {
+        var params = {};
+
+        $ITEMS.each(function(index, item) {
+            item = $(item);
+            var itemNm = item.attr("data-key");
+            var itemType = item.attr("data-type");
+            var itemValue;
+            switch (itemType) {
+                case "SWITCH":
+                    itemValue = item.bootstrapSwitch("state");
+                    if (itemValue) {
+                        itemValue = 'Y';
+                    } else {
+                        itemValue = 'N';
+                    }
+                    break;
+                case "TEXT":
+                    itemValue = item.val();
+                    if (itemValue == null) {
+                        itemValue = "";
+                    }
+                    break;
+                case "MONEY":
+                    itemValue = Inputmask.unmask(item.val(), { alias: "currency" });
+                    if (itemValue == null) {
+                        itemValue = 0;
+                    }
+                    break;
+                case "SELECT":
+                    itemValue = item.val();
+                    break;
+                case "INTEGER":
+                    itemValue = item.val();
+                    console.log(itemValue);
+                    if (itemValue == null || itemValue == "") {
+                        itemValue = 0;
+                    }
+                    break;
+                case "PERCENT":
+                    itemValue = Inputmask.unmask(item.val(), { alias: "leftPercent" });
+                    console.log("percent=" + itemValue);
+                    if (itemValue == null) {
+                        itemValue = 0;
+                    }
+                    break;
+            }
+            params[itemNm] = itemValue;
+
+        });
+        return params;
+
+    }
+
+    var setItemsData = function($ITEMS, params) {
+
+        $ITEMS.each(function(index, item) {
+            item = $(item);
+            var itemNm = item.attr("data-key");
+
+            if (!params.hasOwnProperty(itemNm)) {
+                return;
+            }
+
+            var itemValue = params[itemNm];
+            var itemType = item.attr("data-type");
+            switch (itemType) {
+                case "SWITCH":
+                    // console.log("switch: " + itemNm + "=" + itemValue);
+                    if (itemValue == "Y") {
+                        item.bootstrapSwitch("state", true);
+                    }
+
+                    if (itemValue == "N") {
+                        item.bootstrapSwitch("state", false);
+                    }
+                    break;
+                case "TEXT":
+                    item.val(itemValue);
+                    break;
+                case "MONEY":
+                    itemValue = Inputmask.format(itemValue, { alias: "currency_normal" });
+                    item.val(itemValue);
+                    break;
+                case "SELECT":
+                    // console.log('setdata_select_value=' + itemValue);
+                    item.val(itemValue);
+                    // console.log('setdata_select_value after=' + item.val());
+                    break;
+                case "INTEGER":
+                    item.val(itemValue);
+                    break;
+                case "PERCENT":
+                    itemValue = Inputmask.format(itemValue, { alias: "leftPercent" });
+                    item.val(itemValue);
+                    break;
             }
         });
     }
@@ -188,6 +304,12 @@ var Comm = function() {
         },
         setDomData: function($DOM, params) {
             setDomData($DOM, params);
+        },
+        getItemsData: function($ITEMS) {
+            return getItemsData($ITEMS);
+        },
+        setItemsData: function($ITEMS, params) {
+            setItemsData($ITEMS, params);
         },
         init: function() {
             checkUserSession();

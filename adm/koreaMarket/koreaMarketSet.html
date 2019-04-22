@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME LAYOUT STYLES -->
+
+    <link href="/assets/global/plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" type="text/css" />
+    <title>首页</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<!-- END HEAD -->
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+    <div class="page-wrapper">
+        <!-- BEGIN HEADER -->
+        <div class="page-header navbar navbar-fixed-top">
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner ">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="/templates/adm/index.html">
+                        <img src="" alt="logo" class="logo-default" /> </a>
+                    <div class="menu-toggler sidebar-toggler">
+                        <span></span>
+                    </div>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+                        <!-- END USER LOGIN DROPDOWN -->
+                        <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                        <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                        <li>
+                            <p style="color: white">Welcome Loginer</p>
+                        </li>
+                        <li class="dropdown dropdown-quick-sidebar-toggler">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <i class="icon-logout"></i>
+                            </a>
+                        </li>
+                        <!-- END QUICK SIDEBAR TOGGLER -->
+                    </ul>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END HEADER INNER -->
+        </div>
+        <!-- END HEADER -->
+        <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+                <div class="page-sidebar navbar-collapse collapse">
+                    <ul id="ul_menu" class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+
+
+                    </ul>
+                </div>
+            </div>
+            <!-- END SIDEBAR -->
+
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <!-- BEGIN PAGE HEADER-->
+                    <!-- BEGIN PAGE TITLE-->
+                    <h1 class="page-title"> 한국주식세팅관리
+                        <!-- <small>对四种普通VIP信息修改</small> -->
+                    </h1>
+                    <!-- END PAGE TITLE-->
+                    <!-- END PAGE HEADER-->
+                    <!-- BEGIN DASHBOARD STATS 1-->
+                    <div class="clearfix"></div>
+                    <!-- END DASHBOARD STATS 1-->
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="portlet light">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-shopping-cart"></i>주식설정정보</div>
+                                    <div align="right">
+                                        <input type="checkbox" class="make-switch" name="formEdit" id="formEdit" data-on-color="success" data-off-color="danger" data-on-text="Edit" data-off-text="ReadOnly">
+                                        <button type="button" class="btn blue" id="saveBtn">Save</button>
+                                    </div>
+                                    <!-- <div class="tools">
+                                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                                        </div> -->
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="table-scrollable  form-group form-md-line-input">
+                                        <form name="VipForm">
+                                            <table class="table table-striped table-bordered table-advance">
+                                                <thead>
+                                                    <tr>
+                                                        <th> 설정분류 </th>
+                                                        <th> 설정설명 </th>
+                                                        <th> 세팅값 </th>
+                                                        <th> 사용여부 </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="background-color:white">MarketMinBrrwRate</td>
+                                                        <td>
+                                                            코스피 대출 배수
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" placeholder="" v_bind="MARKETMINBRRWRATE" name="1" data-key="1" data-key2="VALUE2" data-type="INTEGER" data-inputmask="'alias':'leftInteger'" aria-required="true" aria-invalid="false" aria-describedby="name-error">
+                                                                <div class="form-control-focus"> </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" name="1" v_bind="MARKETMINBRRWRATE" data-key="1" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td rowspan="4">LimitByCurQuotation</td>
+                                                        <td>
+                                                            한국주식 당일 상한가초과
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" placeholder="" v_bind="LIMITBYCURQUOTATION" name="0001" data-key="0001" data-key2="VALUE2" data-type="PERCENT" data-inputmask="'alias':'leftPercent'" aria-required="true" aria-invalid="false" aria-describedby="name-error">
+                                                                <div class="form-control-focus"> </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="LIMITBYCURQUOTATION" name="0001" data-key="0001" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            한국주식 당일 하한가초과
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" placeholder="" v_bind="LIMITBYCURQUOTATION" name="0002" data-key="0002" data-key2="VALUE2" data-type="PERCENT" data-inputmask="'alias':'leftPercent'" aria-required="true" aria-invalid="false" aria-describedby="name-error">
+                                                                <div class="form-control-focus"> </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="LIMITBYCURQUOTATION" name="0002" data-key="0002" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            한국주식 당일 거래랑 미달
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" placeholder="" v_bind="LIMITBYCURQUOTATION" name="0003" data-key="0003" data-key2="VALUE2" data-type="MONEY" data-inputmask="'alias':'currency_normal'" aria-required="true" aria-invalid="false" aria-describedby="name-error">
+                                                                <div class="form-control-focus"> </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="LIMITBYCURQUOTATION" name="0003" data-key="0003" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            한국주식 당일 거래대금 미달
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" placeholder="" v_bind="LIMITBYCURQUOTATION" name="0004" data-key="0004" data-key2="VALUE2" data-type="MONEY" data-inputmask="'alias':'currency_normal'" aria-required="true" aria-invalid="false" aria-describedby="name-error">
+                                                                <div class="form-control-focus"> </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="LIMITBYCURQUOTATION" name="0004" data-key="0004" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td rowspan="4">LimitByRefQuotation</td>
+                                                        <td>
+                                                            한국주식 전일 상한가초과
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" placeholder="" v_bind="LIMITBYREFQUOTATION" name="0001" data-key="0001" data-key2="VALUE2" data-type="PERCENT" data-inputmask="'alias':'leftPercent'" aria-required="true" aria-invalid="false" aria-describedby="name-error">
+                                                                <div class="form-control-focus"> </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="LIMITBYREFQUOTATION" name="0001" data-key="0001" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            한국주식 전일 하한가초과
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" placeholder="" v_bind="LIMITBYREFQUOTATION" name="0002" data-key="0002" data-key2="VALUE2" data-type="PERCENT" data-inputmask="'alias':'leftPercent'" aria-required="true" aria-invalid="false" aria-describedby="name-error">
+                                                                <div class="form-control-focus"> </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="LIMITBYREFQUOTATION" name="0002" data-key="0002" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            한국주식 전일 거래랑 미달
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" placeholder="" v_bind="LIMITBYREFQUOTATION" name="0003" data-key="0003" data-key2="VALUE2" data-type="MONEY" data-inputmask="'alias':'currency_normal'" aria-required="true" aria-invalid="false" aria-describedby="name-error">
+                                                                <div class="form-control-focus"> </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="LIMITBYREFQUOTATION" name="0003" data-key="0003" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            한국주식 전일 거래대금 미달
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="text" class="form-control" placeholder="" v_bind="LIMITBYREFQUOTATION" name="0004" data-key="0004" data-key2="VALUE2" data-type="MONEY" data-inputmask="'alias':'currency_normal'" aria-required="true" aria-invalid="false" aria-describedby="name-error">
+                                                                <div class="form-control-focus"> </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="LIMITBYREFQUOTATION" name="0004" data-key="0004" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td rowspan="8">InvestLimitActive</td>
+                                                        <td>
+                                                            거래정지 조건 사용여부
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0001" data-key="0001" data-key2="VALUE2" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0001" data-key="0001" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            관리종목 조건 사용여부
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0002" data-key="0002" data-key2="VALUE2" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0002" data-key="0002" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            우선주 조건 사용여부
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0003" data-key="0003" data-key2="VALUE2" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0003" data-key="0003" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            정리매매 조건 사용여부
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0004" data-key="0004" data-key2="VALUE2" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0004" data-key="0004" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            투자경고 조건 사용여부
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0005" data-key="0005" data-key2="VALUE2" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0005" data-key="0005" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            투자주의 조건 사용여부
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0006" data-key="0006" data-key2="VALUE2" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0006" data-key="0006" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            투자위험 조건 사용여부
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0007" data-key="0007" data-key2="VALUE2" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0007" data-key="0007" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            투자주의환기 조건 사용여부
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0008" data-key="0008" data-key2="VALUE2" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="col-md-12">
+                                                                <input type="checkbox" class="make-switch" v_bind="INVESTLIMITACTIVE" name="0008" data-key="0008" data-key2="ACTIVE" data-type="SWITCH" data-on-color="success" data-off-color="danger">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        <div class="page-footer">
+            <div class="page-footer-inner"> 2019 &copy; By Kyle.Moon
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+    </div>
+
+    <!--[if lt IE 9]>
+<script src="../assets/global/plugins/respond.min.js"></script>
+<script src="../assets/global/plugins/excanvas.min.js"></script> 
+<script src="../assets/global/plugins/ie8.fix.min.js"></script> 
+<![endif]-->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script src="/assets/global/scripts/app.js" type="text/javascript"></script>
+    <script src="/templates/adm/admMenu.js" type="text/javascript"></script>
+    <script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="/templates/adm/adminComm.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            Comm.init();
+            // getBizData();
+
+
+            $("#formEdit").on('switchChange.bootstrapSwitch', function(event, state) {
+                //这个state就是选择的状态
+                if (state) {
+                    editable();
+                } else {
+                    readonly();
+                }
+            });
+
+            $("#saveBtn").on('click', function() {
+                saveData();
+            });
+
+
+            readonly();
+
+
+
+        });
+
+        function saveData() {
+            var vip0 = Comm.getItemsData($("[v_bind='vip0']"));
+            var vip1 = Comm.getItemsData($("[v_bind='vip1']"));
+            var vip2 = Comm.getItemsData($("[v_bind='vip2']"));
+            var vip3 = Comm.getItemsData($("[v_bind='vip3']"));
+            vip0.VIPID = 'vip0';
+            vip1.VIPID = 'vip1';
+            vip2.VIPID = 'vip2';
+            vip3.VIPID = 'vip3';
+
+            var vips = [];
+            vips.push(vip0);
+            vips.push(vip1);
+            vips.push(vip2);
+            vips.push(vip3);
+
+            console.log(JSON.stringify(vips));
+            console.log(Comm.getHeader());
+            var settings = {
+                "async": false,
+                "crossDomain": true,
+                "url": "http://62.234.152.219:90/api/Vip/SaveAllVipInfo",
+                "method": "POST",
+                "headers": Comm.getPostHeader(),
+                "data": JSON.stringify(vips)
+            }
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+                if (response.Result == 0) {
+                    Comm.alert('데이터 변경 성공하였습니다.', 'success');
+                } else {
+                    Comm.alert(response.errorMsg, 'error');
+                }
+                getBizData();
+                readonly();
+                $("#VipFormEdit").bootstrapSwitch("state", false);
+            });
+        }
+
+
+        function getSelectData() {
+            var settings = {
+                "async": false,
+                "crossDomain": true,
+                "url": "http://62.234.152.219:90/api/Vip/GetAllVipType",
+                "method": "GET",
+                "headers": Comm.getHeader()
+            }
+
+            $.ajax(settings).done(function(response) {
+                if (response.Result == 0) {
+                    var vipTypes = response.Data.vipTypes;
+                    initSelect(vipTypes);
+                }
+            });
+        }
+
+        function getBizData() {
+            var settings = {
+                "async": false,
+                "crossDomain": true,
+                "url": "http://62.234.152.219:90/api/Vip/GetAllVipInfo",
+                "method": "GET",
+                "headers": Comm.getHeader()
+            }
+
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+                if (response.Result == 0) {
+                    var vips = response.Data;
+                    setTableData(vips);
+                }
+            });
+        }
+
+        function setTableData(vips) {
+            vips.forEach(function(item) {
+                var v_id = item.VIPID;
+                var items = $("[v_bind='" + v_id + "']");
+                Comm.setItemsData(items, item);
+            });
+        }
+
+        var getItemsData = function($ITEMS) {
+            var params = {};
+
+            $ITEMS.each(function(index, item) {
+                item = $(item);
+                var itemNm = item.attr("data-key");
+                var itemType = item.attr("data-type");
+                var itemValue;
+                switch (itemType) {
+                    case "SWITCH":
+                        itemValue = item.bootstrapSwitch("state");
+                        if (itemValue) {
+                            itemValue = 'Y';
+                        } else {
+                            itemValue = 'N';
+                        }
+                        break;
+                    case "TEXT":
+                        itemValue = item.val();
+                        if (itemValue == null) {
+                            itemValue = "";
+                        }
+                        break;
+                    case "MONEY":
+                        itemValue = Inputmask.unmask(item.val(), {
+                            alias: "currency"
+                        });
+                        if (itemValue == null) {
+                            itemValue = 0;
+                        }
+                        break;
+                    case "SELECT":
+                        itemValue = item.val();
+                        break;
+                    case "INTEGER":
+                        itemValue = item.val();
+                        console.log(itemValue);
+                        if (itemValue == null || itemValue == "") {
+                            itemValue = 0;
+                        }
+                        break;
+                    case "PERCENT":
+                        itemValue = Inputmask.unmask(item.val(), {
+                            alias: "leftPercent"
+                        });
+                        console.log("percent=" + itemValue);
+                        if (itemValue == null) {
+                            itemValue = 0;
+                        }
+                        break;
+                }
+                params[itemNm] = itemValue;
+
+            });
+            return params;
+
+        }
+
+
+
+
+        function editable() {
+            $("input[type='text']").each(function(i, ipt) {
+                $(ipt).attr("readonly", false);
+            });
+            $(".make-switch").each(function() {
+                if (this.id != "formEdit") {
+                    $(this).bootstrapSwitch("readonly", false);
+                }
+            });
+            $("select").each(function(i, ipt) {
+                $(ipt).attr("disabled", false);
+            });
+        }
+
+        function readonly() {
+            $("#VipForm").find("input").attr("readonly", true);
+
+
+            $("input[type='text']").each(function(i, ipt) {
+                $(ipt).attr("readonly", true);
+            });
+            $("select").each(function(i, ipt) {
+                $(ipt).attr("disabled", true);
+            });
+
+            $(".make-switch").each(function() {
+                if (this.id != "formEdit") {
+                    $(this).bootstrapSwitch("readonly", true);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

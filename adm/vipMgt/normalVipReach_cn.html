@@ -14,7 +14,7 @@
     <link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -165,7 +165,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" class="form-control" placeholder="" name="MEMO" aria-required="true" aria-invalid="false" aria-describedby="name-error" data-key="EFFCDAYS" data-type="TEXT">
+                                                                <input type="text" class="form-control" placeholder="" name="MEMO" aria-required="true" aria-invalid="false" aria-describedby="name-error" data-key="MEMO" data-type="TEXT">
                                                                 <div class="form-control-focus"> </div>
                                                             </div>
                                                         </td>
@@ -204,7 +204,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" class="form-control" placeholder="" name="MEMO" aria-required="true" aria-invalid="false" aria-describedby="name-error" data-key="EFFCDAYS" data-type="TEXT">
+                                                                <input type="text" class="form-control" placeholder="" name="MEMO" aria-required="true" aria-invalid="false" aria-describedby="name-error" data-key="MEMO" data-type="TEXT">
                                                                 <div class="form-control-focus"> </div>
                                                             </div>
                                                         </td>
@@ -243,7 +243,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" class="form-control" placeholder="" name="MEMO" aria-required="true" aria-invalid="false" aria-describedby="name-error" data-key="EFFCDAYS" data-type="TEXT">
+                                                                <input type="text" class="form-control" placeholder="" name="MEMO" aria-required="true" aria-invalid="false" aria-describedby="name-error" data-key="MEMO" data-type="TEXT">
                                                                 <div class="form-control-focus"> </div>
                                                             </div>
                                                         </td>
@@ -282,7 +282,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" class="form-control" placeholder="" name="MEMO" aria-required="true" aria-invalid="false" aria-describedby="name-error" data-key="EFFCDAYS" data-type="TEXT">
+                                                                <input type="text" class="form-control" placeholder="" name="MEMO" aria-required="true" aria-invalid="false" aria-describedby="name-error" data-key="MEMO" data-type="TEXT">
                                                                 <div class="form-control-focus"> </div>
                                                             </div>
                                                         </td>
@@ -321,7 +321,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="col-md-12">
-                                                                <input type="text" class="form-control" placeholder="" name="MEMO" aria-required="true" aria-invalid="false" aria-describedby="name-error" data-key="EFFCDAYS" data-type="TEXT">
+                                                                <input type="text" class="form-control" placeholder="" name="MEMO" aria-required="true" aria-invalid="false" aria-describedby="name-error" data-key="MEMO" data-type="TEXT">
                                                                 <div class="form-control-focus"> </div>
                                                             </div>
                                                         </td>
@@ -374,6 +374,7 @@
     <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js" type="text/javascript"></script>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL SCRIPTS -->
     <script src="/assets/global/scripts/app.js" type="text/javascript"></script>
@@ -429,7 +430,7 @@
             console.log(JSON.stringify(vipTypes));
             console.log(Comm.getHeader());
             var settings = {
-                "async": true,
+                "async": false,
                 "crossDomain": true,
                 "url": "http://62.234.152.219:90/api/Vip/SaveAllVipType",
                 "method": "POST",
@@ -438,7 +439,14 @@
             }
             $.ajax(settings).done(function(response) {
                 console.log(response);
+                if (response.Result == 0) {
+                    Comm.alert('데이터 변경 성공하였습니다.', 'success');
+                } else {
+                    Comm.alert(response.errorMsg, 'error');
+                }
                 getBizData();
+                readonly();
+                $("#VipFormEdit").bootstrapSwitch("state", false);
             });
         }
 
