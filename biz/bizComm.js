@@ -2,7 +2,7 @@ var Comm = function() {
 
     var setHeader = function(userId, token) {
         var headerItem = {
-            "type": "admin",
+            "type": "client",
             "user": userId,
             "token": token,
             "pt": "pc"
