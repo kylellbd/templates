@@ -286,6 +286,34 @@ var Comm = function() {
             }
         });
     }
+    var cleanDomData = function($DOM) {
+        var domItems = $DOM.find("[data-key]");
+        domItems.each(function(index, item) {
+            item = $(item);
+            var itemType = item.attr("data-type");
+            switch (itemType) {
+                case "SWITCH":
+                    item.bootstrapSwitch("state", true);
+                    break;
+                case "TEXT":
+                    item.val("");
+                    break;
+                case "MONEY":
+                    item.val(0);
+                    break;
+                case "SELECT":
+                    item.find("option:selected").attr("selected", false);
+                    item.find("option").first().attr("selected", true);
+                    break;
+                case "INTEGER":
+                    item.val(0);
+                    break;
+                case "PERCENT":
+                    item.val(0);
+                    break;
+            }
+        });
+    }
 
     return {
         setHeader: function(userId, token) {
@@ -310,6 +338,9 @@ var Comm = function() {
         },
         setItemsData: function($ITEMS, params) {
             setItemsData($ITEMS, params);
+        },
+        cleanDomData: function($DOM) {
+            cleanDomData($DOM);
         },
         init: function() {
             checkUserSession();

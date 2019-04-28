@@ -26,7 +26,7 @@ var User = function() {
             minimumCountColumns: 2, // 最少允许的列数
             clickToSelect: false, // 是否启用点击选中行
             // height : 300, // 行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-            uniqueId: "no", // 每一行的唯一标识，一般为主键列
+            uniqueId: "USERID", // 每一行的唯一标识，一般为主键列
             showToggle: false, // 是否显示详细视图和列表视图的切换按钮
             cardView: false, // 是否显示详细视图
             detailView: true, // 是否显示父子表
@@ -60,12 +60,12 @@ var User = function() {
                     title: 'INITPWD',
                     align: "center"
                 }, {
-                    field: 'CREATETIME',
-                    title: 'CREATETIME',
-                    align: "center"
-                }, {
                     field: 'CURPWD',
                     title: 'CURPWD',
+                    align: "center"
+                }, {
+                    field: 'CREATETIME',
+                    title: 'CREATETIME',
                     align: "center"
                 }, {
                     field: 'UPDATETIME',
@@ -77,10 +77,15 @@ var User = function() {
                     align: "center"
                 }, {
                     title: 'Action',
+                    align: "center",
                     formatter: function(value, row, index) {
-                        return '<a class="green-color green-haze btn-outline" href="#"  onclick="User.activeUser(\'' +
-                            row.USERID +
-                            '\')">ACTIVE</a> ';
+                        var actionHtml = '<a class="green-color green-haze btn-outline" href="#"  onclick="User.activeUser(\'';
+                        actionHtml += row.USERID;
+                        actionHtml += '\')">ACTIVE</a> &nbsp;&nbsp;&nbsp;';
+                        actionHtml += '<a class="green-color green-haze btn-outline" href="#"  onclick="User.editUserModal(\'';
+                        actionHtml += row.USERID;
+                        actionHtml += '\')">EDIT</a> ';
+                        return actionHtml;
                     }
                 }
 
@@ -96,7 +101,7 @@ var User = function() {
                 html += "<th style='text-align:center;'>원 핸드폰번호</th>";
                 html += "<th style='text-align:center;'>현 핸드폰번호</th>";
                 html += "<th style='text-align:center;'>메일주소</th>";
-                html += "<th style='text-align:center;'>요청코드</th>";
+                html += "<th style='text-align:center;'>추천코드</th>";
                 html += "</tr>";
                 html += "</thead>";
                 html += "<tbody>";
@@ -150,6 +155,14 @@ var User = function() {
         $("#table_user").bootstrapTable('refresh');
     }
 
+    var cleanModal = function() {
+        Comm.cleanDomData($("#modal_user"));
+    }
+
+    var showModal = function() {
+        $("#modal_user").modal("show");
+    }
+
     return {
         init: function() {
             make_table_users();
@@ -164,6 +177,16 @@ var User = function() {
         },
         search: function() {
             refreshTable();
+        },
+        editUserModal: function(USERID) {
+            cleanModal();
+            var rows = $('#table_user').bootstrapTable('getRowByUniqueId', USERID); //行的数据
+            console.log(rows);
+            var userInfo = rows.CUSTINFO;
+            userInfo.USERTYPE = rows.USERTYPE;
+            userInfo.CURPWD = rows.CURPWD;
+            Comm.setDomData($("#modal_user"), userInfo);
+            showModal();
         }
 
     }
