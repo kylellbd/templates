@@ -147,6 +147,8 @@ var Login = function() {
 
     var handleRegister = function() {
 
+        var checkCodeCnt = 0;
+
         function format(state) {
             if (!state.id) { return state.text; }
             var $state = $(
@@ -200,6 +202,9 @@ var Login = function() {
                 rPwd: {
                     equalTo: "#register_password"
                 },
+                tnc: {
+                    required: true
+                }
             },
 
             messages: { // custom messages for radio buttons and checkboxes
@@ -221,6 +226,9 @@ var Login = function() {
                 },
                 rPwd: {
                     equalTo: "동일한 비밀번호를 입력하세요."
+                },
+                tnc: {
+                    required: '개인정보보호정책과 이용약관에 동의하세요.'
                 }
             },
 
@@ -249,6 +257,16 @@ var Login = function() {
             },
 
             submitHandler: function(form) {
+                console.log("test login ");
+                console.log("checkCodeCnt=" + checkCodeCnt);
+                //check Code once
+                if (checkCodeCnt == 0) {
+                    Comm.alert('추천코드를 확인해주세요.', 'info');
+                    checkCodeCnt += 1;
+                    return false;
+                }
+
+
                 var formDatas = {};
                 formDatas.Name = form.Name.value;
                 formDatas.UserId = form.UserId.value;
@@ -291,11 +309,14 @@ var Login = function() {
         jQuery('#register-btn').click(function() {
             jQuery('.login-form').hide();
             jQuery('.register-form').show();
+            checkCodeCnt = 0;
+
         });
 
         jQuery('#register-back-btn').click(function() {
             jQuery('.login-form').show();
             jQuery('.register-form').hide();
+            checkCodeCnt = 0;
         });
     }
 
