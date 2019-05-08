@@ -222,7 +222,7 @@
                                                         <!-- END FORM-->
                                                     </div>
                                                 </div>
-                                                <div class="portlet light form-fit bordered center">
+                                                <!-- <div class="portlet light form-fit bordered center">
                                                     <div class="portlet-title">
                                                         <div class="caption">
                                                             <i class="icon-social-dribbble font-green"></i>
@@ -234,7 +234,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="portlet-body form">
-                                                        <!-- BEGIN FORM-->
+                                                        
                                                         <form action="#" class="form-horizontal form-bordered">
                                                             <div class="form-body">
                                                                 <div class="form-group">
@@ -265,9 +265,9 @@
 
                                                             </div>
                                                         </form>
-                                                        <!-- END FORM-->
+                                                        
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <div id="modal_pwd" class="modal fade" tabindex="-1" data-width="700" data-backdrop="static" data-keyboard="false">
@@ -275,28 +275,28 @@
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                                                 <h3 class="modal-title">修改密码</h3>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body" style="padding-top: 0px;">
                                                 <div class="portlet box ">
                                                     <div class="portlet-body form">
                                                         <!-- BEGIN FORM-->
                                                         <form id="formChangePwd" action="#" class="form-horizontal form-bordered form-row-stripped">
                                                             <div class="form-body">
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">原密码</label>
+                                                                    <label class="control-label col-md-3">기존 비번</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="password" class="form-control" />
+                                                                        <input type="password" class="form-control" name="oldPwd" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">新密码</label>
+                                                                    <label class="control-label col-md-3">새 비번</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="password" class="form-control" />
+                                                                        <input type="password" class="form-control" id="newPwd" name="newPwd" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="col-md-3 control-label">确认密码</label>
+                                                                    <label class="col-md-3 control-label">새 비번 확인</label>
                                                                     <div class="col-md-9">
-                                                                        <input type="password" class="form-control" />
+                                                                        <input type="password" class="form-control" name="newPwdr" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -308,7 +308,7 @@
 
                                             <div class="modal-footer">
                                                 <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
-                                                <button type="button" data-dismiss="modal" class="btn green">修改</button>
+                                                <button type="button" id="saveBtn" class="btn green">修改</button>
                                             </div>
                                         </div>
                                     </div>
@@ -412,6 +412,7 @@
 <script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
 <script src="/assets/global/scripts/app.js" type="text/javascript"></script>
@@ -426,14 +427,94 @@
 <script src="/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/bootstrap-table/bootstrap-table.js" type="text/javascript"></script>
 
-<script src="myAssets.js" type="text/javascript"></script>
 
 
 <script type="text/javascript">
     $(function() {
 
-
+        initChangePwdForm();
+        $("#saveBtn").on('click', function() {
+            $('#formChangePwd').submit();
+        });
     });
+
+    function initChangePwdForm() {
+
+
+        $('#formChangePwd').validate({
+            errorElement: 'span', //default input error message container
+            errorClass: 'help-block', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            ignore: "",
+            rules: {
+                oldPwd: {
+                    required: true
+                },
+                newPwd: {
+                    required: true
+                },
+                newPwdr: {
+                    equalTo: "#newPwd"
+                }
+            },
+
+            messages: { // custom messages for radio buttons and checkboxes
+                oldPwd: {
+                    required: "기존 비번을 입력하세요."
+                },
+                newPwd: {
+                    required: "변경하시려는 비번을 입력하세요.",
+                },
+                newPwdr: {
+                    equalTo: "동일한 비번을 입력하세요."
+                }
+            },
+
+            invalidHandler: function(event, validator) { //display error alert on form submit   
+
+            },
+
+            highlight: function(element) { // hightlight error inputs
+                $(element)
+                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+            },
+
+            success: function(label) {
+                label.closest('.form-group').removeClass('has-error');
+                label.remove();
+            },
+
+            errorPlacement: function(error, element) {
+                if (element.closest('.input-icon').size() === 1) {
+                    error.insertAfter(element.closest('.input-icon'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+
+            submitHandler: function(form) {
+
+                var settings = {
+                    "async": false,
+                    "crossDomain": true,
+                    "url": "http://62.234.152.219:90/api/User/UpUserPwd?userId=" + form.UserId.value + "&oldPwd=" + form.oldPwd.value + "&newPwd=" + form.newPwd.value,
+                    "method": "GET",
+                    "headers": Comm.getHeader(),
+                }
+
+                $.ajax(settings).done(function(response) {
+                    console.log(response);
+                    if (response.Result == 0) {
+                        Comm.alert('비번 변경 되었습니다.', 'success');
+                    } else {
+                        Comm.alert(response.ErrorMsg, 'error');
+                    }
+                });
+
+                return false;
+            }
+        });
+    }
 </script>
 <style>
     .th-inner {

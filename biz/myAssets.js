@@ -343,13 +343,23 @@ var Assets = function() {
 
 
 
-    var make_table_recharge = function() {
-        var table_recharge = $("#tab_recharge").find('#table_recharge').bootstrapTable("destroy").bootstrapTable({
+    var make_table_deposit = function() {
+        var header = Comm.getPostHeader();
+        header.crossDomain = true;
+
+        var table_deposit = $("#tab_deposit").find('#table_deposit').bootstrapTable("destroy").bootstrapTable({
+            url: 'http://62.234.152.219:90/api/DepositWithDraw/QueryDepositOrWithDraw', // 请求后台的URL（*）
+            method: 'post', // 请求方式（*）
+            dataType: 'json',
             striped: true, // 是否显示行间隔色
             cache: false, // 是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
             pagination: false, // 是否显示分页（*）
             sortable: false, // 是否启用排序
             sortOrder: "asc", // 排序方式
+            sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+            pageNumber: 1, // 初始化加载第一页，默认第一页
+            pageSize: 10, // 每页的记录行数（*）
+            pageList: [10, 25, 50, 100], // 可供选择的每页的行数（*）
             search: false, // 是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
             contentType: "application/json",
             strictSearch: false,
@@ -357,48 +367,60 @@ var Assets = function() {
             showRefresh: false, // 是否显示刷新按钮
             minimumCountColumns: 2, // 最少允许的列数
             clickToSelect: false, // 是否启用点击选中行
-            uniqueId: "no", // 每一行的唯一标识，一般为主键列
+            uniqueId: "ACCESSSEQ", // 每一行的唯一标识，一般为主键列
             showToggle: false, // 是否显示详细视图和列表视图的切换按钮
             cardView: false, // 是否显示详细视图
             detailView: false, // 是否显示父子表
+            ajaxOptions: {
+                headers: header
+            },
+            queryParams: function(params) {
+                return {
+                    userId: header.user,
+                    balanceType: $("#tab_deposit").find('.balanceType').val(),
+                    sts: $("#tab_deposit").find('.sts').val(),
+                    startDate: $("#tab_deposit").find('.from').val(),
+                    endDate: $("#tab_deposit").find('.to').val()
+                }
+            },
             columns: [{
-                field: 'RequestTime',
+                field: 'REQUESTTIME',
                 title: '신청일시',
                 align: "center"
             }, {
-                field: 'ExecuteTime',
+                field: 'EXECUTETIME',
                 title: '승인일시',
                 align: "center"
             }, {
-                field: 'BalanceType',
+                field: 'BALANCETYPE',
                 title: '입금/출금구분',
                 align: "center"
             }, {
-                field: 'RequestMoney',
+                field: 'REQUESTMONEY',
                 title: '신청금액',
                 align: "center"
             }, {
-                field: 'ExecuteMoney',
+                field: 'EXECUTEMONEY',
                 title: '처리금액',
                 align: "center"
             }, {
-                field: 'MgmtUserId',
+                field: 'MGMTUSERID',
                 title: '처리자',
                 align: "center"
             }, {
-                field: 'BankName',
+                field: 'BANKNAME',
                 title: '은행',
                 align: "center"
             }, {
-                field: 'AccountNo',
+                field: 'ACCOUNTNO',
                 title: '은행계좌',
                 align: "center"
             }, {
-                field: 'AccountName',
+                field: 'ACCOUNTNAME',
                 title: '예금주',
                 align: "center"
             }, {
-                field: 'CustMemo',
+                field: 'MGMTMEMO',
                 title: '비고',
                 align: "center"
             }],
@@ -407,270 +429,21 @@ var Assets = function() {
             },
             onLoadError: function() { // 加载失败时执行
                 console.log("加载数据失败");
-            }
-        });
-        return table_recharge;
-    };
-
-    var table_recharge_Sample = [{
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "BalanceType": "입금",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }, {
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "BalanceType": "출금",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }, {
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "BalanceType": "입금",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }, {
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "BalanceType": "입금",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }, {
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "BalanceType": "출금",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }, {
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "BalanceType": "입금",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }];
-    /*
-    var make_table_encashment = function() {
-        var table_encashment = $("#tab_encashment").find('#table_encashment').bootstrapTable("destroy").bootstrapTable({
-            striped: true, // 是否显示行间隔色
-            cache: false, // 是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-            pagination: false, // 是否显示分页（*）
-            sortable: false, // 是否启用排序
-            sortOrder: "asc", // 排序方式
-            search: false, // 是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            contentType: "application/json",
-            strictSearch: false,
-            showColumns: false, // 是否显示所有的列
-            showRefresh: false, // 是否显示刷新按钮
-            minimumCountColumns: 2, // 最少允许的列数
-            clickToSelect: false, // 是否启用点击选中行
-            uniqueId: "no", // 每一行的唯一标识，一般为主键列
-            showToggle: false, // 是否显示详细视图和列表视图的切换按钮
-            cardView: false, // 是否显示详细视图
-            detailView: false, // 是否显示父子表
-            columns: [{
-                field: 'RequestTime',
-                title: '신청일시',
-                align: "center"
-            }, {
-                field: 'ExecuteTime',
-                title: '승인일시',
-                align: "center"
-            }, {
-                field: 'RequestMoney',
-                title: '신청금액',
-                align: "center"
-            }, {
-                field: 'ExecuteMoney',
-                title: '처리금액',
-                align: "center"
-            }, {
-                field: 'MgmtUserId',
-                title: '처리자',
-                align: "center"
-            }, {
-                field: 'BankName',
-                title: '은행',
-                align: "center"
-            }, {
-                field: 'AccountNo',
-                title: '은행계좌',
-                align: "center"
-            }, {
-                field: 'AccountName',
-                title: '예금주',
-                align: "center"
-            }, {
-                field: 'CustMemo',
-                title: '비고',
-                align: "center"
-            }],
-            onLoadSuccess: function() { // 加载成功时执行
-                console.log("加载成功");
             },
-            onLoadError: function() { // 加载失败时执行
-                console.log("加载数据失败");
-            }
+            responseHandler: function(res) {
+                var returnDatas = res.data;
+                returnDatas.each(function(index, item) {
+                    item.BANKNAME = item.BANKTO.BANKNAME;
+                    item.ACCOUNTNO = item.BANKTO.ACCOUNTNO;
+                    item.ACCOUNTNANE = item.BANKTO.ACCOUNTNANE;
+                });
+
+                return returnDatas;
+            },
         });
-        return table_encashment;
+        return table_deposit;
     };
 
-    var table_encashment_Sample = [{
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }, {
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }, {
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }, {
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }, {
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }, {
-        "RequestTime": "2019.03.15 18:02",
-        "ExecuteTime": "2019.03.15 18:08",
-        "RequestMoney": "1207,230",
-        "ExecuteMoney": "1207,230",
-        "MgmtUserId": "어드민",
-        "BankName": "하나은행",
-        "AccountNo": "12391239812083",
-        "AccountName": "장동건",
-        "CustMemo": ""
-    }];
-
-    */
-
-    // var make_table_loan_1 = function() {
-    //     var table_load_1 = $("#tab_loan").find('#table_loan_1').bootstrapTable("destroy").bootstrapTable({
-    //         striped: true, // 是否显示行间隔色
-    //         cache: false, // 是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-    //         pagination: false, // 是否显示分页（*）
-    //         sortable: false, // 是否启用排序
-    //         sortOrder: "asc", // 排序方式
-    //         search: false, // 是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-    //         contentType: "application/json",
-    //         strictSearch: false,
-    //         showColumns: false, // 是否显示所有的列
-    //         showRefresh: false, // 是否显示刷新按钮
-    //         minimumCountColumns: 2, // 最少允许的列数
-    //         clickToSelect: false, // 是否启用点击选中行
-    //         uniqueId: "no", // 每一行的唯一标识，一般为主键列
-    //         showToggle: false, // 是否显示详细视图和列表视图的切换按钮
-    //         cardView: false, // 是否显示详细视图
-    //         detailView: false, // 是否显示父子表
-    //         columns: [{
-    //             field: 'AddupBrrwMoney',
-    //             title: '신청금액',
-    //             align: "center"
-    //         }, {
-    //             field: 'BrrwRate',
-    //             title: '대출뱃수',
-    //             align: "center"
-    //         }, {
-    //             field: 'UsingGuarantee',
-    //             title: '해당담보금',
-    //             align: "center"
-    //         }],
-    //         data: table_loan_1_Sample,
-    //         onLoadSuccess: function() { // 加载成功时执行
-    //             console.log("加载成功");
-    //         },
-    //         onLoadError: function() { // 加载失败时执行
-    //             console.log("加载数据失败");
-    //         }
-    //     });
-    // };
-
-    // var table_loan_1_Sample = [{
-    //     "AddupBrrwMoney": "2,000,000",
-    //     "BrrwRate": "10",
-    //     "UsingGuarantee": "200,000"
-    // }, {
-    //     "AddupBrrwMoney": "3,000,000",
-    //     "BrrwRate": "10",
-    //     "UsingGuarantee": "300,000"
-    // }, {
-    //     "AddupBrrwMoney": "1,000,000",
-    //     "BrrwRate": "10",
-    //     "UsingGuarantee": "100,000"
-    // }, {
-    //     "AddupBrrwMoney": "20,000,000",
-    //     "BrrwRate": "10",
-    //     "UsingGuarantee": "2,000,000"
-    // }, {
-    //     "AddupBrrwMoney": "8,000,000",
-    //     "BrrwRate": "10",
-    //     "UsingGuarantee": "800,000"
-    // }, ];
 
 
     var make_table_loan_2 = function() {
@@ -767,37 +540,78 @@ var Assets = function() {
         "BrrwId": "123123"
     }, ];
 
+    function getMyBankInfo() {
+        var header = Comm.getHeader();
+        header.userId = header.user;
+        var settings = {
+            "async": false,
+            "crossDomain": true,
+            "url": "http://62.234.152.219:90/api/User/GetUserBankList",
+            "method": "GET",
+            "headers": header
+        }
+
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            if (response.Result == 0) {
+                var banks = response.Data;
+                if (banks.length > 0) {
+                    setMyBankData(banks);
+                }
+
+            }
+        });
+    }
+
+    function setMyBankData(banks) {
+        Comm.setItemsData($('#bankForm'), banks[0]);
+    }
+
     return {
         init: function() {
             make_table_assets_1();
             make_table_assets_2();
-            make_table_recharge();
+            make_table_deposit();
             // make_table_encashment();
             // make_table_loan_1();
             make_table_loan_2();
         },
         searchRechargeByDate: function() {
-            make_table_recharge();
-            $("#tab_recharge").find('#table_recharge').bootstrapTable("append", table_recharge_Sample);
+            $("#tab_deposit").find('#table_deposit').bootstrapTable("refresh");
         },
-        searchEncashmentByDate: function() {
-            make_table_encashment();
-            $("#tab_encashment").find('#table_encashment').bootstrapTable("append", table_encashment_Sample);
+        // searchEncashmentByDate: function() {
+        //     make_table_encashment();
+        //     $("#tab_encashment").find('#table_encashment').bootstrapTable("append", table_encashment_Sample);
+        // },
+        resetRechageCondition: function() {
+
+            $("#tab_deposit").find('.from').val("");
+            $("#tab_deposit").find('.to').val("");
+            $("#tab_deposit").find('.balanceType').val("");
+            $("#tab_deposit").find('.sts').val("");
         }
     };
 }();
 
 jQuery(document).ready(function() {
     Assets.init();
-    $(".RechargeSearch").on("click", function() {
+    $(".DepositSearch").on("click", function() {
 
         Assets.searchRechargeByDate();
 
     });
     $(".EncashmentSearch").on("click", function() {
 
-        Assets.searchEncashmentByDate();
+        // Assets.searchEncashmentByDate();
 
     });
+
+    $(".DepositReset").on("click", function() {
+
+        Assets.resetRechageCondition();
+
+    });
+
+
 
 });
