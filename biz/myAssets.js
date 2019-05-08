@@ -346,6 +346,9 @@ var Assets = function() {
     var make_table_deposit = function() {
         var header = Comm.getPostHeader();
         header.crossDomain = true;
+        console.log("header=");
+        console.log(header);
+
 
         var table_deposit = $("#tab_deposit").find('#table_deposit').bootstrapTable("destroy").bootstrapTable({
             url: 'http://62.234.152.219:90/api/DepositWithDraw/QueryDepositOrWithDraw', // 请求后台的URL（*）
@@ -361,7 +364,8 @@ var Assets = function() {
             pageSize: 10, // 每页的记录行数（*）
             pageList: [10, 25, 50, 100], // 可供选择的每页的行数（*）
             search: false, // 是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            contentType: "application/json",
+            // contentType: "application/json",
+            contentType: "application/x-www-form-urlencoded",
             strictSearch: false,
             showColumns: false, // 是否显示所有的列
             showRefresh: false, // 是否显示刷新按钮
@@ -375,13 +379,15 @@ var Assets = function() {
                 headers: header
             },
             queryParams: function(params) {
-                return {
+                var param = {
                     userId: header.user,
                     balanceType: $("#tab_deposit").find('.balanceType').val(),
                     sts: $("#tab_deposit").find('.sts').val(),
                     startDate: $("#tab_deposit").find('.from').val(),
                     endDate: $("#tab_deposit").find('.to').val()
                 }
+                console.log(param);
+                return param;
             },
             columns: [{
                 field: 'REQUESTTIME',
@@ -396,13 +402,32 @@ var Assets = function() {
                 title: '입금/출금구분',
                 align: "center"
             }, {
+                field: 'STS',
+                title: '진행상태',
+                align: "center"
+            }, {
                 field: 'REQUESTMONEY',
                 title: '신청금액',
-                align: "center"
+                align: "center",
+                formatter: function(value, row, index) {
+                    if (value == 'null' || value == "null" || value == null) {
+                        return value;
+                    }
+                    // return value;
+                    return Inputmask.format(value, { alias: "currency_normal" });
+
+                }
             }, {
                 field: 'EXECUTEMONEY',
                 title: '처리금액',
-                align: "center"
+                align: "center",
+                formatter: function(value, row, index) {
+                    if (value == 'null' || value == "null" || value == null) {
+                        return value;
+                    }
+                    // return value;
+                    return Inputmask.format(value, { alias: "currency_normal" });
+                }
             }, {
                 field: 'MGMTUSERID',
                 title: '처리자',
@@ -431,11 +456,12 @@ var Assets = function() {
                 console.log("加载数据失败");
             },
             responseHandler: function(res) {
-                var returnDatas = res.data;
-                returnDatas.each(function(index, item) {
+
+                var returnDatas = res.Data;
+                $.each(returnDatas, function(index, item) {
                     item.BANKNAME = item.BANKTO.BANKNAME;
                     item.ACCOUNTNO = item.BANKTO.ACCOUNTNO;
-                    item.ACCOUNTNANE = item.BANKTO.ACCOUNTNANE;
+                    item.ACCOUNTNAME = item.BANKTO.ACCOUNTNAME;
                 });
 
                 return returnDatas;

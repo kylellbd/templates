@@ -22,6 +22,9 @@
 
     <link href="/assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
     <link href="/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
@@ -143,7 +146,7 @@
                                                 <div class="col-md-1 input-icon right">
                                                     <select class="bs-select form-control sts">
                                                                 <option value="">--선택--</option>
-                                                                <option value="0001">신청중</option>
+                                                                <option value="0001" selected>신청</option>
                                                                 <option value="0002">완료</option>
                                                                 <option value="0003">반려</option>
                                                             </select>
@@ -171,7 +174,7 @@
                                             <div class="portlet box ">
                                                 <div class="portlet-body form">
                                                     <!-- BEGIN FORM-->
-                                                    <form action="#" class="form-horizontal form-bordered form-row-stripped">
+                                                    <form id="rechargeForm" action="#" class="form-horizontal form-bordered form-row-stripped">
                                                         <div class="form-body">
                                                             <div class="form-group col-md-12" style="background-color: #e5e8ed">
                                                                 <label class="control-label col-md-12" style="text-align: center; padding-bottom: 20px;">
@@ -180,25 +183,25 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-3">입금자명</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" placeholder="small" class="form-control" value="" data-key="VIPEN" data-type="TEXT" readonly/>
+                                                                    <input type="text" class="form-control" value="" data-key="ACCOUNTNAME" data-type="TEXT" readonly/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="control-label col-md-3">계좌번호</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" placeholder="medium" class="form-control" value="" data-key="BONUSMAXMONEY" data-type="INTEGER" data-inputmask="'alias':'leftInteger'" readonly/>
+                                                                    <input type="text" class="form-control" value="" data-key="ACCOUNTNO" data-type="TEXT" readonly/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="col-md-3 control-label">입금액</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control" value="" data-key="VIPEN" data-type="TEXT" readonly>
+                                                                    <input type="text" class="form-control" value="" data-key="REQUESTMONEY" data-type="MONEY" data-inputmask="'alias':'currency_normal'" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="col-md-3 control-label">고객전달사항</label>
                                                                 <div class="col-md-9">
-                                                                    <textarea class="form-control" rows="3" data-key="VIPEN" data-type="TEXT"></textarea>
+                                                                    <textarea class="form-control" rows="3" data-key="CUSTMEMO" data-type="TEXT" readonly></textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-md-12" style="background-color: #e5e8ed">
@@ -208,20 +211,25 @@
                                                             <div class="form-group">
                                                                 <label class="col-md-3 control-label">처리결과상태</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control" value="" data-key="VIPEN" data-type="TEXT" readonly>
+                                                                    <select class="form-control" data-key="rechargeSts" data-type="SELECT" name="rechargeSts">
+                                                                            <option value="">--선택--</option>
+                                                                            <option value="0002">Finished</option>
+                                                                            <option value="0003">Rejected</option>
+                                                                        </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="col-md-3 control-label">처리금액</label>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control" value="" data-key="MAXBRRWMONEY" data-type="MONEY" data-inputmask="'alias':'currency_normal'">
+                                                                    <input type="text" class="form-control" value="" data-key="rechargeMoney" data-type="MONEY" data-inputmask="'alias':'currency_normal'">
                                                                 </div>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label class="col-md-3 control-label">처리사항</label>
                                                                 <div class="col-md-9">
-                                                                    <textarea class="form-control" rows="3" data-key="VIPEN" data-type="TEXT"></textarea>
+                                                                    <textarea class="form-control" rows="3" data-key="rechargeMemo" data-type="TEXT"></textarea>
+                                                                    <input type="hidden" value="" data-key="ACCESSSEQ" data-type="TEXT" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -233,7 +241,7 @@
 
                                         <div class="modal-footer">
                                             <button type="button" data-dismiss="modal" class="btn btn-outline dark">취소</button>
-                                            <button type="button" data-dismiss="modal" class="btn green">입금신청</button>
+                                            <button type="button" data-dismiss="modal" class="btn green">입금처리</button>
                                         </div>
                                     </div>
                                 </div>
@@ -273,9 +281,13 @@
     <script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL SCRIPTS -->
     <script src="/assets/global/scripts/app.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <script src="/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+
     <script src="/templates/adm/admMenu.js" type="text/javascript"></script>
     <script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/bootstrap-table/bootstrap-table.js" type="text/javascript"></script>
@@ -286,6 +298,17 @@
 </body>
 
 <script>
+    $(function() {
+
+        Comm.init();
+        Deposit.init();
+        $(".DepositReset").on("click", function() {
+
+            Deposit.resetDepositCondition();
+
+        });
+    });
+
     var Deposit = function() {
         var make_table_deposit = function() {
             var header = Comm.getPostHeader();
@@ -340,13 +363,37 @@
                     title: '입금/출금구분',
                     align: "center"
                 }, {
+                    field: 'STS',
+                    title: '진행상태',
+                    align: "center"
+                }, {
                     field: 'REQUESTMONEY',
                     title: '신청금액',
-                    align: "center"
+                    align: "center",
+                    formatter: function(value, row, index) {
+                        if (value == 'null' || value == "null" || value == null) {
+                            return value;
+                        }
+                        // return value;
+                        return Inputmask.format(value, {
+                            alias: "currency_normal"
+                        });
+
+                    }
                 }, {
                     field: 'EXECUTEMONEY',
                     title: '처리금액',
-                    align: "center"
+                    align: "center",
+                    formatter: function(value, row, index) {
+                        if (value == 'null' || value == "null" || value == null) {
+                            return value;
+                        }
+                        // return value;
+                        return Inputmask.format(value, {
+                            alias: "currency_normal"
+                        });
+
+                    }
                 }, {
                     field: 'MGMTUSERID',
                     title: '처리자',
@@ -364,19 +411,16 @@
                     title: '예금주',
                     align: "center"
                 }, {
-                    field: 'CUSTMENO',
+                    field: 'CUSTMEMO',
                     title: '비고',
                     align: "center"
                 }, {
                     title: 'Action',
                     align: "center",
                     formatter: function(value, row, index) {
-                        var actionHtml = '<a class="green-color green-haze btn-outline" href="#"  onclick="recharge.activeUser(\'';
-                        actionHtml += row.USERID;
-                        actionHtml += '\')">ACTIVE</a> &nbsp;&nbsp;&nbsp;';
-                        actionHtml += '<a class="green-color green-haze btn-outline" href="#"  onclick="User.editUserModal(\'';
-                        actionHtml += row.USERID;
-                        actionHtml += '\')">EDIT</a> ';
+                        var actionHtml = '<a class="green-color green-haze btn-outline" href="#"  onclick="Deposit.openRechargeModal(\'';
+                        actionHtml += row.ACCESSSEQ;
+                        actionHtml += '\')">입금처리</a>';
                         return actionHtml;
                     }
                 }],
@@ -387,19 +431,120 @@
                     console.log("加载数据失败");
                 },
                 responseHandler: function(res) {
-                    var returnDatas = res.data;
-                    returnDatas.each(function(index, item) {
-                        item.BANKNAME = item.BANKTO.BANKNAME;
-                        item.ACCOUNTNO = item.BANKTO.ACCOUNTNO;
-                        item.ACCOUNTNANE = item.BANKTO.ACCOUNTNANE;
+                    var returnDatas = res.Data;
+                    $.each(returnDatas, function(index, item) {
+                        if (item.BALANCETYPE == "입금") {
+                            item.BANKNAME = item.BANKFROM.BANKNAME;
+                            item.ACCOUNTNO = item.BANKFROM.ACCOUNTNO;
+                            item.ACCOUNTNAME = item.BANKFROM.ACCOUNTNAME;
+                        } else {
+                            item.BANKNAME = item.BANKTO.BANKNAME;
+                            item.ACCOUNTNO = item.BANKTO.ACCOUNTNO;
+                            item.ACCOUNTNAME = item.BANKTO.ACCOUNTNAME;
+                        }
                     });
 
                     return returnDatas;
                 },
             });
-            return table_recharge;
+            return table_deposit;
         };
+
+        function initModalForm() {
+
+            $('#rechargeForm').validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "",
+                rules: {
+                    rechargeSts: {
+                        required: true
+                    },
+
+                },
+
+                messages: { // custom messages for radio buttons and checkboxes
+                    rechargeSts: {
+                        required: "처리결과를 선택하세요."
+                    },
+
+                },
+
+                invalidHandler: function(event, validator) { //display error alert on form submit   
+
+                },
+
+                highlight: function(element) { // hightlight error inputs
+                    $(element)
+                        .closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+
+                success: function(label) {
+                    label.closest('.form-group').removeClass('has-error');
+                    label.remove();
+                },
+
+                errorPlacement: function(error, element) {
+                    if (element.closest('.input-icon').size() === 1) {
+                        error.insertAfter(element.closest('.input-icon'));
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+
+                submitHandler: function(form) {
+                    var header = Comm.getHeader();
+                    var data = {
+                        adminId: header.user,
+                        accessSeq: $("#rechargeForm").find("[data-key='ACCESSSEQ']").val(),
+                        sts: $("#rechargeForm").find("[data-key='rechargeSts']").val(),
+                        money: $("#rechargeForm").find("[data-key='rechargeMoney']").val(),
+                        memo: $("#rechargeForm").find("[data-key='rechargeMemo']").val(),
+                    }
+                    var settings = {
+                        "async": false,
+                        "crossDomain": true,
+                        "url": "http://62.234.152.219:90/api/DepositWithDraw/ActiveDeposit",
+                        "method": "GET",
+                        "headers": header,
+                        "data":
+                    }
+
+                    $.ajax(settings).done(function(response) {
+                        console.log(response);
+                        $("#modal_pwd").modal("hide");
+                        if (response.Result == 0) {
+                            Comm.alert('비번 변경 되었습니다.', 'success');
+                        } else {
+                            Comm.alert(response.ErrorMsg, 'error');
+                        }
+                    });
+
+                    return false;
+                }
+            });
+        }
+
         return {
+            init: function() {
+                make_table_deposit();
+            },
+            openRechargeModal: function(ACCESSSEQ) {
+                var rows = $('#table_deposit').bootstrapTable('getRowByUniqueId', ACCESSSEQ); //行的数据
+                console.log(rows);
+
+                Comm.setDomData($("#modal_recharge"), rows);
+
+                $("#modal_recharge").modal("show");
+            },
+            resetDepositCondition: function() {
+
+                $("#depositForm").find('.from').val("");
+                $("#depositForm").find('.to').val("");
+                $("#depositForm").find('.balanceType').val("");
+                $("#depositForm").find('.sts').val("");
+            }
 
         }
     }();

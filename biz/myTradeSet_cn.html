@@ -18,6 +18,7 @@
     <link href="/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -168,6 +169,10 @@
                                                             <i class="icon-social-dribbble font-green"></i>
                                                             <span class="caption-subject font-green bold uppercase">Trade Setting</span>
                                                         </div>
+                                                        <div align="right">
+                                                            <input type="checkbox" class="make-switch" name="formEdit" id="formEdit" data-on-color="success" data-off-color="danger" data-on-text="Edit" data-off-text="ReadOnly">
+                                                            <button type="button" class="btn blue" id="saveBtn">Save</button>
+                                                        </div>
                                                     </div>
                                                     <div class="portlet-body form">
                                                         <!-- BEGIN FORM-->
@@ -176,27 +181,27 @@
                                                                 <div class="form-group">
                                                                     <label class="control-label col-md-3">OverNight</label>
                                                                     <div class="col-md-4">
-                                                                        <input type="checkbox" class="make-switch" checked name="OverNight" v_bind="vip0" data-on-color="success" data-off-color="danger">
+                                                                        <input type="checkbox" class="make-switch" checked name="OverNight" data-key="OverNight" data-type="SWITCH" data-on-color="success" data-off-color="danger">
 
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label class="control-label col-md-3">ProfitInvestActive</label>
                                                                     <div class="col-md-4">
-                                                                        <input type="checkbox" class="make-switch" checked name="ProfitInvestActive" v_bind="vip0" data-on-color="success" data-off-color="danger">
+                                                                        <input type="checkbox" class="make-switch" checked name="ProfitInvestActive" data-key="ProfitInvestActive" data-type="SWITCH" data-on-color="success" data-off-color="danger">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label class="control-label col-md-3">LossCutPcnt(%)</label>
                                                                     <div class="col-md-4">
-                                                                        <input class="form-control" id="LossCutPcnt" type="text" maxlength='5' />
+                                                                        <input class="form-control" id="LossCutPcnt" type="text" maxlength='5' data-key="LossCutPcnt" data-type="PERCENT" data-inputmask="'alias':'leftPercent'" />
 
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label class="control-label col-md-3">CloseOrderOfShortPosition</label>
                                                                     <div class="col-md-4">
-                                                                        <select class="form-control" name="CloseOrderOfShortPosition">
+                                                                        <select class="form-control" name="CloseOrderOfShortPosition" data-key="CloseOrderOfShortPosition" data-type="SELECT">
                                                                             <!-- <option value="">--선택--</option> -->
                                                                             <option value="0001">선입선출 방식</option>
                                                                             <option value="0002">후입선출 방식</option>
@@ -209,7 +214,7 @@
                                                                 <div class="form-group">
                                                                     <label class="control-label col-md-3">ClosePositonOfOverNight</label>
                                                                     <div class="col-md-4">
-                                                                        <select class="form-control" name="ClosePositonOfOverNight">
+                                                                        <select class="form-control" name="ClosePositonOfOverNight" data-key="ClosePositonOfOverNight" data-type="SELECT">
                                                                             <!-- <option value="">--선택--</option> -->
                                                                             <!-- <option value="0001">선입선출 방식</option> -->
                                                                             <!-- <option value="0002">후입선출 방식</option> -->
@@ -219,15 +224,6 @@
                                                                     </div>
                                                                 </div>
 
-                                                            </div>
-                                                            <div class="form-actions">
-                                                                <div class="row">
-                                                                    <div class="col-md-offset-3 col-md-9">
-                                                                        <button type="submit" class="btn blue">
-                                                                            <i class="fa fa-check"></i> Submit</button>
-                                                                        <button type="button" class="btn default">Cancel</button>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </form>
                                                         <!-- END FORM-->
@@ -344,6 +340,7 @@
 <script src="/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/bootstrap-modal/js/bootstrap-modal.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js" type="text/javascript"></script>
 
 <script src="/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
 <script src="/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
@@ -351,43 +348,216 @@
 <script src="/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/bootstrap-table/bootstrap-table.js" type="text/javascript"></script>
 <script src="/templates/biz/bizComm.js" type="text/javascript"></script>
-<script src="/templates/biz/myAssets.js" type="text/javascript"></script>
 
 
 <script type="text/javascript">
     $(function() {
 
-        // $("#LossCutPcnt").inputmask("currency", {
-        //     digits: 2,
-        //     rightAlignNumerics: false,
-        // });
-
-        // $("#LossCutPcnt").inputmask("decimal", {
-        //     rightAlignNumerics: false,
-        //     numericInput: true,
-        //     digits: 2,
-        // });
-
-        $("#LossCutPcnt").inputmask("percentage", {
-            placeholder: "",
-            digits: 2,
-            rightAlign: false,
+        Comm.init();
+        $("#formEdit").on('switchChange.bootstrapSwitch', function(event, state) {
+            //这个state就是选择的状态
+            if (state) {
+                editable();
+            } else {
+                readonly();
+            }
         });
 
-        // $("#LossCutPcnt").inputmask("decimal", {
-        //     placeholder: "",
-        //     digits: 2,
-        //     rightAlign: false,
-        // });
-        // $("#LossCutPcnt").inputmask(('(99.99%)|(9.99%)'), {
-        //     numericInput: true,
-        //     rightAlign: false,
-        //     greedy: false,
-        //     placeholder: '',
-        // });
-
-
+        $("#saveBtn").on('click', function() {
+            saveData();
+        });
+        readonly();
     });
+
+    function getBizData() {
+        var header = Comm.getHeader();
+        var settings = {
+            "async": false,
+            "crossDomain": true,
+            "url": "http://62.234.152.219:90/api/User/GetUserTradeSetting?userId=" + header.user,
+            "method": "GET",
+            "headers": Comm.getHeader()
+        }
+
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            if (response.Result == 0) {
+                var datas = response.Data;
+                setDomData($("#dataForm"), datas);
+            }
+        });
+    }
+
+    function saveData() {
+
+
+        var header = Comm.getPostHeader();
+        var datas = getDomData($("#dataForm"), header);
+
+        console.log(JSON.stringify(datas));
+        console.log(Comm.getHeader());
+        var settings = {
+            "async": false,
+            "crossDomain": true,
+            "url": "http://62.234.152.219:90/api/User/UpUserTradeSetting",
+            "method": "POST",
+            "headers": Comm.getPostHeader(),
+            "data": JSON.stringify(datas)
+        }
+        $.ajax(settings).done(function(response) {
+            // console.log(response);
+            if (response.Result == 0) {
+                Comm.alert('데이터 변경 성공하였습니다.', 'success');
+            } else {
+                Comm.alert(response.errorMsg, 'error');
+                console.log(response.errorMsg);
+            }
+            getBizData();
+            readonly();
+            $("#formEdit").bootstrapSwitch("state", false);
+        });
+    }
+
+
+    function editable() {
+        $("input[type='text']").each(function(i, ipt) {
+            $(ipt).attr("readonly", false);
+        });
+        $(".make-switch").each(function() {
+            if (this.id != "formEdit") {
+                $(this).bootstrapSwitch("readonly", false);
+            }
+        });
+        $("select").each(function(i, ipt) {
+            $(ipt).attr("disabled", false);
+        });
+    }
+
+    function readonly() {
+        $("#VipForm").find("input").attr("readonly", true);
+
+
+        $("input[type='text']").each(function(i, ipt) {
+            $(ipt).attr("readonly", true);
+        });
+        $("select").each(function(i, ipt) {
+            $(ipt).attr("disabled", true);
+        });
+
+        $(".make-switch").each(function() {
+            if (this.id != "formEdit") {
+                $(this).bootstrapSwitch("readonly", true);
+            }
+        });
+    }
+
+    var getDomData = function($DOM, header) {
+        var params = [];
+        var domItems = $DOM.find("[data-key]");
+        domItems.each(function(index, item) {
+            item = $(item);
+            var itemNm = item.attr("data-key");
+            var itemType = item.attr("data-type");
+            var itemValue;
+            switch (itemType) {
+                case "SWITCH":
+                    itemValue = item.bootstrapSwitch("state");
+                    if (itemValue) {
+                        itemValue = 'Y';
+                    } else {
+                        itemValue = 'N';
+                    }
+                    break;
+                case "TEXT":
+                    itemValue = item.val();
+                    if (itemValue == null) {
+                        itemValue = "";
+                    }
+                    break;
+                case "MONEY":
+                    itemValue = Inputmask.unmask(item.val(), {
+                        alias: "currency"
+                    });
+                    if (itemValue == null) {
+                        itemValue = 0;
+                    }
+                    break;
+                case "SELECT":
+                    itemValue = item.val();
+                    break;
+                case "INTEGER":
+                    itemValue = item.val();
+                    if (itemValue == null || itemValue == "") {
+                        itemValue = 0;
+                    }
+                    break;
+                case "PERCENT":
+                    itemValue = Inputmask.unmask(item.val(), {
+                        alias: "leftPercent"
+                    });
+                    console.log("percent=" + itemValue);
+                    if (itemValue == null) {
+                        itemValue = 0;
+                    }
+                    break;
+            }
+            var param = {}
+            param.USERID = header.user;
+            param.CONFIGNAME = itemNm;
+            param.CONFIGVALUE = itemValue;
+            params.push(param);
+
+        });
+        return params;
+
+    }
+
+    var setDomData = function($DOM, params) {
+
+        $.each(params, function(param) {
+            var datakey = param.CONFIGNAME;
+            var dataValue = param.CONFIGVALUE;
+
+            var item = $("[data-key='" + datakey + "']");
+            item = $(item);
+            var itemType = item.attr("data-type");
+            switch (itemType) {
+                case "SWITCH":
+                    if (dataValue == "Y") {
+                        item.bootstrapSwitch("state", true);
+                    }
+
+                    if (dataValue == "N") {
+                        item.bootstrapSwitch("state", false);
+                    }
+                    break;
+                case "TEXT":
+                    item.val(dataValue);
+                    break;
+                case "MONEY":
+                    dataValue = Inputmask.format(dataValue, {
+                        alias: "currency_normal"
+                    });
+                    item.val(dataValue);
+                    break;
+                case "SELECT":
+                    // console.log('setdata_select_value=' + itemValue);
+                    item.val(dataValue);
+                    // console.log('setdata_select_value after=' + item.val());
+                    break;
+                case "INTEGER":
+                    item.val(dataValue);
+                    break;
+                case "PERCENT":
+                    dataValue = Inputmask.format(dataValue, {
+                        alias: "leftPercent"
+                    });
+                    item.val(dataValue);
+                    break;
+            }
+        })
+
+    }
 </script>
 <style>
     .th-inner {
