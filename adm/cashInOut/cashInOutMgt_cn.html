@@ -315,6 +315,8 @@
         });
     });
 
+
+
     var Deposit = function() {
         var make_table_deposit = function() {
             var header = Comm.getPostHeader();
@@ -349,7 +351,7 @@
                 },
                 queryParams: function(params) {
                     return {
-                        userId: header.user,
+                        // userId: header.user,
                         balanceType: $("#depositForm").find('.balanceType').val(),
                         sts: $("#depositForm").find('.sts').val(),
                         startDate: $("#depositForm").find('.from').val(),
@@ -437,6 +439,10 @@
                     console.log("加载数据失败");
                 },
                 responseHandler: function(res) {
+
+                    if (res.errorCode == '9001') {
+                        Comm.alert('세션이 만료되었습니다.', 'error', '/templates/adm/login_cn.html');
+                    }
                     var returnDatas = res.Data;
                     $.each(returnDatas, function(index, item) {
                         if (item.BALANCETYPE == "입금") {
@@ -531,6 +537,8 @@
                 }
             });
         }
+
+
 
         return {
             init: function() {

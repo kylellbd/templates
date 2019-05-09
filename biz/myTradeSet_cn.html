@@ -201,25 +201,25 @@
                                                                 <div class="form-group">
                                                                     <label class="control-label col-md-3">CloseOrderOfShortPosition</label>
                                                                     <div class="col-md-4">
-                                                                        <select class="form-control" name="CloseOrderOfShortPosition" data-key="CloseOrderOfShortPosition" data-type="SELECT">
+                                                                        <select class="form-control" id="CloseOrderOfShortPosition" name="CloseOrderOfShortPosition" data-key="CloseOrderOfShortPosition" data-type="SELECT">
                                                                             <!-- <option value="">--선택--</option> -->
-                                                                            <option value="0001">선입선출 방식</option>
+                                                                            <!-- <option value="0001">선입선출 방식</option>
                                                                             <option value="0002">후입선출 방식</option>
                                                                             <option value="0003">마진우선 방식</option>
                                                                             <option value="0004">평균가 반환</option>
-                                                                            <option value="0005">Close Order가</option>
+                                                                            <option value="0005">Close Order가</option> -->
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label class="control-label col-md-3">ClosePositonOfOverNight</label>
                                                                     <div class="col-md-4">
-                                                                        <select class="form-control" name="ClosePositonOfOverNight" data-key="ClosePositonOfOverNight" data-type="SELECT">
+                                                                        <select class="form-control" id="ClosePositonOfOverNight" name="ClosePositonOfOverNight" data-key="ClosePositonOfOverNight" data-type="SELECT">
                                                                             <!-- <option value="">--선택--</option> -->
                                                                             <!-- <option value="0001">선입선출 방식</option> -->
                                                                             <!-- <option value="0002">후입선출 방식</option> -->
-                                                                            <option value="0003">마진우선 방식</option>
-                                                                            <option value="0004">손실우선 방식</option>
+                                                                            <!-- <option value="0003">마진우선 방식</option>
+                                                                            <option value="0004">손실우선 방식</option> -->
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -354,6 +354,11 @@
     $(function() {
 
         Comm.init();
+        getSelectData();
+        getBizData();
+
+        readonly();
+
         $("#formEdit").on('switchChange.bootstrapSwitch', function(event, state) {
             //这个state就是选择的状态
             if (state) {
@@ -366,8 +371,42 @@
         $("#saveBtn").on('click', function() {
             saveData();
         });
-        readonly();
     });
+
+    function getSelectData() {
+        var settings = {
+            "async": false,
+            "crossDomain": true,
+            "url": "http://62.234.152.219:90/api/Code/GetCodeInfoByGroups?groudIds=0023,0025",
+            "method": "GET",
+            "headers": Comm.getHeader()
+        }
+
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            if (response.Result == 0) {
+                var datas = response.Data;
+                $.each(datas, function(index, data) {
+                    if (data.GroupId == '0023') {
+                        initSelect("CloseOrderOfShortPosition", data.Codeinfos);
+                    }
+                    if (data.GroupId == '0025') {
+                        initSelect("ClosePositonOfOverNight", data.Codeinfos);
+                    }
+                });
+            }
+        });
+    }
+
+    function initSelect(elementNm, codeList) {
+        var optionsHtml = "";
+        $.each(codeList, function(index, item) {
+            optionsHtml += '<option value="' + item.CODEID + '">' + item.CODEKR + '</option>';
+        });
+        var element = $(("#" + elementNm));
+        element.empty();
+        element.append(optionsHtml);
+    }
 
     function getBizData() {
         var header = Comm.getHeader();
@@ -514,7 +553,7 @@
 
     var setDomData = function($DOM, params) {
 
-        $.each(params, function(param) {
+        $.each(params, function(index, param) {
             var datakey = param.CONFIGNAME;
             var dataValue = param.CONFIGVALUE;
 

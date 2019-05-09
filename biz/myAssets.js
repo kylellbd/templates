@@ -364,8 +364,8 @@ var Assets = function() {
             pageSize: 10, // 每页的记录行数（*）
             pageList: [10, 25, 50, 100], // 可供选择的每页的行数（*）
             search: false, // 是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-            // contentType: "application/json",
-            contentType: "application/x-www-form-urlencoded",
+            contentType: "application/json",
+            // contentType: "application/x-www-form-urlencoded",
             strictSearch: false,
             showColumns: false, // 是否显示所有的列
             showRefresh: false, // 是否显示刷新按钮
