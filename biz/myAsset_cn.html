@@ -350,7 +350,7 @@
                                                                         <div class="portlet box ">
                                                                             <div class="portlet-body form">
                                                                                 <!-- BEGIN FORM-->
-                                                                                <form action="#" class="form-horizontal form-bordered form-row-stripped">
+                                                                                <form action="#" id="rechargeModalForm" class="form-horizontal form-bordered form-row-stripped">
                                                                                     <div class="form-body">
                                                                                         <div class="form-group col-md-12" style="background-color: #e5e8ed">
                                                                                             <label class="control-label col-md-12" style="text-align: center; padding-bottom: 20px;">
@@ -359,19 +359,19 @@
                                                                                         <div class="form-group">
                                                                                             <label class="control-label col-md-3">은행명</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" placeholder="small" class="form-control" value="" data-key="VIPEN" data-type="TEXT" readonly/>
+                                                                                                <input type="text" placeholder="small" class="form-control" value="" data-key="BANKNAME" data-type="TEXT" readonly/>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label class="control-label col-md-3">계좌번호</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" placeholder="medium" class="form-control" value="" data-key="BONUSMAXMONEY" data-type="INTEGER" data-inputmask="'alias':'leftInteger'" readonly/>
+                                                                                                <input type="text" placeholder="medium" class="form-control" value="" data-key="ACCOUNTNO" data-type="TEXT" readonly/>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label class="col-md-3 control-label">예금주명</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" class="form-control" value="" data-key="VIPEN" data-type="TEXT" readonly>
+                                                                                                <input type="text" class="form-control" value="" data-key="ACCOUNTNAME" data-type="TEXT" readonly>
                                                                                             </div>
                                                                                         </div>
 
@@ -382,20 +382,20 @@
                                                                                         <div class="form-group">
                                                                                             <label class="col-md-3 control-label">입금자명</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" class="form-control" value="" data-key="VIPEN" data-type="TEXT" readonly>
+                                                                                                <input type="text" class="form-control" value="" data-key="ACCOUNTNAME" data-type="TEXT" readonly>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label class="col-md-3 control-label">입금액</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" class="form-control" value="" data-key="MAXBRRWMONEY" data-type="MONEY" data-inputmask="'alias':'currency_normal'">
+                                                                                                <input type="text" class="form-control" value="" data-key="RECHARGEMONEY" data-type="MONEY" data-inputmask="'alias':'currency_normal'">
                                                                                             </div>
                                                                                         </div>
 
                                                                                         <div class="form-group">
                                                                                             <label class="col-md-3 control-label">전달사항</label>
                                                                                             <div class="col-md-9">
-                                                                                                <textarea class="form-control" rows="3" data-key="VIPEN" data-type="TEXT"></textarea>
+                                                                                                <textarea class="form-control" rows="3" data-key="CUSTMEMO" data-type="TEXT"></textarea>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -788,7 +788,23 @@
 <script type="text/javascript">
     $(function() {
         Comm.init();
+        Assets.init();
+        $(".DepositSearch").on("click", function() {
 
+            Assets.searchRechargeByDate();
+
+        });
+        $(".EncashmentSearch").on("click", function() {
+
+            // Assets.searchEncashmentByDate();
+
+        });
+
+        $(".DepositReset").on("click", function() {
+
+            Assets.resetRechageCondition();
+
+        });
     });
 </script>
 <style>

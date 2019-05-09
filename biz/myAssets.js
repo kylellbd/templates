@@ -618,26 +618,3 @@ var Assets = function() {
         }
     };
 }();
-
-jQuery(document).ready(function() {
-    Assets.init();
-    $(".DepositSearch").on("click", function() {
-
-        Assets.searchRechargeByDate();
-
-    });
-    $(".EncashmentSearch").on("click", function() {
-
-        // Assets.searchEncashmentByDate();
-
-    });
-
-    $(".DepositReset").on("click", function() {
-
-        Assets.resetRechageCondition();
-
-    });
-
-
-
-});

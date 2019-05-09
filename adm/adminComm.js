@@ -16,6 +16,12 @@ var Comm = function() {
         return JSON.parse(sessionStorage.getItem("header"));
     }
 
+    var getPostHeader = function() {
+        var header = getHeader();
+        header['Content-Type'] = 'application/json';
+        return header;
+    }
+
     var clearSession = function() {
         sessionStorage.clear();
     }
@@ -323,9 +329,7 @@ var Comm = function() {
             return getHeader();
         },
         getPostHeader: function() {
-            var header = getHeader();
-            header['Content-Type'] = 'application/json';
-            return header;
+            return getPostHeader();
         },
         getDomData: function($DOM) {
             return getDomData($DOM);

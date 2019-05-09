@@ -307,6 +307,12 @@
             Deposit.resetDepositCondition();
 
         });
+
+        $(".DepositSearch").on("click", function() {
+
+            Deposit.searchDeposit();
+
+        });
     });
 
     var Deposit = function() {
@@ -508,14 +514,14 @@
                         "url": "http://62.234.152.219:90/api/DepositWithDraw/ActiveDeposit",
                         "method": "GET",
                         "headers": header,
-                        "data":
+                        "data": JSON.stringify(data)
                     }
 
                     $.ajax(settings).done(function(response) {
                         console.log(response);
-                        $("#modal_pwd").modal("hide");
+                        $("#modal_recharge").modal("hide");
                         if (response.Result == 0) {
-                            Comm.alert('비번 변경 되었습니다.', 'success');
+                            Comm.alert('입금 요청 처리 되었습니다.', 'success');
                         } else {
                             Comm.alert(response.ErrorMsg, 'error');
                         }
@@ -544,7 +550,10 @@
                 $("#depositForm").find('.to').val("");
                 $("#depositForm").find('.balanceType').val("");
                 $("#depositForm").find('.sts').val("");
-            }
+            },
+            searchDeposit: function() {
+                $("#table_deposit").bootstrapTable("refresh");
+            },
 
         }
     }();
