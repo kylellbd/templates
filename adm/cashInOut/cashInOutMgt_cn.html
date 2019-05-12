@@ -241,7 +241,7 @@
 
                                         <div class="modal-footer">
                                             <button type="button" data-dismiss="modal" class="btn btn-outline dark">취소</button>
-                                            <button type="button" data-dismiss="modal" class="btn green">입금처리</button>
+                                            <button id="rechargeBtn" type="button" class="btn green">입금처리</button>
                                         </div>
                                     </div>
                                 </div>
@@ -274,6 +274,7 @@
     <script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -292,7 +293,6 @@
     <script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/bootstrap-table/bootstrap-table.js" type="text/javascript"></script>
     <script src="/templates/adm/adminComm.js" type="text/javascript"></script>
-    <script src="/templates/adm/user/userMgt.js" type="text/javascript"></script>
     <script type="text/javascript">
     </script>
 </body>
@@ -313,6 +313,14 @@
             Deposit.searchDeposit();
 
         });
+
+        $("#rechargeBtn").on("click", function() {
+
+            $("#rechargeForm").submit();
+
+        });
+
+
     });
 
 
@@ -426,9 +434,13 @@
                     title: 'Action',
                     align: "center",
                     formatter: function(value, row, index) {
-                        var actionHtml = '<a class="green-color green-haze btn-outline" href="#"  onclick="Deposit.openRechargeModal(\'';
-                        actionHtml += row.ACCESSSEQ;
-                        actionHtml += '\')">입금처리</a>';
+                        var actionHtml = "";
+                        if (row.STS == "신청") {
+                            actionHtml = '<a class="green-color green-haze btn-outline" href="#"  onclick="Deposit.openRechargeModal(\'';
+                            actionHtml += row.ACCESSSEQ;
+                            actionHtml += '\')">입금처리</a>';
+                        }
+
                         return actionHtml;
                     }
                 }],
@@ -506,19 +518,24 @@
                 },
 
                 submitHandler: function(form) {
-                    var header = Comm.getHeader();
+                    var header = Comm.getPostHeader();
+
+                    var modal_item = Comm.getDomData($("#rechargeForm"));
+
+                    console.log(modal_item);
+
                     var data = {
                         adminId: header.user,
-                        accessSeq: $("#rechargeForm").find("[data-key='ACCESSSEQ']").val(),
-                        sts: $("#rechargeForm").find("[data-key='rechargeSts']").val(),
-                        money: $("#rechargeForm").find("[data-key='rechargeMoney']").val(),
-                        memo: $("#rechargeForm").find("[data-key='rechargeMemo']").val(),
+                        accessSeq: modal_item.ACCESSSEQ,
+                        sts: modal_item.rechargeSts,
+                        money: modal_item.rechargeMoney,
+                        memo: modal_item.rechargeMemo
                     }
                     var settings = {
                         "async": false,
                         "crossDomain": true,
                         "url": "http://62.234.152.219:90/api/DepositWithDraw/ActiveDeposit",
-                        "method": "GET",
+                        "method": "POST",
                         "headers": header,
                         "data": JSON.stringify(data)
                     }
@@ -531,6 +548,7 @@
                         } else {
                             Comm.alert(response.ErrorMsg, 'error');
                         }
+                        $("#table_deposit").bootstrapTable("refresh");
                     });
 
                     return false;
@@ -543,11 +561,13 @@
         return {
             init: function() {
                 make_table_deposit();
+                initModalForm();
             },
             openRechargeModal: function(ACCESSSEQ) {
                 var rows = $('#table_deposit').bootstrapTable('getRowByUniqueId', ACCESSSEQ); //行的数据
-                console.log(rows);
+                // console.log(rows);
 
+                Comm.cleanDomData($("#modal_recharge"));
                 Comm.setDomData($("#modal_recharge"), rows);
 
                 $("#modal_recharge").modal("show");

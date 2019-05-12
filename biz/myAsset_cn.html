@@ -327,7 +327,7 @@
                                                                                 <div style="float: right;margin-right: 10px;">
                                                                                     <button type="button" class="btn green-haze btn-outline sbold uppercase dark DepositReset">Reset</button>
                                                                                     <button type="button" class="btn green-haze btn-outline sbold uppercase dark DepositSearch">조회</button>
-                                                                                    <a class="btn green-haze btn-outline sbold uppercase dark" data-target="#modal_recharge" data-toggle="modal">입금신청</a>
+                                                                                    <a id="rechargeModalBtn" class="btn green-haze btn-outline sbold uppercase dark">입금신청</a>
                                                                                     <a class="btn green-haze btn-outline sbold uppercase dark" data-target="#modal_encashment" data-toggle="modal">원금출금신청</a>
                                                                                     <a class="btn green-haze btn-outline sbold uppercase dark" data-target="#modal_encashment2" data-toggle="modal">담보금출금신청</a>
                                                                                 </div>
@@ -341,7 +341,7 @@
                                                             <div class="portlet-body">
 
                                                                 <table id="table_deposit" class=""></table>
-                                                                <div id="modal_recharge" class="modal fade" tabindex="-1" data-width="700" data-backdrop="static" data-keyboard="false">
+                                                                <div id="modal_recharge" class="modal fade" tabindex="100" data-width="700" data-backdrop="static" data-keyboard="false">
                                                                     <div class="modal-header">
                                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                                                                         <h3 class="modal-title">입금신청</h3>
@@ -359,19 +359,19 @@
                                                                                         <div class="form-group">
                                                                                             <label class="control-label col-md-3">은행명</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" placeholder="small" class="form-control" value="" data-key="BANKNAME" data-type="TEXT" readonly/>
+                                                                                                <input type="text" placeholder="small" class="form-control" id="rechargeCompBank" name="rechargeCompBank" readonly/>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label class="control-label col-md-3">계좌번호</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" placeholder="medium" class="form-control" value="" data-key="ACCOUNTNO" data-type="TEXT" readonly/>
+                                                                                                <input type="text" placeholder="medium" class="form-control" value="" id="rechargeCompAcc" name="rechargeCompAcc" readonly/>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label class="col-md-3 control-label">예금주명</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" class="form-control" value="" data-key="ACCOUNTNAME" data-type="TEXT" readonly>
+                                                                                                <input type="text" class="form-control" value="" id="rechargeCompName" name="rechargeCompName" readonly>
                                                                                             </div>
                                                                                         </div>
 
@@ -382,20 +382,21 @@
                                                                                         <div class="form-group">
                                                                                             <label class="col-md-3 control-label">입금자명</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" class="form-control" value="" data-key="ACCOUNTNAME" data-type="TEXT" readonly>
+                                                                                                <input type="text" class="form-control" value="" id="rechargeCustName" name="rechargeCustName" readonly>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label class="col-md-3 control-label">입금액</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text" class="form-control" value="" data-key="RECHARGEMONEY" data-type="MONEY" data-inputmask="'alias':'currency_normal'">
+                                                                                                <input type="text" class="form-control" id="Money" name="Money" data-key="Money" data-type="MONEY" value="" data-inputmask="'alias':'currency_normal'">
+                                                                                                <input type="hidden" id="rechargeUserBankId" data-key="UserBankId" data-type="TEXT">
                                                                                             </div>
                                                                                         </div>
 
                                                                                         <div class="form-group">
                                                                                             <label class="col-md-3 control-label">전달사항</label>
                                                                                             <div class="col-md-9">
-                                                                                                <textarea class="form-control" rows="3" data-key="CUSTMEMO" data-type="TEXT"></textarea>
+                                                                                                <textarea class="form-control" rows="3" data-key="Memo" data-type="TEXT"></textarea>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -407,7 +408,7 @@
 
                                                                     <div class="modal-footer">
                                                                         <button type="button" data-dismiss="modal" class="btn btn-outline dark">취소</button>
-                                                                        <button type="button" data-dismiss="modal" class="btn green">입금신청</button>
+                                                                        <button type="button" id="recharge_save" class="btn green">입금신청</button>
                                                                     </div>
                                                                 </div>
                                                                 <div id="modal_encashment" class="modal fade" tabindex="-1" data-width="700" data-backdrop="static" data-keyboard="false">
@@ -553,7 +554,7 @@
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" data-dismiss="modal" class="btn btn-outline dark">취소</button>
-                                                                        <button type="button" data-dismiss="modal" class="btn green">출금신청</button>
+                                                                        <button type="button" id="" class="btn green">출금신청</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -765,6 +766,7 @@
 <script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js" type="text/javascript"></script>
+<script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
@@ -805,6 +807,20 @@
             Assets.resetRechageCondition();
 
         });
+
+        $("#rechargeModalBtn").on("click", function() {
+
+            Assets.openRechargeModal();
+
+        });
+
+        $("#recharge_save").on("click", function() {
+
+            Assets.rechargeRegist();
+
+        });
+
+
     });
 </script>
 <style>

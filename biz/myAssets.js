@@ -380,13 +380,13 @@ var Assets = function() {
             },
             queryParams: function(params) {
                 var param = {
-                    userId: header.user,
-                    balanceType: $("#tab_deposit").find('.balanceType').val(),
-                    sts: $("#tab_deposit").find('.sts').val(),
-                    startDate: $("#tab_deposit").find('.from').val(),
-                    endDate: $("#tab_deposit").find('.to').val()
-                }
-                console.log(param);
+                        userId: header.user,
+                        balanceType: $("#tab_deposit").find('.balanceType').val(),
+                        sts: $("#tab_deposit").find('.sts').val(),
+                        startDate: $("#tab_deposit").find('.from').val(),
+                        endDate: $("#tab_deposit").find('.to').val()
+                    }
+                    // console.log(param);
                 return param;
             },
             columns: [{
@@ -566,32 +566,138 @@ var Assets = function() {
         "BrrwId": "123123"
     }, ];
 
-    function getMyBankInfo() {
+    var UserBank = {};
+    var CompanyBank = {};
+
+    function getBankInfos() {
         var header = Comm.getHeader();
-        header.userId = header.user;
+        // console.log(header);
         var settings = {
             "async": false,
             "crossDomain": true,
-            "url": "http://62.234.152.219:90/api/User/GetUserBankList",
+            "url": "http://62.234.152.219:90/api/DepositWithDraw/GetBankInfo?userId=" + header.user,
             "method": "GET",
             "headers": header
         }
 
         $.ajax(settings).done(function(response) {
-            console.log(response);
+            // console.log(response);
             if (response.Result == 0) {
-                var banks = response.Data;
-                if (banks.length > 0) {
-                    setMyBankData(banks);
+                UserBank = response.Data.UserBank;
+                CompanyBank = response.Data.CompanyBank;
+            }
+            // console.log(UserBank);
+            // console.log(CompanyBank);
+
+        });
+    }
+
+
+
+
+    function initRechargeModalForm() {
+
+        $('#rechargeModalForm').validate({
+            errorElement: 'span', //default input error message container
+            errorClass: 'help-block', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            ignore: "",
+            rules: {
+                Money: {
+                    required: true
+                },
+                rechargeCompBank: {
+                    required: true
+                },
+                rechargeCompAcc: {
+                    required: true
+                },
+                rechargeCompName: {
+                    required: true
+                },
+                rechargeCustName: {
+                    required: true
+                },
+
+            },
+
+            messages: { // custom messages for radio buttons and checkboxes
+                Money: {
+                    required: "입금액을 입력하세요."
+                },
+                rechargeCompBank: {
+                    required: '오류가 발생했습니다.관리자에게 연락 부탁 드립니다.'
+                },
+                rechargeCompAcc: {
+                    required: '오류가 발생했습니다.관리자에게 연락 부탁 드립니다.'
+                },
+                rechargeCompName: {
+                    required: '오류가 발생했습니다.관리자에게 연락 부탁 드립니다.'
+                },
+                rechargeCustName: {
+                    required: '오류가 발생했습니다.관리자에게 연락 부탁 드립니다.'
+                },
+
+
+            },
+
+            invalidHandler: function(event, validator) { //display error alert on form submit   
+
+            },
+
+            highlight: function(element) { // hightlight error inputs
+                $(element)
+                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+            },
+
+            success: function(label) {
+                label.closest('.form-group').removeClass('has-error');
+                label.remove();
+            },
+
+            errorPlacement: function(error, element) {
+                if (element.closest('.input-icon').size() === 1) {
+                    error.insertAfter(element.closest('.input-icon'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+
+            submitHandler: function(form) {
+                console.log(form);
+                var header = Comm.getPostHeader();
+                var modal_item = Comm.getDomData($("#rechargeModalForm"));
+
+
+                modal_item.UserId = header.user;
+                // console.log(modal_item);
+                var settings = {
+                    "async": false,
+                    "crossDomain": true,
+                    "url": "http://62.234.152.219:90/api/DepositWithDraw/AddUserDeposit",
+                    "method": "POST",
+                    "headers": header,
+                    "data": JSON.stringify(modal_item)
                 }
 
+                $.ajax(settings).done(function(response) {
+                    console.log(response);
+                    if (response.Result == 0) {
+                        Comm.alert('입금 신청 되었습니다.', 'success');
+                    } else {
+                        Comm.alert(response.errorMsg, 'error');
+                    }
+                    $("#modal_recharge").modal("hide");
+                    $('#table_deposit').bootstrapTable("refresh");
+
+                });
+
+                return false;
             }
         });
     }
 
-    function setMyBankData(banks) {
-        Comm.setItemsData($('#bankForm'), banks[0]);
-    }
+
 
     return {
         init: function() {
@@ -601,6 +707,8 @@ var Assets = function() {
             // make_table_encashment();
             // make_table_loan_1();
             make_table_loan_2();
+            getBankInfos();
+            initRechargeModalForm();
         },
         searchRechargeByDate: function() {
             $("#tab_deposit").find('#table_deposit').bootstrapTable("refresh");
@@ -615,6 +723,25 @@ var Assets = function() {
             $("#tab_deposit").find('.to').val("");
             $("#tab_deposit").find('.balanceType').val("");
             $("#tab_deposit").find('.sts').val("");
+        },
+        openRechargeModal: function() {
+
+            $("#modal_recharge").find("input").val("");
+            $("#modal_recharge").find("textarea").val("");
+            if (UserBank == {} || CompanyBank == {}) {
+                getBankInfos();
+            }
+
+            $("#rechargeCompBank").val(CompanyBank.BANKNAME);
+            $("#rechargeCompAcc").val(CompanyBank.ACCOUNTNO);
+            $("#rechargeCompName").val(CompanyBank.ACCOUNTNAME);
+            $("#rechargeCustName").val(UserBank.ACCOUNTNAME);
+            $("#rechargeUserBankId").val(UserBank.BANKID);
+
+            $("#modal_recharge").modal("show");
+        },
+        rechargeRegist: function() {
+            $("#rechargeModalForm").submit();
         }
     };
 }();

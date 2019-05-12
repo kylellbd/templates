@@ -170,50 +170,50 @@
                                                             <span class="caption-subject font-green bold uppercase">Basic Info</span>
                                                         </div>
                                                         <div style="float: right;margin-right: 10px;">
-                                                            <a class="btn green-haze btn-outline sbold uppercase dark openPwdModal">修改密码</a>
+                                                            <a class="btn green-haze btn-outline sbold uppercase dark openPwdModal">비번수정</a>
                                                         </div>
                                                     </div>
                                                     <div class="portlet-body form">
                                                         <!-- BEGIN FORM-->
-                                                        <form action="#" class="form-horizontal form-bordered">
+                                                        <form action="#" id="empForm" class="form-horizontal form-bordered">
                                                             <div class="form-body">
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">ID</label>
+                                                                    <label class="control-label col-md-3">아이디</label>
                                                                     <div class="col-md-4">
-                                                                        <input class="form-control" id="userId" type="text" value="user1" readonly/>
+                                                                        <input class="form-control" id="userId" type="text" data-key="USERID" data-type="TEXT" readonly/>
 
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">姓名</label>
+                                                                    <label class="control-label col-md-3">이름</label>
                                                                     <div class="col-md-4">
-                                                                        <input class="form-control" id="userNm" type="text" value="洪吉同" readonly/>
+                                                                        <input class="form-control" id="userNm" type="text" data-key="NAME" data-type="TEXT" readonly/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">出生年月日</label>
+                                                                    <label class="control-label col-md-3">출생년월일</label>
                                                                     <div class="col-md-4">
-                                                                        <input class="form-control" id="Birthday" type="text" value="1982-12-12" readonly/>
+                                                                        <input class="form-control" id="Birthday" type="text" data-key="BIRTHDAY" data-type="TEXT" readonly/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">手机</label>
+                                                                    <label class="control-label col-md-3">핸드폰번호</label>
                                                                     <div class="col-md-4">
-                                                                        <input class="form-control" id="OrgCellPhone" type="text" value="010-1234-1234" readonly/>
+                                                                        <input class="form-control" id="OrgCellPhone" type="text" data-key="CURCELLPHONE" data-type="TEXT" readonly/>
 
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">邮箱</label>
+                                                                    <label class="control-label col-md-3">메일주소</label>
                                                                     <div class="col-md-4">
-                                                                        <input class="form-control" id="Email" type="text" value="mail@mail.com" readonly/>
+                                                                        <input class="form-control" id="Email" type="text" data-key="EMAIL" data-type="TEXT" readonly/>
 
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">推荐码</label>
+                                                                    <label class="control-label col-md-3">추천코드</label>
                                                                     <div class="col-md-4">
-                                                                        <input class="form-control" id="PromotionCode" type="text" value="zhrt" readonly/>
+                                                                        <input class="form-control" id="PromotionCode" type="text" data-key="PROMOTIONCODE" data-type="TEXT" readonly/>
 
                                                                     </div>
                                                                 </div>
@@ -445,7 +445,31 @@
             $('#formChangePwd').find(':input').val('');
             $('#modal_pwd').modal("show");
         });
+
+        getBizData();
     });
+
+    function getBizData() {
+
+        var header = Comm.getHeader();
+        var settings = {
+            "async": false,
+            "crossDomain": true,
+            "url": "http://62.234.152.219:90/api/User/GetUserInfo?userId=" + header.user,
+            "method": "GET",
+            "headers": Comm.getHeader()
+        }
+
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            if (response.Result == 0) {
+
+                Comm.setDomData($("#empForm"), response.Data.CUSTINFO);
+            }
+        });
+    }
+
+
 
     function initChangePwdForm() {
 

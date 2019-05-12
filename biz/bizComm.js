@@ -80,7 +80,8 @@ var Comm = function() {
                 placeholder: "",
                 digits: 2,
                 rightAlign: false
-            },
+            }
+
         });
     }
 
@@ -92,6 +93,12 @@ var Comm = function() {
         $(".make-switch").each(function() {
             $(this).bootstrapSwitch();
         });
+    }
+
+    var extendValidate = function() {
+        jQuery.validator.addMethod("notEqual", function(value, element, param) {
+            return this.optional(element) || value != param;
+        }, "Please specify a different (non-default) value");
     }
 
     var getDomData = function($DOM) {
@@ -189,6 +196,11 @@ var Comm = function() {
                     itemValue = Inputmask.format(itemValue, { alias: "leftPercent" });
                     item.val(itemValue);
                     break;
+                case "HTML":
+                    item.empty();
+                    item.html(itemValue);
+                    break;
+
             }
         });
     }
@@ -289,6 +301,10 @@ var Comm = function() {
                     itemValue = Inputmask.format(itemValue, { alias: "leftPercent" });
                     item.val(itemValue);
                     break;
+                case "HTML":
+                    item.empty();
+                    item.html(itemValue);
+                    break;
             }
         });
     }
@@ -358,6 +374,9 @@ var Comm = function() {
 
             //init inputmask
             initInpumask();
+
+            //init jq validate
+            extendValidate();
         },
         alert: function(v_text, v_type, url) {
             /*
