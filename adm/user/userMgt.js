@@ -79,9 +79,14 @@ var User = function() {
                     title: 'Action',
                     align: "center",
                     formatter: function(value, row, index) {
-                        var actionHtml = '<a class="green-color green-haze btn-outline" href="#"  onclick="User.activeUser(\'';
-                        actionHtml += row.USERID;
-                        actionHtml += '\')">ACTIVE</a> &nbsp;&nbsp;&nbsp;';
+
+                        var actionHtml = "";
+                        if (row.ACTIVE != "Y") {
+                            actionHtml = '<a class="green-color green-haze btn-outline" href="#"  onclick="User.activeUser(\'';
+                            actionHtml += row.USERID;
+                            actionHtml += '\')">ACTIVE</a> &nbsp;&nbsp;&nbsp;';
+                        }
+
                         actionHtml += '<a class="green-color green-haze btn-outline" href="#"  onclick="User.editUserModal(\'';
                         actionHtml += row.USERID;
                         actionHtml += '\')">EDIT</a> ';

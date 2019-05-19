@@ -54,6 +54,29 @@ var Comm = function() {
         );
     }
 
+    var innerConfirm = function(v_text, v_type, func) {
+        swal({
+                title: "Alert",
+                text: v_text,
+                type: v_type,
+                showConfirmButton: "btn-success",
+                allowOutsideClick: true,
+                showCancelButton: true,
+                confirmButtonText: "확인",
+                cancelButtonText: "취소",
+                closeOnConfirm: true,
+                closeOnCancel: true
+            },
+            function(isConfirm) {
+                swal.close();
+                if (isConfirm) {
+                    func();
+                }
+
+            }
+        );
+    }
+
     var extendInputmask = function() {
         /*
             type:
@@ -384,5 +407,8 @@ var Comm = function() {
             */
             innerAlert(v_text, v_type, url);
         },
+        confirm: function(v_text, v_type, func) {
+            return innerConfirm(v_text, v_type, func);
+        }
     }
 }();
