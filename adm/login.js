@@ -62,7 +62,7 @@ var Login = function() {
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://62.234.152.219:90/api/Admin/Login?userId=" + form.userId.value + "&pwd=" + form.pwd.value + "&pt=pc",
+                    "url": Comm.getApiUrl() + "/api/Admin/Login?userId=" + form.userId.value + "&pwd=" + form.pwd.value + "&pt=pc",
                     "method": "GET",
                     "headers": {
                         "userId": form.userId.value,

@@ -4,7 +4,7 @@ var User = function() {
 
     var make_table_users = function() {
         $("#table_user").bootstrapTable({
-            url: 'http://62.234.152.219:90/api/Admin/GetUserList', // 请求后台的URL（*）
+            url: Comm.getApiUrl() + '/api/Admin/GetUserList', // 请求后台的URL（*）
             method: 'post', // 请求方式（*）
             dataType: 'json',
             // toolbar : '#toolbar', // 工具按钮用哪个容器
@@ -140,7 +140,7 @@ var User = function() {
         var settings = {
             "async": false,
             "crossDomain": true,
-            "url": "http://62.234.152.219:90/api/Admin/ActiveUser?userId=" + USERID,
+            "url": Comm.getApiUrl() + "/api/Admin/ActiveUser?userId=" + USERID,
             "method": "GET",
             "headers": Comm.getHeader(),
         }

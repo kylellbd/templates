@@ -325,7 +325,7 @@
         var settings = {
             "async": false,
             "crossDomain": true,
-            "url": "http://62.234.152.219:90/api/Code/GetCodeInfoByGroups?groudIds=0023,0025",
+            "url": Comm.getApiUrl() + "/api/Code/GetCodeInfoByGroups?groudIds=0023,0025",
             "method": "GET",
             "headers": Comm.getHeader()
         }
@@ -361,7 +361,7 @@
         var settings = {
             "async": false,
             "crossDomain": true,
-            "url": "http://62.234.152.219:90/api/User/GetUserTradeSetting?userId=" + header.user,
+            "url": Comm.getApiUrl() + "/api/User/GetUserTradeSetting?userId=" + header.user,
             "method": "GET",
             "headers": Comm.getHeader()
         }
@@ -386,7 +386,7 @@
         var settings = {
             "async": false,
             "crossDomain": true,
-            "url": "http://62.234.152.219:90/api/User/UpUserTradeSetting",
+            "url": Comm.getApiUrl() + "/api/User/UpUserTradeSetting",
             "method": "POST",
             "headers": Comm.getPostHeader(),
             "data": JSON.stringify(datas)

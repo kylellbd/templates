@@ -1,5 +1,15 @@
 var Comm = function() {
+    var DEV_API_URL = "http://62.234.152.219:90";
+    var PROD_API_URL = "http://api.szaitech.com";
+    var SYSTEM_MODE = "DEV"; //PROD
 
+    var getApiUrl = function() {
+        if (SYSTEM_MODE == 'PROD') {
+            return PROD_API_URL;
+        } else {
+            return DEV_API_URL;
+        }
+    }
     var setHeader = function(userId, token) {
         var headerItem = {
             "type": "client",
@@ -361,7 +371,14 @@ var Comm = function() {
         });
     }
 
+    var getElementByDataKey = function(dataKey) {
+        return $("[data-key='" + dataKey + "']");
+    }
+
     return {
+        getApiUrl: function() {
+            return getApiUrl();
+        },
         setHeader: function(userId, token) {
             setHeader(userId, token);
         },
@@ -409,6 +426,9 @@ var Comm = function() {
         },
         confirm: function(v_text, v_type, func) {
             return innerConfirm(v_text, v_type, func);
+        },
+        getElementByDataKey: function(dataKey) {
+            getElementByDataKey(dataKey);
         }
     }
 }();

@@ -116,54 +116,54 @@
                                                 <form action="#" class="form-horizontal form-bordered" id="systemNormalForm">
                                                     <div class="form-body">
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">TradeFeeMode</label>
+                                                            <label class="control-label col-md-3">거래수수료 발생 시기</label>
                                                             <div class="col-md-3">
-                                                                <select class="form-control" name="TradeFeeMode" data-key="TradeFeeMode" data-type="SELECT">
-                                                                    <option value="0001">Open</option>
+                                                                <select class="form-control" id="TradeFeeMode" name="TradeFeeMode" data-key="TradeFeeMode" data-type="SELECT">
+                                                                    <!-- <option value="0001">Open</option>
                                                                     <option value="0002">Close</option>
-                                                                    <option value="0003">Both</option>
+                                                                    <option value="0003">Both</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">TradeTaxMode</label>
+                                                            <label class="control-label col-md-3">거래세 발생 시기</label>
                                                             <div class="col-md-3">
-                                                                <select class="form-control" name="TradeTaxMode" data-key="TradeTaxMode" data-type="SELECT">
-                                                                            <option value="0001">Open</option>
+                                                                <select class="form-control" id="TradeTaxMode" name="TradeTaxMode" data-key="TradeTaxMode" data-type="SELECT">
+                                                                            <!-- <option value="0001">Open</option>
                                                                             <option value="0002">Close</option>
-                                                                            <option value="0003">Both</option>
+                                                                            <option value="0003">Both</option> -->
                                                                         </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">MgmtFeeMode</label>
+                                                            <label class="control-label col-md-3">취급수수료 발생시기</label>
                                                             <div class="col-md-3">
-                                                                <select class="form-control" name="MgmtFeeMode" data-key="MgmtFeeMode" data-type="SELECT">
-                                                                            <option value="0001">Open</option>
+                                                                <select class="form-control" id="MgmtFeeMode" name="MgmtFeeMode" data-key="MgmtFeeMode" data-type="SELECT">
+                                                                            <!-- <option value="0001">Open</option>
                                                                             <option value="0002">Close</option>
-                                                                            <option value="0003">Both</option>
+                                                                            <option value="0003">Both</option> -->
                                                                         </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">BonusModeActive</label>
+                                                            <label class="control-label col-md-3">Bonus 적용 여부</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="BonusModeActive" data-on-color="success" data-off-color="danger" data-key="BonusModeActive" data-type="SWITCH">
+                                                                <input type="checkbox" class="make-switch" name="BonusModeActive" data-on-color="success" data-off-color="danger" data-key="BonusModeActive" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">VipModeActive</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="VipModeActive" data-on-color="success" data-off-color="danger" data-key="VipModeActive" data-type="SWITCH">
+                                                                <input type="checkbox" class="make-switch" name="VipModeActive" data-on-color="success" data-off-color="danger" data-key="VipModeActive" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">VipUpdatePeriod</label>
                                                             <div class="col-md-3">
-                                                                <select class="form-control" name="VipUpdatePeriod" data-key="VipUpdatePeriod" data-type="SELECT">
-                                                                            <option value="0001">Day</option>
+                                                                <select class="form-control" id="VipUpdatePeriod" name="VipUpdatePeriod" data-key="VipUpdatePeriod" data-type="SELECT">
+                                                                            <!-- <option value="0001">Day</option>
                                                                             <option value="0002">Week</option>
-                                                                            <option value="0003">Month</option>
+                                                                            <option value="0003">Month</option> -->
                                                                         </select>
                                                             </div>
                                                         </div>
@@ -177,15 +177,15 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">RejectOrNoTAtNoBankTime</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="RejectOrNoTAtNoBankTime" data-on-color="success" data-off-color="danger" data-key="RejectOrNoTAtNoBankTime" data-type="SWITCH">
+                                                                <input type="checkbox" class="make-switch" name="RejectOrNoTAtNoBankTime" data-on-color="success" data-off-color="danger" data-key="RejectOrNoTAtNoBankTime" data-type="SWITCH">
                                                             </div>
                                                         </div>
-                                                        <div class="form-group">
+                                                        <!-- <div class="form-group">
                                                             <label class="control-label col-md-3">RejectOrNoTAtNoBankTime</label>
                                                             <div class="col-md-3">
                                                                 <input type="checkbox" class="make-switch" checked name="RejectOrNoTAtNoBankTime" data-on-color="success" data-off-color="danger">
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">DepositMinMoney</label>
                                                             <div class="col-md-3">
@@ -219,7 +219,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">RealTimeDelay</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="RealTimeDelay" data-on-color="success" data-off-color="danger" data-key="RealTimeDelay" data-type="SWITCH">
+                                                                <input type="checkbox" class="make-switch" name="RealTimeDelay" data-on-color="success" data-off-color="danger" data-key="RealTimeDelay" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -229,76 +229,88 @@
                                                 <form action="#" class="form-horizontal form-bordered" id="systemSpecialForm">
                                                     <div class="form-body">
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">LossCutPcnt(%)</label>
+                                                            <label class="control-label col-md-3">LossCutPcnt</label>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" id="LossCutPcnt" type="text" maxlength='5' />
+                                                                <input class="form-control" id="LossCutPcnt" type="text" maxlength='5' data-key="LossCutPcnt" data-type="PERCENT" data-inputmask="'alias':'leftPercent'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">LossCutCustoms</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="LossCutCustoms" data-on-color="success" data-off-color="danger">
+                                                                <input type="checkbox" class="make-switch" name="LossCutCustoms" data-on-color="success" data-off-color="danger" data-key="LossCutCustoms" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">ShortSellAllow</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="ShortSellAllow" data-on-color="success" data-off-color="danger">
+                                                                <input type="checkbox" class="make-switch" name="ShortSellAllow" data-on-color="success" data-off-color="danger" data-key="ShortSellAllow" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">ProfitInvestActive</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="ProfitInvestActive" data-on-color="success" data-off-color="danger">
+                                                                <input type="checkbox" class="make-switch" name="ProfitInvestActive" data-on-color="success" data-off-color="danger" data-key="ProfitInvestActive" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">OverNight</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="OverNight" data-on-color="success" data-off-color="danger">
+                                                                <input type="checkbox" class="make-switch" name="OverNight" data-on-color="success" data-off-color="danger" data-key="OverNight" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">OverNightRate</label>
                                                             <div class="col-md-3">
-                                                                <input class="form-control" id="OverNightRate" type="text" />
+                                                                <input class="form-control" id="OverNightRate" type="text" data-key="OverNightRate" data-type="INTEGER" data-inputmask="'alias':'leftInteger'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">ReturnTypeOfShortOrder</label>
                                                             <div class="col-md-3">
-                                                                <select class="form-control" name="ReturnTypeOfShortOrder">
+                                                                <select class="form-control" id="ReturnTypeOfShortOrder" name="ReturnTypeOfShortOrder" data-key="ReturnTypeOfShortOrder" data-type="SELECT">
                                                                                             <!-- <option value="">--선택--</option> -->
-                                                                    <option value="0001">선입선출 방식</option>
+                                                                    <!-- <option value="0001">선입선출 방식</option>
                                                                     <option value="0002">후입선출 방식</option>
                                                                     <option value="0003">마진우선 방식</option>
                                                                     <option value="0004">평균가 반환</option>
-                                                                    <option value="0005">Close Order가</option>
+                                                                    <option value="0005">Close Order가</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">ReturnTypeOfShortOrderCustoms</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="ReturnTypeOfShortOrderCustoms" data-on-color="success" data-off-color="danger">
+                                                                <input type="checkbox" class="make-switch" name="ReturnTypeOfShortOrderCustoms" data-on-color="success" data-off-color="danger" data-key="ReturnTypeOfShortOrderCustoms" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">CloseTypeOfOverNightBeyond</label>
                                                             <div class="col-md-3">
-                                                                <select class="form-control" name="CloseTypeOfOverNightBeyond">
+                                                                <select class="form-control" id="CloseTypeOfOverNightBeyond" name="CloseTypeOfOverNightBeyond" data-key="CloseTypeOfOverNightBeyond" data-type="SELECT">
                                                                     <!-- <option value="">--선택--</option> -->
-                                                                    <option value="0001">선입선출 방식</option>
+                                                                    <!-- <option value="0001">선입선출 방식</option>
                                                                     <option value="0002">후입선출 방식</option>
                                                                     <option value="0003">마진우선</option>
-                                                                    <option value="0004">손실우선</option>
+                                                                    <option value="0004">손실우선</option> -->
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-md-3">CloseTypeOfOverNightCustoms</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" checked name="CloseTypeOfOverNightCustoms" data-on-color="success" data-off-color="danger">
+                                                                <input type="checkbox" class="make-switch" name="CloseTypeOfOverNightCustoms" data-on-color="success" data-off-color="danger" data-key="CloseTypeOfOverNightCustoms" data-type="SWITCH">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">GuaranteeWithdraw</label>
+                                                            <div class="col-md-3">
+                                                                <input type="checkbox" class="make-switch" name="GuaranteeWithdraw" data-on-color="success" data-off-color="danger" data-key="GuaranteeWithdraw" data-type="SWITCH">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">GuaranteeWithdrawPcnt</label>
+                                                            <div class="col-md-3">
+                                                                <input class="form-control" id="GuaranteeWithdrawPcnt" type="text" maxlength='5' data-key="GuaranteeWithdrawPcnt" data-type="PERCENT" data-inputmask="'alias':'leftPercent'" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -339,8 +351,9 @@
 
             Comm.init();
 
+            getSelectData();
 
-            // $("#DepositMinMoney").inputmask("currency_normal");
+
 
 
             $("#SystemSetFormEdit").on('switchChange.bootstrapSwitch', function(event, state) {
@@ -387,8 +400,69 @@
 
         });
 
-        function getData($FORM) {
+        function getBizData() {
+            var settings = {
+                "async": false,
+                "crossDomain": true,
+                "url": Comm.getApiUrl() + "/api/Admin/GetOptSettings",
+                "method": "GET",
+                "headers": Comm.getHeader()
+            }
 
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+                if (response.Result == 0) {
+                    var datas = response.Data;
+                    $.each(datas, function(index, data) {
+
+
+                    });
+                }
+            });
+        }
+
+        function getSelectData() {
+            var settings = {
+                "async": false,
+                "crossDomain": true,
+                "url": Comm.getApiUrl() + "/api/Code/GetCodeInfoByGroups?groudIds=0014,0015,0023,0025",
+                "method": "GET",
+                "headers": Comm.getHeader()
+            }
+
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+                if (response.Result == 0) {
+                    var datas = response.Data;
+                    $.each(datas, function(index, data) {
+                        if (data.GroupId == '0014') {
+                            initSelect("TradeFeeMode", data.Codeinfos);
+                            initSelect("TradeTaxMode", data.Codeinfos);
+                            initSelect("MgmtFeeMode", data.Codeinfos);
+                        }
+                        if (data.GroupId == '0015') {
+                            initSelect("VipUpdatePeriod", data.Codeinfos);
+                        }
+                        if (data.GroupId == '0023') {
+                            initSelect("ReturnTypeOfShortOrder", data.Codeinfos);
+                        }
+                        if (data.GroupId == '0025') {
+                            initSelect("CloseTypeOfOverNightBeyond", data.Codeinfos);
+                        }
+
+                    });
+                }
+            });
+        }
+
+        function initSelect(elementNm, codeList) {
+            var optionsHtml = "";
+            $.each(codeList, function(index, item) {
+                optionsHtml += '<option value="' + item.CODEID + '">' + item.CODEKR + '</option>';
+            });
+            var element = $(("#" + elementNm));
+            element.empty();
+            element.append(optionsHtml);
         }
 
         function editable() {

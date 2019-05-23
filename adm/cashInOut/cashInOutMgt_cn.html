@@ -279,7 +279,7 @@
             header.crossDomain = true;
 
             var table_deposit = $("#table_deposit").bootstrapTable("destroy").bootstrapTable({
-                url: 'http://62.234.152.219:90/api/DepositWithDraw/QueryDepositOrWithDraw', // 请求后台的URL（*）
+                url: Comm.getApiUrl() + '/api/DepositWithDraw/QueryDepositOrWithDraw', // 请求后台的URL（*）
                 method: 'post', // 请求方式（*）
                 dataType: 'json',
                 striped: true, // 是否显示行间隔色
@@ -482,7 +482,7 @@
                     var settings = {
                         "async": false,
                         "crossDomain": true,
-                        "url": "http://62.234.152.219:90/api/DepositWithDraw/ActiveDeposit",
+                        "url": Comm.getApiUrl() + "/api/DepositWithDraw/ActiveDeposit",
                         "method": "POST",
                         "headers": header,
                         "data": JSON.stringify(data)
