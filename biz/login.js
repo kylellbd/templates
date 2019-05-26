@@ -6,20 +6,19 @@ var Login = function() {
             errorClass: 'help-block', // default input error message class
             focusInvalid: false, // do not focus the last invalid input
             rules: {
-                username: {
-                    required: true
+                LoginUserId: {
+                    required: true,
+                    alpha: true,
                 },
                 password: {
                     required: true
-                },
-                remember: {
-                    required: false
                 }
             },
 
             messages: {
-                username: {
-                    required: "Username is required."
+                LoginUserId: {
+                    required: "Username is required.",
+                    alpha: "영문과 숫자만 가능합니다."
                 },
                 password: {
                     required: "Password is required."
@@ -48,18 +47,25 @@ var Login = function() {
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://62.234.152.219:90/api/User/Login?userId=" + form.UserId.value + "&pwd=" + form.Pwd.value + "&pt=pc",
+                    "url": "http://62.234.152.219:90/api/User/Login?userId=" + form.LoginUserId.value + "&pwd=" + form.Pwd.value + "&pt=pc",
                     "method": "GET",
                     "headers": {
-                        "userId": form.UserId.value,
+                        "userId": form.LoginUserId.value,
                         "cache-control": "no-cache",
-                        "Postman-Token": "f12c4eef-02ab-4184-a229-6b0e3bf6ec31"
                     }
                 }
 
                 $.ajax(settings).done(function(response) {
-                    console.log(response);
                     if (response.Result == 0) {
+
+                        if (form.LoginRemember.checked) {
+                            $.cookie("SHRUB_BIZ_LoginUserId", form.LoginUserId.value, { expires: 10 });
+                            $.cookie("SHRUB_BIZ_LoginRemember", form.LoginRemember.checked, { expires: 10 });
+                        } else {
+                            $.cookie("SHRUB_BIZ_LoginUserId", null, { expires: 10 });
+                            $.cookie("SHRUB_BIZ_LoginRemember", null, { expires: 10 });
+                        }
+
                         Comm.setHeader(response.Data.UserId, response.Data.Token);
                         Comm.alert('login success', 'success', '/templates/biz/main.html');
                     } else {
@@ -80,70 +86,73 @@ var Login = function() {
                 return false;
             }
         });
-    }
 
-    var handleForgetPassword = function() {
-        $('.forget-form').validate({
-            errorElement: 'span', //default input error message container
-            errorClass: 'help-block', // default input error message class
-            focusInvalid: false, // do not focus the last invalid input
-            ignore: "",
-            rules: {
-                email: {
-                    required: true,
-                    email: true
-                }
-            },
 
-            messages: {
-                email: {
-                    required: "Email is required."
-                }
-            },
-
-            invalidHandler: function(event, validator) { //display error alert on form submit   
-
-            },
-
-            highlight: function(element) { // hightlight error inputs
-                $(element)
-                    .closest('.form-group').addClass('has-error'); // set error class to the control group
-            },
-
-            success: function(label) {
-                label.closest('.form-group').removeClass('has-error');
-                label.remove();
-            },
-
-            errorPlacement: function(error, element) {
-                error.insertAfter(element.closest('.input-icon'));
-            },
-
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
-
-        $('.forget-form input').keypress(function(e) {
-            if (e.which == 13) {
-                if ($('.forget-form').validate().form()) {
-                    $('.forget-form').submit();
-                }
-                return false;
-            }
-        });
-
-        jQuery('#forget-password').click(function() {
-            jQuery('.login-form').hide();
-            jQuery('.forget-form').show();
-        });
-
-        jQuery('#back-btn').click(function() {
-            jQuery('.login-form').show();
-            jQuery('.forget-form').hide();
-        });
 
     }
+
+    // var handleForgetPassword = function() {
+    //     $('.forget-form').validate({
+    //         errorElement: 'span', //default input error message container
+    //         errorClass: 'help-block', // default input error message class
+    //         focusInvalid: false, // do not focus the last invalid input
+    //         ignore: "",
+    //         rules: {
+    //             email: {
+    //                 required: true,
+    //                 email: true
+    //             }
+    //         },
+
+    //         messages: {
+    //             email: {
+    //                 required: "Email is required."
+    //             }
+    //         },
+
+    //         invalidHandler: function(event, validator) { //display error alert on form submit   
+
+    //         },
+
+    //         highlight: function(element) { // hightlight error inputs
+    //             $(element)
+    //                 .closest('.form-group').addClass('has-error'); // set error class to the control group
+    //         },
+
+    //         success: function(label) {
+    //             label.closest('.form-group').removeClass('has-error');
+    //             label.remove();
+    //         },
+
+    //         errorPlacement: function(error, element) {
+    //             error.insertAfter(element.closest('.input-icon'));
+    //         },
+
+    //         submitHandler: function(form) {
+    //             form.submit();
+    //         }
+    //     });
+
+    //     $('.forget-form input').keypress(function(e) {
+    //         if (e.which == 13) {
+    //             if ($('.forget-form').validate().form()) {
+    //                 $('.forget-form').submit();
+    //             }
+    //             return false;
+    //         }
+    //     });
+
+    //     jQuery('#forget-password').click(function() {
+    //         jQuery('.login-form').hide();
+    //         jQuery('.forget-form').show();
+    //     });
+
+    //     jQuery('#back-btn').click(function() {
+    //         jQuery('.login-form').show();
+    //         jQuery('.forget-form').hide();
+    //     });
+
+    // }
 
     var handleRegister = function() {
 
@@ -158,24 +167,6 @@ var Login = function() {
             return $state;
         }
 
-        if (jQuery().select2 && $('#country_list').size() > 0) {
-            $("#country_list").select2({
-                placeholder: '<i class="fa fa-map-marker"></i>&nbsp;Select a Country',
-                templateResult: format,
-                templateSelection: format,
-                width: 'auto',
-                escapeMarkup: function(m) {
-                    return m;
-                }
-            });
-
-
-            $('#country_list').change(function() {
-                $('.register-form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
-            });
-        }
-
-
         $('.register-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -186,15 +177,17 @@ var Login = function() {
                 Name: {
                     required: true
                 },
-                Email: {
-                    required: true,
-                    email: true
-                },
+                // Email: {
+                //     required: true,
+                //     email: true
+                // },
                 Tel: {
-                    required: true
+                    required: true,
+                    isMobile: true
                 },
                 UserId: {
-                    required: true
+                    required: true,
+                    alpha: true
                 },
                 Pwd: {
                     required: true
@@ -208,18 +201,20 @@ var Login = function() {
             },
 
             messages: { // custom messages for radio buttons and checkboxes
-                Name: {
-                    required: "이름을 입력하세요."
-                },
-                Email: {
-                    required: "메일주소를 입력하세요.",
-                    email: "유효한 메일주소를 입력하세요."
-                },
+                // Name: {
+                //     required: "이름을 입력하세요."
+                // },
+                // Email: {
+                //     required: "메일주소를 입력하세요.",
+                //     email: "유효한 메일주소를 입력하세요."
+                // },
                 Tel: {
-                    required: "핸드폰 번호를 입력하세요."
+                    required: "핸드폰 번호를 입력하세요.",
+                    isMobile: "11자리 핸드폰 번호를 입력하세요."
                 },
                 UserId: {
-                    required: "아이디를 입력하세요."
+                    required: "아이디를 입력하세요.",
+                    alpha: "영문과 숫자만 가능합니다."
                 },
                 Pwd: {
                     required: "비밀번호를 입력하세요."
@@ -257,8 +252,8 @@ var Login = function() {
             },
 
             submitHandler: function(form) {
-                console.log("test login ");
-                console.log("checkCodeCnt=" + checkCodeCnt);
+                // console.log("test login ");
+                // console.log("checkCodeCnt=" + checkCodeCnt);
                 //check Code once
                 if (checkCodeCnt == 0) {
                     Comm.alert('추천코드를 확인해주세요.', 'info');
@@ -268,11 +263,11 @@ var Login = function() {
 
 
                 var formDatas = {};
-                formDatas.Name = form.Name.value;
+                // formDatas.Name = form.Name.value;
                 formDatas.UserId = form.UserId.value;
                 formDatas.Pwd = form.Pwd.value;
                 formDatas.Tel = form.Tel.value;
-                formDatas.Email = form.Email.value;
+                // formDatas.Email = form.Email.value;
                 formDatas.Code = form.Code.value;
 
                 var settings = {
@@ -286,7 +281,8 @@ var Login = function() {
                 $.ajax(settings).done(function(response) {
                     console.log(response);
                     if (response.Result == 0) {
-                        Comm.alert('회원가입 성공하셨습니다.', 'success');
+                        // Comm.alert('회원가입 성공하셨습니다.<br>ID:' + form.UserId.value + '<br>' + '비번:' + form.Pwd.value, 'success');
+                        Comm.alertWithTitle('축하 드립니다. 회원 가입 성공 하셨습니다.', '아이디/비번: ' + form.UserId.value + '/' + form.Pwd.value, 'success');
                     } else {
                         Comm.alert(response.errorMsg, 'error');
                     }
@@ -324,6 +320,26 @@ var Login = function() {
         //main function to initiate the module
         init: function() {
 
+            jQuery.validator.addMethod("isMobile", function(value, element) {
+                var length = value.length;
+                var regPhone = /^[0-9]+$/;
+                return this.optional(element) || (length == 11 && regPhone.test(value));
+            }, "핸드폰 번호를 입력하세요.");
+
+            jQuery.validator.addMethod("alpha", function(value, element) {
+                var alpha = /^[0-9a-zA-Z]+$/;
+                return this.optional(element) || (alpha.test(value));
+            }, "영문과 숫자만 가능합니다.");
+
+
+            //remember ID
+            if ($.cookie("SHRUB_BIZ_LoginRemember") != null && $.cookie("SHRUB_BIZ_LoginRemember") != undefined) {
+                $("#LoginUserId").val($.cookie("SHRUB_BIZ_LoginUserId"));
+                $("#LoginRemember").attr('checked', true);
+            }
+
+
+
             handleLogin();
             // handleForgetPassword();
             handleRegister();
@@ -344,5 +360,6 @@ var Login = function() {
 }();
 
 jQuery(document).ready(function() {
+
     Login.init();
 });

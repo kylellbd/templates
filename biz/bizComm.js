@@ -33,6 +33,7 @@ var Comm = function() {
     }
 
     var clearSession = function() {
+        console.log('cleaning session');
         sessionStorage.clear();
     }
 
@@ -51,7 +52,7 @@ var Comm = function() {
                 showConfirmButton: "btn-success",
                 allowOutsideClick: true,
                 showCancelButton: false,
-                confirmButtonText: "确认",
+                confirmButtonText: "확인",
                 closeOnConfirm: false,
                 closeOnCancel: true
             },
@@ -78,11 +79,31 @@ var Comm = function() {
                 closeOnCancel: true
             },
             function(isConfirm) {
-                swal.close();
                 if (isConfirm) {
                     func();
                 }
 
+            }
+        );
+    }
+
+    var innerAlertWithTitle = function(v_title, v_text, v_type, url) {
+        swal({
+                title: v_title,
+                text: v_text,
+                type: v_type,
+                showConfirmButton: "btn-success",
+                allowOutsideClick: true,
+                showCancelButton: false,
+                confirmButtonText: "확인",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            },
+            function(isConfirm) {
+                swal.close();
+                if (url != null && url != "") {
+                    window.location.href = url;
+                }
             }
         );
     }
@@ -174,7 +195,7 @@ var Comm = function() {
                     break;
                 case "PERCENT":
                     itemValue = Inputmask.unmask(item.val(), { alias: "leftPercent" });
-                    console.log("percent=" + itemValue);
+                    // console.log("percent=" + itemValue);
                     if (itemValue == null) {
                         itemValue = 0;
                     }
@@ -272,14 +293,14 @@ var Comm = function() {
                     break;
                 case "INTEGER":
                     itemValue = item.val();
-                    console.log(itemValue);
+                    // console.log(itemValue);
                     if (itemValue == null || itemValue == "") {
                         itemValue = 0;
                     }
                     break;
                 case "PERCENT":
                     itemValue = Inputmask.unmask(item.val(), { alias: "leftPercent" });
-                    console.log("percent=" + itemValue);
+                    // console.log("percent=" + itemValue);
                     if (itemValue == null) {
                         itemValue = 0;
                     }
@@ -429,6 +450,33 @@ var Comm = function() {
         },
         getElementByDataKey: function(dataKey) {
             getElementByDataKey(dataKey);
+        },
+        alertWithTitle: function(v_title, v_text, v_type, url) {
+            innerAlertWithTitle(v_title, v_text, v_type, url);
+        },
+        logOut: function() {
+
+            swal({
+                    title: "Alert",
+                    text: '로그아웃 하시겠습니까?',
+                    type: 'info',
+                    showConfirmButton: "btn-success",
+                    allowOutsideClick: true,
+                    showCancelButton: true,
+                    confirmButtonText: "확인",
+                    cancelButtonText: "취소",
+                    closeOnConfirm: true,
+                    closeOnCancel: true
+                },
+                function(isConfirm) {
+                    if (isConfirm) {
+                        clearSession();
+                        window.location.href = '/templates/biz/login.html';
+                    }
+
+                }
+            );
+
         }
     }
 }();

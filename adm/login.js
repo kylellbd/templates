@@ -7,7 +7,8 @@ var Login = function() {
             focusInvalid: false, // do not focus the last invalid input
             rules: {
                 userId: {
-                    required: true
+                    required: true,
+                    alpha: true,
                 },
                 pwd: {
                     required: true
@@ -19,7 +20,8 @@ var Login = function() {
 
             messages: {
                 userId: {
-                    required: "ID is required."
+                    required: "ID is required.",
+                    alpha: "영문과 숫자만 가능합니다."
                 },
                 pwd: {
                     required: "Password is required."
@@ -46,18 +48,6 @@ var Login = function() {
 
             submitHandler: function(form) {
 
-                // var settings = {
-                //     "async": true,
-                //     "crossDomain": true,
-                //     "url": "http://62.234.152.219:90/api/Admin/Login",
-                //     "method": "GET",
-                //     "headers": {
-                //         "userId": form.userId.value,
-                //         "pwd": form.pwd.value,
-                //         "pt": "pc",
-                //         "cache-control": "no-cache"
-                //     }
-                // }
 
                 var settings = {
                     "async": true,
@@ -67,17 +57,24 @@ var Login = function() {
                     "headers": {
                         "userId": form.userId.value,
                         "cache-control": "no-cache",
-                        "Postman-Token": "f12c4eef-02ab-4184-a229-6b0e3bf6ec31"
+                        // "Postman-Token": "f12c4eef-02ab-4184-a229-6b0e3bf6ec31"
                     }
                 }
 
                 $.ajax(settings).done(function(response) {
                     console.log(response);
                     if (response.Result == 0) {
+                        if (form.LoginRemember.checked) {
+                            $.cookie("SHRUB_ADM_LoginUserId", form.userId.value, { expires: 10 });
+                            $.cookie("SHRUB_ADM_LoginRemember", form.LoginRemember.checked, { expires: 10 });
+                        } else {
+                            $.cookie("SHRUB_ADM_LoginUserId", null, { expires: 10 });
+                            $.cookie("SHRUB_ADM_LoginRemember", null, { expires: 10 });
+                        }
                         Comm.setHeader(response.Data.UserId, response.Data.Token);
                         Comm.alert('login success', 'success', '/templates/adm/index_cn.html');
                     } else {
-                        Comm.alert(response.errorMsg, 'error');
+                        Comm.alert(response.ErrorMsg, 'error');
                     }
 
                 });
@@ -96,199 +93,24 @@ var Login = function() {
         });
     }
 
-    var handleForgetPassword = function() {
-        $('.forget-form').validate({
-            errorElement: 'span', //default input error message container
-            errorClass: 'help-block', // default input error message class
-            focusInvalid: false, // do not focus the last invalid input
-            ignore: "",
-            rules: {
-                email: {
-                    required: true,
-                    email: true
-                }
-            },
 
-            messages: {
-                email: {
-                    required: "Email is required."
-                }
-            },
-
-            invalidHandler: function(event, validator) { //display error alert on form submit   
-
-            },
-
-            highlight: function(element) { // hightlight error inputs
-                $(element)
-                    .closest('.form-group').addClass('has-error'); // set error class to the control group
-            },
-
-            success: function(label) {
-                label.closest('.form-group').removeClass('has-error');
-                label.remove();
-            },
-
-            errorPlacement: function(error, element) {
-                error.insertAfter(element.closest('.input-icon'));
-            },
-
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
-
-        $('.forget-form input').keypress(function(e) {
-            if (e.which == 13) {
-                if ($('.forget-form').validate().form()) {
-                    $('.forget-form').submit();
-                }
-                return false;
-            }
-        });
-
-        jQuery('#forget-password').click(function() {
-            jQuery('.login-form').hide();
-            jQuery('.forget-form').show();
-        });
-
-        jQuery('#back-btn').click(function() {
-            jQuery('.login-form').show();
-            jQuery('.forget-form').hide();
-        });
-
-    }
-
-    var handleRegister = function() {
-
-        function format(state) {
-            if (!state.id) { return state.text; }
-            var $state = $(
-                '<span><img src="/assets/global/img/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
-            );
-
-            return $state;
-        }
-
-        if (jQuery().select2 && $('#country_list').size() > 0) {
-            $("#country_list").select2({
-                placeholder: '<i class="fa fa-map-marker"></i>&nbsp;Select a Country',
-                templateResult: format,
-                templateSelection: format,
-                width: 'auto',
-                escapeMarkup: function(m) {
-                    return m;
-                }
-            });
-
-
-            $('#country_list').change(function() {
-                $('.register-form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
-            });
-        }
-
-
-        $('.register-form').validate({
-            errorElement: 'span', //default input error message container
-            errorClass: 'help-block', // default input error message class
-            focusInvalid: false, // do not focus the last invalid input
-            ignore: "",
-            rules: {
-
-                fullname: {
-                    required: true
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                address: {
-                    required: true
-                },
-                city: {
-                    required: true
-                },
-                country: {
-                    required: true
-                },
-
-                username: {
-                    required: true
-                },
-                password: {
-                    required: true
-                },
-                rpassword: {
-                    equalTo: "#register_password"
-                },
-
-                tnc: {
-                    required: true
-                }
-            },
-
-            messages: { // custom messages for radio buttons and checkboxes
-                tnc: {
-                    required: "Please accept TNC first."
-                }
-            },
-
-            invalidHandler: function(event, validator) { //display error alert on form submit   
-
-            },
-
-            highlight: function(element) { // hightlight error inputs
-                $(element)
-                    .closest('.form-group').addClass('has-error'); // set error class to the control group
-            },
-
-            success: function(label) {
-                label.closest('.form-group').removeClass('has-error');
-                label.remove();
-            },
-
-            errorPlacement: function(error, element) {
-                if (element.attr("name") == "tnc") { // insert checkbox errors after the container                  
-                    error.insertAfter($('#register_tnc_error'));
-                } else if (element.closest('.input-icon').size() === 1) {
-                    error.insertAfter(element.closest('.input-icon'));
-                } else {
-                    error.insertAfter(element);
-                }
-            },
-
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
-
-        $('.register-form input').keypress(function(e) {
-            if (e.which == 13) {
-                if ($('.register-form').validate().form()) {
-                    $('.register-form').submit();
-                }
-                return false;
-            }
-        });
-
-        jQuery('#register-btn').click(function() {
-            jQuery('.login-form').hide();
-            jQuery('.register-form').show();
-        });
-
-        jQuery('#register-back-btn').click(function() {
-            jQuery('.login-form').show();
-            jQuery('.register-form').hide();
-        });
-    }
 
     return {
         //main function to initiate the module
         init: function() {
+            jQuery.validator.addMethod("alpha", function(value, element) {
+                var alpha = /^[0-9a-zA-Z]+$/;
+                return this.optional(element) || (alpha.test(value));
+            }, "영문과 숫자만 가능합니다.");
+
+
+            //remember ID
+            if ($.cookie("SHRUB_ADM_LoginRemember") != null && $.cookie("SHRUB_ADM_LoginRemember") != undefined) {
+                $("#userId").val($.cookie("SHRUB_ADM_LoginUserId"));
+                $("#LoginRemember").attr('checked', true);
+            }
 
             handleLogin();
-            handleForgetPassword();
-            handleRegister();
 
             // init background slide images
             $.backstretch([
