@@ -2,6 +2,8 @@ var Comm = function() {
     var DEV_API_URL = "http://62.234.152.219:90";
     var PROD_API_URL = "http://api.szaitech.com";
     var SYSTEM_MODE = "DEV"; //PROD
+    var HEADER = 'shrubHeader';
+    var LOGINER_INFO = 'loginerInfo';
 
     var getApiUrl = function() {
         if (SYSTEM_MODE == 'PROD') {
@@ -19,18 +21,45 @@ var Comm = function() {
             "pt": "pc"
         };
 
-        sessionStorage.setItem("header", JSON.stringify(headerItem));
-
+        sessionStorage.setItem(HEADER, JSON.stringify(headerItem));
     }
 
     var getHeader = function() {
-        return JSON.parse(sessionStorage.getItem("header"));
+        return JSON.parse(sessionStorage.getItem(HEADER));
     }
 
     var getPostHeader = function() {
         var header = getHeader();
         header['Content-Type'] = 'application/json';
         return header;
+    }
+
+    var setLoginerInfo = function(userData) {
+        sessionStorage.setItem(LOGINER_INFO, JSON.stringify(userData));
+    }
+
+    var getLoginerInfo = function() {
+        var strLoginerInfo = sessionStorage.getItem(LOGINER_INFO);
+        var header = getPostHeader();
+        if (strLoginerInfo == null) {
+            var settings = {
+                "async": false,
+                "crossDomain": true,
+                "url": getApiUrl() + "/api/Admin/GetUserList",
+                "method": "POST",
+                "headers": header,
+                "data": JSON.stringify({ UserId: header.user })
+            }
+
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+                if (response.Result == 0) {
+                    var datas = response.Data;
+                    setLoginerInfo(datas[0]);
+                }
+            });
+        }
+        return JSON.parse(sessionStorage.getItem(LOGINER_INFO));
     }
 
     var clearSession = function() {
@@ -115,6 +144,7 @@ var Comm = function() {
                 digits: 2,
                 rightAlign: false
             },
+
         });
     }
 
@@ -426,7 +456,10 @@ var Comm = function() {
             return innerConfirm(v_text, v_type, func);
         },
         getElementByDataKey: function(dataKey) {
-            getElementByDataKey(dataKey);
+            return getElementByDataKey(dataKey);
+        },
+        getLoginerInfo: function() {
+            return getLoginerInfo();
         }
     }
 }();

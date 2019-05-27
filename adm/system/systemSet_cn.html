@@ -96,11 +96,9 @@
                                     <div align="right">
                                         <input type="checkbox" class="make-switch" name="SystemSetFormEdit" id="SystemSetFormEdit" data-on-color="success" data-off-color="danger" data-on-text="Edit" data-off-text="ReadOnly">
                                         <button type="button" class="btn blue" id="systemSetSave">Save</button>
-
-                                        <button type="button" class="btn blue" id="setData">TEMPSETDATA</button>
                                     </div>
                                 </div>
-                                <div class="portlet-body form">
+                                <div class="portlet-body form" id="systemDiv">
 
                                     <div class="tabbable-line">
                                         <ul class="nav nav-tabs ">
@@ -152,13 +150,13 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">VipModeActive</label>
+                                                            <label class="control-label col-md-3">Vip Mode 적용 여부</label>
                                                             <div class="col-md-3">
                                                                 <input type="checkbox" class="make-switch" name="VipModeActive" data-on-color="success" data-off-color="danger" data-key="VipModeActive" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">VipUpdatePeriod</label>
+                                                            <label class="control-label col-md-3">Vip 등급Update(마감)주기</label>
                                                             <div class="col-md-3">
                                                                 <select class="form-control" id="VipUpdatePeriod" name="VipUpdatePeriod" data-key="VipUpdatePeriod" data-type="SELECT">
                                                                             <!-- <option value="0001">Day</option>
@@ -168,14 +166,14 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">BankProcessTime</label>
+                                                            <label class="control-label col-md-3">입출금 처리 시간</label>
                                                             <div class="col-md-3" style="display: inline-flex;">
                                                                 <input class="form-control" style="width: 45%;" id="BankProcessTimeS" type="text" maxlength='5' size="10" data-key="BankProcessTimeS" data-type="TEXT" />~
                                                                 <input class="form-control" style="width: 45%;" id="BankProcessTimeE" type="text" maxlength='5' size="10" data-key="BankProcessTimeE" data-type="TEXT" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">RejectOrNoTAtNoBankTime</label>
+                                                            <label class="control-label col-md-3">비 입출금 처리 시간에 입출금 요청 Rejected 여부</label>
                                                             <div class="col-md-3">
                                                                 <input type="checkbox" class="make-switch" name="RejectOrNoTAtNoBankTime" data-on-color="success" data-off-color="danger" data-key="RejectOrNoTAtNoBankTime" data-type="SWITCH">
                                                             </div>
@@ -187,39 +185,39 @@
                                                             </div>
                                                         </div> -->
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">DepositMinMoney</label>
+                                                            <label class="control-label col-md-3">일회 충전 최소금액</label>
                                                             <div class="col-md-3">
                                                                 <input class="form-control" id="DepositMinMoney" type="text" data-key="DepositMinMoney" data-type="MONEY" data-inputmask="'alias':'currency_normal'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">DepositMaxMoney</label>
+                                                            <label class="control-label col-md-3">일회 충전 최대금액</label>
                                                             <div class="col-md-3">
                                                                 <input class="form-control" id="DepositMaxMoney" type="text" data-key="DepositMaxMoney" data-type="MONEY" data-inputmask="'alias':'currency_normal'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">MaxBrrwCnt</label>
+                                                            <label class="control-label col-md-3">개인보유대출 종류 최대수량</label>
                                                             <div class="col-md-3">
                                                                 <input class="form-control" id="MaxBrrwCnt" type="text" data-key="MaxBrrwCnt" data-type="INTEGER" data-inputmask="'alias':'leftInteger'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">MaxBrrwMoney</label>
+                                                            <label class="control-label col-md-3">개인보유 총 대출 최대금액</label>
                                                             <div class="col-md-3">
                                                                 <input class="form-control" id="MaxBrrwMoney" type="text" data-key="MaxBrrwMoney" data-type="MONEY" data-inputmask="'alias':'currency_normal'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">OneTimeMinPrincipal</label>
+                                                            <label class="control-label col-md-3">대출신청 시 취소담보금</label>
                                                             <div class="col-md-3">
                                                                 <input class="form-control" id="OneTimeMinPrincipal" type="text" data-key="OneTimeMinPrincipal" data-type="MONEY" data-inputmask="'alias':'currency_normal'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">RealTimeDelay</label>
+                                                            <label class="control-label col-md-3">거래 처리 시 허용 시세 Delay 최대값(초)</label>
                                                             <div class="col-md-3">
-                                                                <input type="checkbox" class="make-switch" name="RealTimeDelay" data-on-color="success" data-off-color="danger" data-key="RealTimeDelay" data-type="SWITCH">
+                                                                <input class="form-control" id="RealTimeDelay" type="text" data-key="RealTimeDelay" data-type="INTEGER" data-inputmask="'alias':'leftInteger'" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -229,43 +227,43 @@
                                                 <form action="#" class="form-horizontal form-bordered" id="systemSpecialForm">
                                                     <div class="form-body">
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">LossCutPcnt</label>
+                                                            <label class="control-label col-md-3">LossCut Defualt 설정값(30%)</label>
                                                             <div class="col-md-3">
                                                                 <input class="form-control" id="LossCutPcnt" type="text" maxlength='5' data-key="LossCutPcnt" data-type="PERCENT" data-inputmask="'alias':'leftPercent'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">LossCutCustoms</label>
+                                                            <label class="control-label col-md-3">LossCut Defualt 고객 설정가능여부</label>
                                                             <div class="col-md-3">
                                                                 <input type="checkbox" class="make-switch" name="LossCutCustoms" data-on-color="success" data-off-color="danger" data-key="LossCutCustoms" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">ShortSellAllow</label>
+                                                            <label class="control-label col-md-3">공매매 가능 여부설정</label>
                                                             <div class="col-md-3">
                                                                 <input type="checkbox" class="make-switch" name="ShortSellAllow" data-on-color="success" data-off-color="danger" data-key="ShortSellAllow" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">ProfitInvestActive</label>
+                                                            <label class="control-label col-md-3">마진 투자가능여부 설정</label>
                                                             <div class="col-md-3">
                                                                 <input type="checkbox" class="make-switch" name="ProfitInvestActive" data-on-color="success" data-off-color="danger" data-key="ProfitInvestActive" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">OverNight</label>
+                                                            <label class="control-label col-md-3">OverNight Default 적용여부</label>
                                                             <div class="col-md-3">
                                                                 <input type="checkbox" class="make-switch" name="OverNight" data-on-color="success" data-off-color="danger" data-key="OverNight" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">OverNightRate</label>
+                                                            <label class="control-label col-md-3">담보금 대비 OverNight 가능 뱃수</label>
                                                             <div class="col-md-3">
                                                                 <input class="form-control" id="OverNightRate" type="text" data-key="OverNightRate" data-type="INTEGER" data-inputmask="'alias':'leftInteger'" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">ReturnTypeOfShortOrder</label>
+                                                            <label class="control-label col-md-3">공매매 Close 시 거래금 반환방식</label>
                                                             <div class="col-md-3">
                                                                 <select class="form-control" id="ReturnTypeOfShortOrder" name="ReturnTypeOfShortOrder" data-key="ReturnTypeOfShortOrder" data-type="SELECT">
                                                                                             <!-- <option value="">--선택--</option> -->
@@ -278,13 +276,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">ReturnTypeOfShortOrderCustoms</label>
+                                                            <label class="control-label col-md-3">공매매 Close 시 거래금 반환방식<br>
+                                                                고객 설정가능여부</label>
                                                             <div class="col-md-3">
                                                                 <input type="checkbox" class="make-switch" name="ReturnTypeOfShortOrderCustoms" data-on-color="success" data-off-color="danger" data-key="ReturnTypeOfShortOrderCustoms" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">CloseTypeOfOverNightBeyond</label>
+                                                            <label class="control-label col-md-3">OverNight 초과 부분 자동Close시<br>
+                                                                Position 처리순서</label>
                                                             <div class="col-md-3">
                                                                 <select class="form-control" id="CloseTypeOfOverNightBeyond" name="CloseTypeOfOverNightBeyond" data-key="CloseTypeOfOverNightBeyond" data-type="SELECT">
                                                                     <!-- <option value="">--선택--</option> -->
@@ -296,21 +296,28 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">CloseTypeOfOverNightCustoms</label>
+                                                            <label class="control-label col-md-3">OverNight 초과 부분 자동Close시<br>
+                                                                Position 처리순서 고객 설정가능여부</label>
                                                             <div class="col-md-3">
                                                                 <input type="checkbox" class="make-switch" name="CloseTypeOfOverNightCustoms" data-on-color="success" data-off-color="danger" data-key="CloseTypeOfOverNightCustoms" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">GuaranteeWithdraw</label>
+                                                            <label class="control-label col-md-3">대출의 담보금 출금가능여부</label>
                                                             <div class="col-md-3">
                                                                 <input type="checkbox" class="make-switch" name="GuaranteeWithdraw" data-on-color="success" data-off-color="danger" data-key="GuaranteeWithdraw" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3">GuaranteeWithdrawPcnt</label>
+                                                            <label class="control-label col-md-3">대출의 담보금 출금 퍼센트</label>
                                                             <div class="col-md-3">
                                                                 <input class="form-control" id="GuaranteeWithdrawPcnt" type="text" maxlength='5' data-key="GuaranteeWithdrawPcnt" data-type="PERCENT" data-inputmask="'alias':'leftPercent'" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3">성명과 은행계좌 일치여부</label>
+                                                            <div class="col-md-3">
+                                                                <input type="checkbox" class="make-switch" name="BankNameIdentical" data-on-color="success" data-off-color="danger" data-key="BankNameIdentical" data-type="SWITCH">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -352,7 +359,7 @@
             Comm.init();
 
             getSelectData();
-
+            getBizData();
 
 
 
@@ -365,40 +372,37 @@
                 }
             });
 
-
             readonly();
 
             $("#systemSetSave").on('click', function(event, state) {
-                var datas = Comm.getFormData($("#systemNormalForm"));
-                console.log(JSON.stringify(datas));
+                var datas = getAllData();
+                saveData(datas);
             });
-
-            $("#setData").on('click', function(event, state) {
-
-                var testData = {
-                    "TradeFeeMode": "0002",
-                    "TradeTaxMode": "0001",
-                    "MgmtFeeMode": "0003",
-                    "BonusModeActive": "N",
-                    "VipModeActive": "Y",
-                    "VipUpdatePeriod": "0002",
-                    "BankProcessTimeS": "123",
-                    "BankProcessTimeE": "123",
-                    "RejectOrNoTAtNoBankTime": "N",
-                    "DepositMinMoney": "10000.00",
-                    "DepositMaxMoney": "999999.00",
-                    "MaxBrrwCnt": 0,
-                    "MaxBrrwMoney": 0,
-                    "OneTimeMinPrincipal": 0,
-                    "RealTimeDelay": "Y"
-                };
-                Comm.setDomData($("#systemNormalForm"), testData);
-
-            });
-
-
 
         });
+
+        function saveData(datas) {
+
+            var settings = {
+                "async": false,
+                "crossDomain": true,
+                "url": Comm.getApiUrl() + "/api/Admin/UpOptSettings",
+                "method": "POST",
+                "headers": Comm.getPostHeader(),
+                "data": JSON.stringify(datas)
+            }
+            $.ajax(settings).done(function(response) {
+                console.log(response);
+                if (response.Result == 0) {
+                    Comm.alert('데이터 변경 성공하였습니다.', 'success');
+                } else {
+                    Comm.alert(response.errorMsg, 'error');
+                }
+                getBizData();
+                readonly();
+                $("#SystemSetFormEdit").bootstrapSwitch("state", false);
+            });
+        }
 
         function getBizData() {
             var settings = {
@@ -413,10 +417,7 @@
                 console.log(response);
                 if (response.Result == 0) {
                     var datas = response.Data;
-                    $.each(datas, function(index, data) {
-
-
-                    });
+                    setAllData(datas);
                 }
             });
         }
@@ -495,6 +496,134 @@
                     $(this).bootstrapSwitch("readonly", true);
                 }
             });
+        }
+
+
+        var getAllData = function() {
+            var params = [];
+            var domItems = $('#systemDiv').find("[data-key]");
+            var BankProcessTime = {};
+            domItems.each(function(index, item) {
+                item = $(item);
+                var itemNm = item.attr("data-key");
+                var itemType = item.attr("data-type");
+                var itemValue;
+                switch (itemType) {
+                    case "SWITCH":
+                        itemValue = item.bootstrapSwitch("state");
+                        if (itemValue) {
+                            itemValue = 'Y';
+                        } else {
+                            itemValue = 'N';
+                        }
+                        break;
+                    case "TEXT":
+                        itemValue = item.val();
+                        if (itemValue == null) {
+                            itemValue = "";
+                        }
+                        break;
+                    case "MONEY":
+                        itemValue = Inputmask.unmask(item.val(), {
+                            alias: "currency"
+                        });
+                        if (itemValue == null) {
+                            itemValue = 0;
+                        }
+                        break;
+                    case "SELECT":
+                        itemValue = item.val();
+                        break;
+                    case "INTEGER":
+                        itemValue = item.val();
+                        if (itemValue == null || itemValue == "") {
+                            itemValue = 0;
+                        }
+                        break;
+                    case "PERCENT":
+                        itemValue = Inputmask.unmask(item.val(), {
+                            alias: "leftPercent"
+                        });
+                        // console.log("percent=" + itemValue);
+                        if (itemValue == null) {
+                            itemValue = 0;
+                        }
+                        break;
+                }
+                if (itemNm == 'BankProcessTimeS') {
+                    BankProcessTime.OPTKEY = 'BankProcessTime';
+                    BankProcessTime.OPTMAINVALUE = itemValue;
+                    BankProcessTime.ACTIVE = 'Y';
+                } else if (itemNm == 'BankProcessTimeE') {
+                    BankProcessTime.OPTKEY = 'BankProcessTime';
+                    BankProcessTime.OPTSUBVALUE1 = itemValue;
+                    BankProcessTime.ACTIVE = 'Y';
+                } else {
+                    var param = {};
+                    param.OPTKEY = itemNm;
+                    param.OPTMAINVALUE = itemValue;
+                    param.ACTIVE = 'Y';
+                    params.push(param);
+                }
+            });
+            params.push(BankProcessTime);
+            return params;
+
+        }
+
+        var setAllData = function(params) {
+
+            $.each(params, function(index, param) {
+                var itemNm = param.OPTKEY;
+                var element = Comm.getElementByDataKey(itemNm);
+                if (itemNm == 'BankProcessTime') {
+                    setElementValue($('#BankProcessTimeS'), param.OPTMAINVALUE);
+                    setElementValue($('#BankProcessTimeE'), param.OPTSUBVALUE1);
+                } else {
+                    setElementValue(element, param.OPTMAINVALUE);
+                }
+            })
+        }
+
+        var setElementValue = function(element, itemValue) {
+            var item = $(element);
+
+            var itemType = item.attr("data-type");
+            switch (itemType) {
+                case "SWITCH":
+                    if (itemValue == "Y") {
+                        item.bootstrapSwitch("state", true);
+                    }
+                    if (itemValue == "N") {
+                        item.bootstrapSwitch("state", false);
+                    }
+                    break;
+                case "TEXT":
+                    item.val(itemValue);
+                    break;
+                case "MONEY":
+                    itemValue = Inputmask.format(itemValue, {
+                        alias: "currency_normal"
+                    });
+                    item.val(itemValue);
+                    break;
+                case "SELECT":
+                    item.val(itemValue);
+                    break;
+                case "INTEGER":
+                    item.val(itemValue);
+                    break;
+                case "PERCENT":
+                    itemValue = Inputmask.format(itemValue, {
+                        alias: "leftPercent"
+                    });
+                    item.val(itemValue);
+                    break;
+                case "HTML":
+                    item.empty();
+                    item.html(itemValue);
+                    break;
+            }
         }
     </script>
 </body>

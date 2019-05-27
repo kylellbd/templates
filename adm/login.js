@@ -72,6 +72,7 @@ var Login = function() {
                             $.cookie("SHRUB_ADM_LoginRemember", null, { expires: 10 });
                         }
                         Comm.setHeader(response.Data.UserId, response.Data.Token);
+
                         Comm.alert('login success', 'success', '/templates/adm/index_cn.html');
                     } else {
                         Comm.alert(response.ErrorMsg, 'error');

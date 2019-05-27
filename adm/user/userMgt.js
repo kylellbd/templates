@@ -1,7 +1,11 @@
 var User = function() {
     var header = Comm.getPostHeader();
     header.crossDomain = true;
-
+    var loginer = Comm.getLoginerInfo();
+    var isOwner = false;
+    if (loginer != null && loginer.USERTYPE == '0004') {
+        isOwner = true;
+    }
     var make_table_users = function() {
         $("#table_user").bootstrapTable({
             url: Comm.getApiUrl() + '/api/Admin/GetUserList', // 请求后台的URL（*）
@@ -35,7 +39,9 @@ var User = function() {
             },
             queryParams: function(params) {
                 return {
-                    Active: $('#Active').val()
+                    Active: $('#Active').val(),
+                    UserId: $('#searchUserId').val(),
+                    Sts: $('#searchSts').val(),
                 }
             },
             columns: [{
@@ -72,6 +78,10 @@ var User = function() {
                     title: 'UPDATETIME',
                     align: "center"
                 }, {
+                    field: 'STS',
+                    title: 'STS',
+                    align: "center"
+                }, {
                     field: 'ACTIVE',
                     title: 'ACTIVE',
                     align: "center"
@@ -86,10 +96,14 @@ var User = function() {
                             actionHtml += row.USERID;
                             actionHtml += '\')">ACTIVE</a> &nbsp;&nbsp;&nbsp;';
                         }
-
-                        actionHtml += '<a class="green-color green-haze btn-outline" href="#"  onclick="User.editUserModal(\'';
+                        if (isOwner) {
+                            actionHtml += '<a class="green-color green-haze btn-outline" href="#"  onclick="User.editUserModal(\'';
+                            actionHtml += row.USERID;
+                            actionHtml += '\')">EDIT</a> &nbsp;&nbsp;&nbsp;';
+                        }
+                        actionHtml += '<a class="green-color green-haze btn-outline" href="#"  onclick="User.editUserStatusModal(\'';
                         actionHtml += row.USERID;
-                        actionHtml += '\')">EDIT</a> ';
+                        actionHtml += '\')">STATUS</a> ';
                         return actionHtml;
                     }
                 }
@@ -167,9 +181,75 @@ var User = function() {
     var showModal = function() {
         $("#modal_user").modal("show");
     }
+    var cleanUserStatusModal = function() {
+        Comm.cleanDomData($("#modal_user_status"));
+    }
+    var showUserStatusModal = function() {
+        $("#modal_user_status").modal("show");
+    }
+
+    var getSelectData = function() {
+        var settings = {
+            "async": false,
+            "crossDomain": true,
+            "url": Comm.getApiUrl() + "/api/Code/GetCodeInfoByGroups?groudIds=0033",
+            "method": "GET",
+            "headers": Comm.getHeader()
+        }
+
+        $.ajax(settings).done(function(response) {
+            if (response.Result == 0) {
+                var datas = response.Data;
+                $.each(datas, function(index, data) {
+                    if (data.GroupId == '0033') {
+                        initSelect("sts", data.Codeinfos);
+                        initSelect("searchSts", data.Codeinfos);
+                    }
+                });
+            }
+        });
+    }
+
+    var modifyUserStatus = function(USERID, STS) {
+        if (!isOwner) {
+            Comm.alert('권한이 부족합니다.', 'warn');
+            return false;
+        }
+
+
+        var settings = {
+            "async": false,
+            "crossDomain": true,
+            "url": Comm.getApiUrl() + "/api/Admin/UpUserState?userId=" + USERID + "&sts=" + STS,
+            "method": "GET",
+            "headers": Comm.getHeader(),
+        }
+
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            if (response.Result == 0) {
+                Comm.alert('사용자 상태 변경 완료 되었습니다..', 'success');
+            } else {
+                Comm.alert(response.ErrorMsg, 'error');
+            }
+        });
+
+    }
+
+    var initSelect = function(elementNm, codeList) {
+        var optionsHtml = "";
+        $.each(codeList, function(index, item) {
+            optionsHtml += '<option value="' + item.CODEID + '">' + item.CODEKR + '</option>';
+        });
+        var element = $(("#" + elementNm));
+        element.empty();
+        element.append(optionsHtml);
+    }
 
     return {
         init: function() {
+            getSelectData();
+
             make_table_users();
         },
         activeUser: function(USERID) {
@@ -192,7 +272,22 @@ var User = function() {
             userInfo.CURPWD = rows.CURPWD;
             Comm.setDomData($("#modal_user"), userInfo);
             showModal();
+        },
+        editUserStatusModal: function(USERID) {
+            cleanUserStatusModal();
+            var rows = $('#table_user').bootstrapTable('getRowByUniqueId', USERID); //行的数据
+            // console.log(rows);
+
+            // Comm.setDomData($("#modal_user"), userInfo);
+            $('#sts').val(rows.STS);
+            $('#modalUserStatusUserId').val(USERID);
+            showUserStatusModal();
+        },
+        modifyUserStatus: function(USERID, STS) {
+            modifyUserStatus(USERID, STS);
+            refreshTable();
         }
+
 
     }
 }();
