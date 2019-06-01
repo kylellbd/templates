@@ -47,7 +47,7 @@ var Login = function() {
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://62.234.152.219:90/api/User/Login?userId=" + form.LoginUserId.value + "&pwd=" + form.Pwd.value + "&pt=pc",
+                    "url": Comm.getApiUrl() + "/api/User/Login?userId=" + form.LoginUserId.value + "&pwd=" + form.Pwd.value + "&pt=pc",
                     "method": "GET",
                     "headers": {
                         "userId": form.LoginUserId.value,
@@ -59,9 +59,11 @@ var Login = function() {
                     if (response.Result == 0) {
 
                         if (form.LoginRemember.checked) {
+                            console.log('set cookie');
                             $.cookie("SHRUB_BIZ_LoginUserId", form.LoginUserId.value, { expires: 10 });
                             $.cookie("SHRUB_BIZ_LoginRemember", form.LoginRemember.checked, { expires: 10 });
                         } else {
+                            console.log('clean cookie');
                             $.cookie("SHRUB_BIZ_LoginUserId", null, { expires: 10 });
                             $.cookie("SHRUB_BIZ_LoginRemember", null, { expires: 10 });
                         }
@@ -273,7 +275,7 @@ var Login = function() {
                 var settings = {
                     "async": false,
                     "crossDomain": true,
-                    "url": "http://62.234.152.219:90/api/User/Regist",
+                    "url": Comm.getApiUrl() + "/api/User/Regist",
                     "method": "POST",
                     "headers": { "Content-Type": "application/json" },
                     "data": JSON.stringify(formDatas)
@@ -284,7 +286,7 @@ var Login = function() {
                         // Comm.alert('회원가입 성공하셨습니다.<br>ID:' + form.UserId.value + '<br>' + '비번:' + form.Pwd.value, 'success');
                         Comm.alertWithTitle('축하 드립니다. 회원 가입 성공 하셨습니다.', '아이디/비번: ' + form.UserId.value + '/' + form.Pwd.value, 'success');
                     } else {
-                        Comm.alert(response.errorMsg, 'error');
+                        Comm.alert(response.ErrorMsg, 'error');
                     }
                     jQuery('#register-back-btn').click();
                 });
@@ -333,7 +335,8 @@ var Login = function() {
 
 
             //remember ID
-            if ($.cookie("SHRUB_BIZ_LoginRemember") != null && $.cookie("SHRUB_BIZ_LoginRemember") != undefined) {
+            // console.log($.cookie("SHRUB_BIZ_LoginRemember"));
+            if ($.cookie("SHRUB_BIZ_LoginRemember") != null && $.cookie("SHRUB_BIZ_LoginRemember") != 'null' && $.cookie("SHRUB_BIZ_LoginRemember") != undefined) {
                 $("#LoginUserId").val($.cookie("SHRUB_BIZ_LoginUserId"));
                 $("#LoginRemember").attr('checked', true);
             }

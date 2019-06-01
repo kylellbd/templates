@@ -106,7 +106,7 @@ var Login = function() {
 
 
             //remember ID
-            if ($.cookie("SHRUB_ADM_LoginRemember") != null && $.cookie("SHRUB_ADM_LoginRemember") != undefined) {
+            if ($.cookie("SHRUB_ADM_LoginRemember") != null && $.cookie("SHRUB_ADM_LoginRemember") != 'null' && $.cookie("SHRUB_ADM_LoginRemember") != undefined) {
                 $("#userId").val($.cookie("SHRUB_ADM_LoginUserId"));
                 $("#LoginRemember").attr('checked', true);
             }

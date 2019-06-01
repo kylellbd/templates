@@ -144,6 +144,7 @@
                                                         </div>
                                                         <div style="float: right;margin-right: 10px;">
                                                             <a class="btn green-haze btn-outline sbold uppercase dark openPwdModal">비번수정</a>
+                                                            <a class="btn green-haze btn-outline sbold uppercase dark openMyInfoModal">개인정보변경</a>
                                                         </div>
                                                     </div>
                                                     <div class="portlet-body form">
@@ -247,7 +248,7 @@
                                         <div id="modal_pwd" class="modal fade" tabindex="-1" data-width="700" data-backdrop="static" data-keyboard="false">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                                <h3 class="modal-title">修改密码</h3>
+                                                <h3 class="modal-title">비번변경</h3>
                                             </div>
                                             <div class="modal-body" style="padding-top: 0px;">
                                                 <div class="portlet box ">
@@ -281,8 +282,97 @@
 
 
                                             <div class="modal-footer">
-                                                <button type="button" data-dismiss="modal" class="btn btn-outline dark">取消</button>
-                                                <button type="button" id="saveBtn" class="btn green">修改</button>
+                                                <button type="button" data-dismiss="modal" class="btn btn-outline dark">취소</button>
+                                                <button type="button" id="saveBtn" class="btn green">변경</button>
+                                            </div>
+                                        </div>
+
+                                        <div id="modal_myinfo_first" class="modal fade" tabindex="-1" data-width="700" data-backdrop="static" data-keyboard="false">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                <h3 class="modal-title">개인정보 보완</h3>
+                                            </div>
+                                            <div class="modal-body" style="padding-top: 0px;">
+                                                <div class="portlet box ">
+                                                    <div class="portlet-body form">
+                                                        <!-- BEGIN FORM-->
+                                                        <form id="formMyInfoFirst" action="#" class="form-horizontal form-bordered form-row-stripped">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">이름</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control" name="Name" type="text" data-key="Name" data-type="TEXT" maxlength="10" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">출생년월일(yyyymmdd)</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control" name="Birthday" type="text" data-key="Birthday" data-type="TEXT" maxlength="8" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">메일주소</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control" name="Email" type="text" data-key="Email" data-type="TEXT" maxlength="20" />
+
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="modal-footer">
+                                                <button type="button" data-dismiss="modal" class="btn btn-outline dark">취소</button>
+                                                <button type="button" id="savefirstBtn" class="btn green">확인</button>
+                                            </div>
+                                        </div>
+
+                                        <div id="modal_myinfo" class="modal fade" tabindex="-1" data-width="700" data-backdrop="static" data-keyboard="false">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                                <h3 class="modal-title">개인정보 변경</h3>
+                                            </div>
+                                            <div class="modal-body" style="padding-top: 0px;">
+                                                <div class="portlet box ">
+                                                    <div class="portlet-body form">
+                                                        <!-- BEGIN FORM-->
+                                                        <form id="formMyInfo" action="#" class="form-horizontal form-bordered form-row-stripped">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">이름</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control" name="Name" type="text" data-key="Name" data-type="TEXT" maxlength="10" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">출생년월일(yyyymmdd)</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control" name="Birthday" type="text" data-key="Birthday" data-type="TEXT" maxlength="8" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">핸드폰번호</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control" name="CurrCellPhone" type="text" data-key="CurrCellPhone" data-type="TEXT" maxlength="11" />
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3">메일주소</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control" name="Email" type="text" data-key="Email" data-type="TEXT" maxlength="20" />
+
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="modal-footer">
+                                                <button type="button" data-dismiss="modal" class="btn btn-outline dark">취소</button>
+                                                <button type="button" id="saveMyInfoBtn" class="btn green">확인</button>
                                             </div>
                                         </div>
                                     </div>
@@ -386,9 +476,20 @@
 <script type="text/javascript">
     $(function() {
 
-        initChangePwdForm();
+        Comm.init();
+
+        initModalForm();
+
         $("#saveBtn").on('click', function() {
             $('#formChangePwd').submit();
+        });
+
+        $("#saveMyInfoBtn").on('click', function() {
+            $('#formMyInfo').submit();
+        });
+
+        $("#savefirstBtn").on('click', function() {
+            $('#formMyInfoFirst').submit();
         });
 
         $(".openPwdModal").on('click', function() {
@@ -396,8 +497,36 @@
             $('#modal_pwd').modal("show");
         });
 
+        $(".openMyInfoModal").on('click', function() {
+            openEditModal();
+        });
+
         getBizData();
+
+        checkFirstLogin();
     });
+
+    function openEditModal() {
+
+        Comm.cleanDomData($('#formMyInfo'));
+        let data = {
+            Name: $('#userNm').val(),
+            Birthday: $('#Birthday').val(),
+            CurrCellPhone: $('#OrgCellPhone').val(),
+            Email: $('#Email').val(),
+        };
+
+        Comm.setDomData($('#formMyInfo'), data);
+
+        $('#modal_myinfo').modal('show');
+    }
+
+    function checkFirstLogin() {
+        if ($('#userNm').val() == '') {
+            $('#modal_myinfo_first').modal('show');
+        }
+
+    }
 
     function getBizData() {
 
@@ -405,7 +534,7 @@
         var settings = {
             "async": false,
             "crossDomain": true,
-            "url": "http://62.234.152.219:90/api/User/GetUserInfo?userId=" + header.user,
+            "url": Comm.getApiUrl() + "/api/User/GetUserInfo?userId=" + header.user,
             "method": "GET",
             "headers": Comm.getHeader()
         }
@@ -414,14 +543,19 @@
             console.log(response);
             if (response.Result == 0) {
 
-                Comm.setDomData($("#empForm"), response.Data.CUSTINFO);
+                let custInfo = response.Data.CUSTINFO;
+                if (custInfo.BIRTHDAY == '00010101') {
+                    custInfo.BIRTHDAY = '';
+                }
+                Comm.setDomData($("#empForm"), custInfo);
+
             }
         });
     }
 
 
 
-    function initChangePwdForm() {
+    function initModalForm() {
 
 
         $('#formChangePwd').validate({
@@ -480,7 +614,7 @@
                 var settings = {
                     "async": false,
                     "crossDomain": true,
-                    "url": "http://62.234.152.219:90/api/User/UpUserPwd?userId=" + header.user + "&oldPwd=" + form.oldPwd.value + "&newPwd=" + form.newPwd.value,
+                    "url": Comm.getApiUrl() + "/api/User/UpUserPwd?userId=" + header.user + "&oldPwd=" + form.oldPwd.value + "&newPwd=" + form.newPwd.value,
                     "method": "GET",
                     "headers": header,
                 }
@@ -498,6 +632,184 @@
                 return false;
             }
         });
+
+        $('#formMyInfo').validate({
+            errorElement: 'span', //default input error message container
+            errorClass: 'help-block', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            ignore: "",
+            rules: {
+                Name: {
+                    required: true
+                },
+                Birthday: {
+                    required: true,
+                    dateNoSymbol: true
+                },
+                CurrCellPhone: {
+                    required: true,
+                    isMobile: true
+                },
+                Email: {
+                    required: true,
+                    email: true
+                }
+            },
+
+            messages: { // custom messages for radio buttons and checkboxes
+                Birthday: {
+                    required: "출생년월일을 입력하세요.",
+                    dateNoSymbol: '날짜 격식에 맞춰 입력하세요.'
+                },
+                Name: {
+                    required: "이름을 입력하세요."
+                },
+                Email: {
+                    required: "메일주소를 입력하세요.",
+                    email: "유효한 메일주소를 입력하세요."
+                },
+                CurrCellPhone: {
+                    required: "핸드폰 번호를 입력하세요.",
+                    isMobile: "11자리 핸드폰 번호를 입력하세요."
+                },
+            },
+
+            invalidHandler: function(event, validator) { //display error alert on form submit   
+
+            },
+
+            highlight: function(element) { // hightlight error inputs
+                $(element)
+                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+            },
+
+            success: function(label) {
+                label.closest('.form-group').removeClass('has-error');
+                label.remove();
+            },
+
+            errorPlacement: function(error, element) {
+                if (element.closest('.input-icon').size() === 1) {
+                    error.insertAfter(element.closest('.input-icon'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+
+            submitHandler: function(form) {
+                var header = Comm.getPostHeader();
+                let data = Comm.getDomData($('#formMyInfo'));
+                data.UserId = header.user;
+                var settings = {
+                    "async": false,
+                    "crossDomain": true,
+                    "url": Comm.getApiUrl() + "/api/User/UpCustInfo",
+                    "method": "POST",
+                    "headers": header,
+                    "data": JSON.stringify(data)
+                }
+
+                $.ajax(settings).done(function(response) {
+                    console.log(response);
+                    $("#modal_myinfo").modal("hide");
+                    if (response.Result == 0) {
+                        Comm.alert('개인정보 변경 완료되었습니다.', 'success');
+                        getBizData();
+                    } else {
+                        Comm.alert(response.ErrorMsg, 'error');
+                    }
+                });
+
+                return false;
+            }
+        });
+
+
+        $('#formMyInfoFirst').validate({
+            errorElement: 'span', //default input error message container
+            errorClass: 'help-block', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            ignore: "",
+            rules: {
+                Name: {
+                    required: true
+                },
+                Birthday: {
+                    required: true,
+                    dateNoSymbol: true
+                },
+                Email: {
+                    required: true,
+                    email: true
+                }
+            },
+
+            messages: { // custom messages for radio buttons and checkboxes
+                Birthday: {
+                    required: "출생년월일을 입력하세요.",
+                    dateNoSymbol: '날짜 격식에 맞춰 입력하세요.'
+                },
+                Name: {
+                    required: "이름을 입력하세요."
+                },
+                Email: {
+                    required: "메일주소를 입력하세요.",
+                    email: "유효한 메일주소를 입력하세요."
+                },
+            },
+
+            invalidHandler: function(event, validator) { //display error alert on form submit   
+
+            },
+
+            highlight: function(element) { // hightlight error inputs
+                $(element)
+                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+            },
+
+            success: function(label) {
+                label.closest('.form-group').removeClass('has-error');
+                label.remove();
+            },
+
+            errorPlacement: function(error, element) {
+                if (element.closest('.input-icon').size() === 1) {
+                    error.insertAfter(element.closest('.input-icon'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+
+            submitHandler: function(form) {
+                var header = Comm.getPostHeader();
+                let data = Comm.getDomData($('#formMyInfoFirst'));
+                data.UserId = header.user;
+                console.log(data);
+                var settings = {
+                    "async": false,
+                    "crossDomain": true,
+                    "url": Comm.getApiUrl() + "/api/User/UpCustInfo",
+                    "method": "POST",
+                    "headers": header,
+                    "data": JSON.stringify(data)
+                }
+
+                $.ajax(settings).done(function(response) {
+                    console.log(response);
+                    $("#modal_myinfo_first").modal("hide");
+                    if (response.Result == 0) {
+                        Comm.alert('개인정보 보완 완료되었습니다.', 'success');
+                        getBizData();
+                    } else {
+                        Comm.alert(response.errorMsg, 'error');
+                    }
+                });
+
+                return false;
+            }
+        });
+
+
     }
 </script>
 <style>

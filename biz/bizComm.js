@@ -179,9 +179,32 @@ var Comm = function() {
     }
 
     var extendValidate = function() {
-        // jQuery.validator.addMethod("notEqual", function(value, element, param) {
-        //     return this.optional(element) || value != param;
-        // }, "Please specify a different (non-default) value");
+        jQuery.validator.addMethod("notEqual", function(value, element, param) {
+            return this.optional(element) || value != param;
+        }, "Please specify a different (non-default) value");
+
+        jQuery.validator.addMethod("isMobile", function(value, element) {
+            var length = value.length;
+            var regPhone = /^[0-9]+$/;
+            return this.optional(element) || (length == 11 && regPhone.test(value));
+        }, "핸드폰 번호를 입력하세요.");
+
+        jQuery.validator.addMethod("alpha", function(value, element) {
+            var alpha = /^[0-9a-zA-Z]+$/;
+            return this.optional(element) || (alpha.test(value));
+        }, "영문과 숫자만 가능합니다.");
+
+        jQuery.validator.addMethod("date", function(value, element) {
+            var date = /((?!0000)[0-9]{4}-((0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-8])|(0[13-9]|1[0-2])-(29|30)|(0[13578]|1[02])-31)|([0-9]{2}(0[48]|[2468][048]|[13579][26])|(0[48]|[2468][048]|[13579][26])00)-02-29)/;
+            return this.optional(element) || (date.test(value));
+        }, "yyyy-mm-dd 격식이 아닙니다.");
+
+        jQuery.validator.addMethod("dateNoSymbol", function(value, element) {
+            var date = /^(19\d{2}|200\d|201[0-8])(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])$/;
+            return this.optional(element) || (date.test(value));
+        }, "yyyymmdd 격식이 아닙니다.");
+
+
     }
 
     var getDomData = function($DOM) {

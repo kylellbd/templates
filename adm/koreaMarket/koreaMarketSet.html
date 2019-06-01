@@ -425,7 +425,7 @@
         });
 
         function saveData(datas) {
-
+            // console.log(datas);
             var settings = {
                 "async": false,
                 "crossDomain": true,
@@ -503,9 +503,11 @@
         var getAllData = function() {
             var params = [];
             var domItems = $("[data-key]");
+            console.log(domItems);
             domItems.each(function(index, item) {
                 item = $(item);
                 var itemNm = item.attr("data-key");
+                var itemCl = item.attr("data-key2");
                 var itemType = item.attr("data-type");
                 var itemValue;
                 switch (itemType) {
@@ -517,12 +519,6 @@
                             itemValue = 'N';
                         }
                         break;
-                    case "TEXT":
-                        itemValue = item.val();
-                        if (itemValue == null) {
-                            itemValue = "";
-                        }
-                        break;
                     case "MONEY":
                         itemValue = Inputmask.unmask(item.val(), {
                             alias: "currency"
@@ -530,9 +526,6 @@
                         if (itemValue == null) {
                             itemValue = 0;
                         }
-                        break;
-                    case "SELECT":
-                        itemValue = item.val();
                         break;
                     case "INTEGER":
                         itemValue = item.val();
@@ -544,29 +537,22 @@
                         itemValue = Inputmask.unmask(item.val(), {
                             alias: "leftPercent"
                         });
-                        // console.log("percent=" + itemValue);
                         if (itemValue == null) {
                             itemValue = 0;
                         }
                         break;
                 }
-                if (itemNm == 'BankProcessTimeS') {
-                    BankProcessTime.OPTKEY = 'BankProcessTime';
-                    BankProcessTime.OPTMAINVALUE = itemValue;
-                    BankProcessTime.ACTIVE = 'Y';
-                } else if (itemNm == 'BankProcessTimeE') {
-                    BankProcessTime.OPTKEY = 'BankProcessTime';
-                    BankProcessTime.OPTSUBVALUE1 = itemValue;
-                    BankProcessTime.ACTIVE = 'Y';
-                } else {
-                    var param = {};
-                    param.OPTKEY = itemNm;
-                    param.OPTMAINVALUE = itemValue;
-                    param.ACTIVE = 'Y';
-                    params.push(param);
+                var temp = getSetInfoFromList(params, itemNm);
+
+                if (temp == null) {
+                    temp = {};
+                    temp.CONFIGNAME = itemNm;
+                    temp.MARKETID = '10';
+                    params.push(temp);
                 }
+                temp[itemCl] = itemValue;
+
             });
-            params.push(BankProcessTime);
             return params;
 
         }
@@ -608,7 +594,7 @@
         }
 
         var getSetInfoFromList = function(datas, key) {
-            let temp = {};
+            let temp = null;
             $.each(datas, function(index, data) {
                 if (key == data.CONFIGNAME) {
                     temp = data;

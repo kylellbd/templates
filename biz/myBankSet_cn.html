@@ -152,7 +152,7 @@
                                                         <form id="bankForm" action="#" class="form-horizontal form-bordered">
                                                             <div class="form-body">
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">银行</label>
+                                                                    <label class="control-label col-md-3">은행</label>
                                                                     <div class="col-md-4">
                                                                         <select class="form-control" name="BANKNAME" data-key="BANKNAME" data-type="SELECT">
                                                                             
@@ -161,14 +161,14 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">姓名</label>
+                                                                    <label class="control-label col-md-3">예금주명</label>
                                                                     <div class="col-md-4">
                                                                         <input class="form-control" id="ACCOUNTNAME" type="text" value="" data-key="ACCOUNTNAME" data-type="TEXT" />
                                                                         <input id="BANKID" type="hidden" data-key="BANKID" data-type="TEXT" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="control-label col-md-3">银行卡号</label>
+                                                                    <label class="control-label col-md-3">은행계좌번호</label>
                                                                     <div class="col-md-4">
                                                                         <input class="form-control" id="ACCOUNTNO" type="text" value="" data-key="ACCOUNTNO" data-type="INTEGER" data-inputmask="'alias':'leftInteger'" />
                                                                     </div>
@@ -334,7 +334,7 @@
                 if (response.Result == 0) {
                     Comm.alert('데이터 저장 성공하였습니다.', 'success');
                 } else {
-                    Comm.alert(response.errorMsg, 'error');
+                    Comm.alert(response.ErrorMsg, 'error');
                 }
                 getBizData();
                 readonly();
@@ -377,6 +377,8 @@
                     var banks = response.Data;
                     if (banks.length > 0) {
                         setTableData(banks);
+                    } else {
+                        Comm.cleanDomData($("#bankForm"));
                     }
 
                 }

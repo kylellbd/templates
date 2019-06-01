@@ -108,9 +108,11 @@ var Comm = function() {
                 closeOnCancel: true
             },
             function(isConfirm) {
-                swal.close();
+                // 
                 if (isConfirm) {
                     func();
+                } else {
+                    // swal.close();
                 }
 
             }
@@ -204,7 +206,7 @@ var Comm = function() {
                     break;
                 case "PERCENT":
                     itemValue = Inputmask.unmask(item.val(), { alias: "leftPercent" });
-                    console.log("percent=" + itemValue);
+                    // console.log("percent=" + itemValue);
                     if (itemValue == null) {
                         itemValue = 0;
                     }
